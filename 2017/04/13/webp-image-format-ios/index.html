@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="iOS,Xcode,WebView,WebP," />
 
 
 
@@ -87,12 +87,26 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Liuwentao">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="作者Talent•C转载请注明出处 前言在一般的app中占用流量最大的内容一般都是图片,以苹果公司 Retina 产品为代表的高 PPI 屏对图片的质量提出了更高的要求，如何保证在图片的精细度不降低的前提下缩小图片体积，成为了一个有价值且值得探索的事情。但如今对于 JPEG、PNG 和 GIF 这些图片格式的优化几乎已经达到了极致， 若想改变现状开辟新局面，便要有釜底抽薪的胆量和气魄，而 Goog">
+<meta name="keywords" content="iOS,Xcode,WebView,WebP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何使UIWebview/WKWebView支持WebP格式图片">
+<meta property="og:url" content="http://yoursite.com/2017/04/13/webp-image-format-ios/index.html">
 <meta property="og:site_name" content="Liuwentao">
+<meta property="og:description" content="作者Talent•C转载请注明出处 前言在一般的app中占用流量最大的内容一般都是图片,以苹果公司 Retina 产品为代表的高 PPI 屏对图片的质量提出了更高的要求，如何保证在图片的精细度不降低的前提下缩小图片体积，成为了一个有价值且值得探索的事情。但如今对于 JPEG、PNG 和 GIF 这些图片格式的优化几乎已经达到了极致， 若想改变现状开辟新局面，便要有釜底抽薪的胆量和气魄，而 Goog">
+<meta property="og:image" content="http://on9f8tjnd.bkt.clouddn.com/githubPagesForWebp/webp-1.png">
+<meta property="og:image" content="http://on9f8tjnd.bkt.clouddn.com/githubPagesForWebp/webp-2.png?imageView2/0/format/jpg/q/80|watermark/2/text/VGFsZW504oCiQw==/font/YXJpYWw=/fontsize/600/fill/I0JEQjJCMg==/dissolve/89/gravity/SouthEast/dx/16/dy/16|imageslim">
+<meta property="og:image" content="http://on9f8tjnd.bkt.clouddn.com/githubPagesForWebp/webp-3.png?imageView2/0/format/jpg/q/80|watermark/2/text/VGFsZW504oCiQw==/font/YXJpYWw=/fontsize/600/fill/I0JEQjJCMg==/dissolve/89/gravity/SouthEast/dx/16/dy/16|imageslim">
+<meta property="og:image" content="http://on9f8tjnd.bkt.clouddn.com/githubPagesForWebp/webp05.jpg?imageView2/0/format/jpg/q/80|watermark/2/text/VGFsZW504oCiQw==/font/YXJpYWw=/fontsize/600/fill/I0JEQjJCMg==/dissolve/89/gravity/SouthEast/dx/16/dy/16|imageslim">
+<meta property="og:image" content="http://on9f8tjnd.bkt.clouddn.com/githubPagesForWebp/webp06.jpg?imageView2/0/format/jpg/q/80|watermark/2/text/VGFsZW504oCiQw==/font/YXJpYWw=/fontsize/600/fill/I0JEQjJCMg==/dissolve/89/gravity/SouthEast/dx/16/dy/16|imageslim">
+<meta property="og:image" content="http://on9f8tjnd.bkt.clouddn.com/githubPagesForWebp/webp-4.jpg?imageView2/0/format/jpg/q/80|watermark/2/text/VGFsZW504oCiQw==/font/YXJpYWw=/fontsize/600/fill/I0JEQjJCMg==/dissolve/89/gravity/SouthEast/dx/16/dy/16|imageslim">
+<meta property="og:image" content="http://on9f8tjnd.bkt.clouddn.com/githubPagesForWebp/webp07.jpg?imageView2/0/format/jpg/q/80|watermark/2/text/VGFsZW504oCiQw==/font/YXJpYWw=/fontsize/600/fill/I0JEQjJCMg==/dissolve/89/gravity/SouthEast/dx/16/dy/16|imageslim">
+<meta property="og:image" content="http://on9f8tjnd.bkt.clouddn.com/githubPagesForWebp/webp08.jpg?imageView2/0/format/jpg/q/80|watermark/2/text/VGFsZW504oCiQw==/font/YXJpYWw=/fontsize/600/fill/I0JEQjJCMg==/dissolve/89/gravity/SouthEast/dx/16/dy/16|imageslim">
+<meta property="og:updated_time" content="2017-04-13T07:06:22.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Liuwentao">
+<meta name="twitter:title" content="如何使UIWebview/WKWebView支持WebP格式图片">
+<meta name="twitter:description" content="作者Talent•C转载请注明出处 前言在一般的app中占用流量最大的内容一般都是图片,以苹果公司 Retina 产品为代表的高 PPI 屏对图片的质量提出了更高的要求，如何保证在图片的精细度不降低的前提下缩小图片体积，成为了一个有价值且值得探索的事情。但如今对于 JPEG、PNG 和 GIF 这些图片格式的优化几乎已经达到了极致， 若想改变现状开辟新局面，便要有釜底抽薪的胆量和气魄，而 Goog">
+<meta name="twitter:image" content="http://on9f8tjnd.bkt.clouddn.com/githubPagesForWebp/webp-1.png">
 
 
 
@@ -120,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/04/13/webp-image-format-ios/"/>
 
 
 
 
 
-  <title> Liuwentao </title>
+  <title> 如何使UIWebview/WKWebView支持WebP格式图片 | Liuwentao </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -151,9 +165,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-   page-home 
- ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -236,9 +248,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -268,10 +280,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2017/04/13/webp-image-format-ios/" itemprop="url">
-                  如何使UIWebview/WKWebView支持WebP格式图片
-                </a>
+                如何使UIWebview/WKWebView支持WebP格式图片
               
             
           </h1>
@@ -322,9 +331,7 @@
       
 
       
-        
-          
-            <p>作者<a href="https://chuliangliang.github.io" target="_blank" rel="external">Talent•C</a><br>转载请注明出处</p>
+        <p>作者<a href="https://chuliangliang.github.io" target="_blank" rel="external">Talent•C</a><br>转载请注明出处</p>
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在一般的app中占用流量最大的内容一般都是图片,以苹果公司 Retina 产品为代表的高 PPI 屏对图片的质量提出了更高的要求，如何保证在图片的精细度不降低的前提下缩小图片体积，成为了一个有价值且值得探索的事情。<br>但如今对于 JPEG、PNG 和 GIF 这些图片格式的优化几乎已经达到了极致， 若想改变现状开辟新局面，便要有釜底抽薪的胆量和气魄，而 Google 给了我们一个新选择：WebP。</p>
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h2 id="WebP是什么"><a href="#WebP是什么" class="headerlink" title="WebP是什么?"></a>WebP是什么?</h2><blockquote>
 <p>WebP（发音 weppy，来自:<a href="https://developers.google.com/speed/WebP/" target="_blank" rel="external">Google WebP</a>），是一种支持有损压缩和无损压缩的图片文件格式，派生自图像编码格式 VP8。根据 Google 的测试，无损压缩后的 WebP 比 PNG 文件少了 45％ 的文件大小，即使这些 PNG 文件经过其他压缩工具压缩之后，WebP 还是可以减少 28％ 的文件大小。<br>在 Google 的明星产品如 Youtube、Gmail、Google Play 中都可以看到 WebP 的身影，而 Chrome 网上商店甚至已完全使用了 WebP。国外公司如 Facebook、ebay 和国内公司如腾讯、淘宝、美团等也早已尝鲜。<br>下面是QQ图片格式对比图<br><img src="http://on9f8tjnd.bkt.clouddn.com/githubPagesForWebp/webp-1.png" alt=""></p>
@@ -357,163 +364,78 @@
 <p>UIWebView 展示效果<br><img src="http://on9f8tjnd.bkt.clouddn.com/githubPagesForWebp/webp07.jpg?imageView2/0/format/jpg/q/80|watermark/2/text/VGFsZW504oCiQw==/font/YXJpYWw=/fontsize/600/fill/I0JEQjJCMg==/dissolve/89/gravity/SouthEast/dx/16/dy/16|imageslim" alt=""></p>
 <p>WKWebView 展示效果<br><img src="http://on9f8tjnd.bkt.clouddn.com/githubPagesForWebp/webp08.jpg?imageView2/0/format/jpg/q/80|watermark/2/text/VGFsZW504oCiQw==/font/YXJpYWw=/fontsize/600/fill/I0JEQjJCMg==/dissolve/89/gravity/SouthEast/dx/16/dy/16|imageslim" alt=""><br>全文终 <a href="https://github.com/chuliangliang/TalentCWebp" target="_blank" rel="external">本文demo 下载</a></p>
 
-          
+      
+    </div>
+
+    <div>
+      
         
+
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
     <div>
+      
+        
+
       
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/22/First-article/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liuwentao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Liuwentao">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/22/First-article/" itemprop="url">
-                  开篇
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-22T11:37:22+08:00">
-                2017-03-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-
+            <a href="/tags/iOS/" rel="tag"># iOS</a>
           
-            
+            <a href="/tags/Xcode/" rel="tag"># Xcode</a>
           
-
+            <a href="/tags/WebView/" rel="tag"># WebView</a>
           
+            <a href="/tags/WebP/" rel="tag"># WebP</a>
           
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
         
-          
-            <p>   最近发现身边的小伙伴都搞了博客,这段工作不是很忙,自己也搞了一个玩玩,感觉比CSDN的博客更好玩一点。以后打算把之前的博客都迁移到这里,自己也写点文章记录一下自己的工作、生活。<br>   2017加油…<br>人生每天都是现场直播,努力去做自己该做的，但是不要期待回报，不是付出了就会有回报的，做了就不要后悔，不做才后悔。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
       
 
       
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/22/First-article/" rel="prev" title="开篇">
+                开篇 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
 
       
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -521,6 +443,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -540,8 +466,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -594,6 +529,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WebP是什么"><span class="nav-number">3.</span> <span class="nav-text">WebP是什么?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#iOS中如何使用WebP格式图片"><span class="nav-number">4.</span> <span class="nav-text">iOS中如何使用WebP格式图片?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现方式一-NSURLProtocol"><span class="nav-number">5.</span> <span class="nav-text">实现方式一 NSURLProtocol</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现方式二-通过JavaScript与OC共同完成"><span class="nav-number">6.</span> <span class="nav-text">实现方式二 通过JavaScript与OC共同完成</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -715,6 +666,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
 
   
 
