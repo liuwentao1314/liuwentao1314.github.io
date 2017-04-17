@@ -6,17 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: WebP | LWT&#39;sBlog</title>
+  <title>iOS开发masonry动态布局cell高度 | LWT&#39;sBlog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="对生活充满向往的iOS开发工程师">
-<meta property="og:type" content="website">
-<meta property="og:title" content="LWT'sBlog">
-<meta property="og:url" content="http://yoursite.com/tags/WebP/index.html">
+  <meta name="description" content="作者[刘文涛] 前言说到iOS自动布局，有很多的解决办法。有的人使用xib/storyboard自动布局，也有人使用frame来适配。对于前者，笔者并不喜欢，也不支持。对于后者，更是麻烦，到处计算高度、宽度等，千万大量代码的冗余，对维护和开发的效率都很低。笔者在这里介绍纯代码自动布局的第三方库：Masonry。这个库使用率相当高，在全世界都有大量的开发者在使用，其star数量也是相当高的。本文Ce">
+<meta name="keywords" content="iOS,masonry,动态布局">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS开发masonry动态布局cell高度">
+<meta property="og:url" content="http://yoursite.com/2017/04/15/masonryForCell/index.html">
 <meta property="og:site_name" content="LWT'sBlog">
-<meta property="og:description" content="对生活充满向往的iOS开发工程师">
+<meta property="og:description" content="作者[刘文涛] 前言说到iOS自动布局，有很多的解决办法。有的人使用xib/storyboard自动布局，也有人使用frame来适配。对于前者，笔者并不喜欢，也不支持。对于后者，更是麻烦，到处计算高度、宽度等，千万大量代码的冗余，对维护和开发的效率都很低。笔者在这里介绍纯代码自动布局的第三方库：Masonry。这个库使用率相当高，在全世界都有大量的开发者在使用，其star数量也是相当高的。本文Ce">
+<meta property="og:updated_time" content="2017-04-17T08:32:32.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LWT'sBlog">
-<meta name="twitter:description" content="对生活充满向往的iOS开发工程师">
+<meta name="twitter:title" content="iOS开发masonry动态布局cell高度">
+<meta name="twitter:description" content="作者[刘文涛] 前言说到iOS自动布局，有很多的解决办法。有的人使用xib/storyboard自动布局，也有人使用frame来适配。对于前者，笔者并不喜欢，也不支持。对于后者，更是麻烦，到处计算高度、宽度等，千万大量代码的冗余，对维护和开发的效率都很低。笔者在这里介绍纯代码自动布局的第三方库：Masonry。这个库使用率相当高，在全世界都有大量的开发者在使用，其star数量也是相当高的。本文Ce">
   
     <link rel="alternative" href="/atom.xml" title="LWT&#39;sBlog" type="application/atom+xml">
   
@@ -158,36 +160,65 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-masonryForCell" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/04/13/webp-image-format-ios/" class="archive-article-date">
-  	<time datetime="2017-04-13T05:43:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-13</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/13/webp-image-format-ios/">如何使UIWebview/WKWebView支持WebP格式图片</a>
+    <h1 class="article-title" itemprop="name">
+      iOS开发masonry动态布局cell高度
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/04/15/masonryForCell/" class="archive-article-date">
+  	<time datetime="2017-04-15T07:39:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>作者[刘文涛]</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>说到iOS自动布局，有很多的解决办法。有的人使用xib/storyboard自动布局，也有人使用frame来适配。对于前者，笔者并不喜欢，也不支持。对于后者，更是麻烦，到处计算高度、宽度等，千万大量代码的冗余，对维护和开发的效率都很低。<br>笔者在这里介绍纯代码自动布局的第三方库：Masonry。这个库使用率相当高，在全世界都有大量的开发者在使用，其star数量也是相当高的。<br>本文Cell内容通过Masonry自动布局并且cell巧妙利用自动布局计算cell的动态高度。<br><a id="more"></a></p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>实现思路：例如cell中有三个label，label1，label2，label3.<br>1.为label1添加约束（以cell.cntentView为基准）</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">CGFloat</span> one_W = SCREENWIDTH/<span class="number">2</span>;</div><div class="line">[<span class="keyword">self</span>.L1 makeConstraints:^*(MASConstraintMaker *make)&#123;</div><div class="line">    make.left.mas_equalTo(<span class="number">16</span>);</div><div class="line">    make.top.mas_equalTo (<span class="number">10</span>);</div><div class="line">    make.width.mas_lessThanOrEqualTo(one_W);</div><div class="line">&#125;];</div></pre></td></tr></table></figure>
+<p>2.为label2添加约束 使其在label1下方距离为5处 （以label1为基准）。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[<span class="keyword">self</span>.L2makeConstraints:^(MASConstraintMaker *make) &#123;</div><div class="line">    make.left.equalTo(wself.L1.mas_left);</div><div class="line">    make.top.equalTo(wself.L1.mas_bottom).offset(<span class="number">5</span>);</div><div class="line">    make.width.mas_lessThanOrEqualTo(one_W);</div><div class="line">&#125;];</div></pre></td></tr></table></figure>
+<p>3.为label3添加约束 使其在label2 下方距离为5处 （以label2为基准，重点在于这个一定要在label3 添加一个距离cell。contentView底部的约束）。以上完成cell 子视图的约束。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[<span class="keyword">self</span>.L3 makeConstraints:^(MASConstraintMaker *make) &#123;</div><div class="line">    make.left.equalTo(wself.L1.mas_left);           </div><div class="line">    make.top.equalTo(wself.L2.mas_bottom).offset(<span class="number">5</span>);</div><div class="line">    make.width.mas_lessThanOrEqualTo(SCREENWIDTH<span class="number">-32</span>);</div><div class="line">make.bottom.equalTo(wself.contentView.mas_bottom).offset(<span class="number">-10</span>);</div><div class="line">&#125;];</div></pre></td></tr></table></figure>
+<p>4.在tableView heightForRowAtIndexPath 代理中使用一个单独的不显示在屏幕的cell 作为计算cell高度使用，通过下面代码获取cell高度：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">customCell *cell= [customCellshareInstance];  </div><div class="line">   <span class="comment">//返回cell之前重新刷新约束，重新计算高度</span></div><div class="line">   [cell setNeedsUpdateConstraints];</div><div class="line">   [cell updateConstraintsIfNeeded];</div><div class="line"></div><div class="line">   [cell setCellContent:<span class="keyword">self</span>.data[indexPath.row]];</div><div class="line">   [cell setNeedsLayout];</div><div class="line">   [cell layoutIfNeeded];</div><div class="line"></div><div class="line">   <span class="built_in">CGFloat</span> height = [cell.contentViewsystemLayoutSizeFittingSize:<span class="built_in">UILayoutFittingCompressedSize</span>].height;</div><div class="line">   <span class="keyword">return</span> height;</div></pre></td></tr></table></figure>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -197,33 +228,102 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Xcode</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">masonry</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">WebView</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">WebP</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">动态布局</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/04/15/masonryForCell/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/04/13/webp-image-format-ios/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          如何使UIWebview/WKWebView支持WebP格式图片
+        
+      </div>
+    </a>
   
   
-    </div></section>
+</nav>
+
+
+
+
+
+
+  
+    <div class="duoshuo"></div>
   
 
-    
+
 
 
           </div>
@@ -246,9 +346,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",
