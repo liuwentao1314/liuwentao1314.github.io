@@ -61,6 +61,8 @@
 	        
 				<li><a href="/about/">随笔</a></li>
 	        
+				<li><a href="/photos/">相册</a></li>
+	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
@@ -117,6 +119,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -132,12 +136,14 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
+				<ul style="width: 70%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
+					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/about/">随笔</a></li>
+					<li style="width: 33.333333333333336%"><a href="/about/">随笔</a></li>
+		        
+					<li style="width: 33.333333333333336%"><a href="/photos/">相册</a></li>
 		        
 				</ul>
 			</nav>
@@ -153,6 +159,72 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-labelSetAttribute" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/17/labelSetAttribute/">UIlabel设置行间距,字间距</a>
+    </h1>
+  
+
+        
+        <a href="/2017/04/17/labelSetAttribute/" class="archive-article-date">
+  	<time datetime="2017-04-17T06:49:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)setLabelSpace:(<span class="built_in">UILabel</span> *)label withValue:(<span class="built_in">NSString</span> *)str withFont:(<span class="built_in">UIFont</span> *)font&#123;</div><div class="line"> <span class="built_in">NSMutableParagraphStyle</span> *paraStyle = [[<span class="built_in">NSMutableParagraphStyle</span> alloc] init];</div><div class="line">    paraStyle.lineBreakMode = <span class="built_in">NSLineBreakByCharWrapping</span>;</div><div class="line">    paraStyle.alignment = <span class="built_in">NSTextAlignmentLeft</span>;</div><div class="line">    paraStyle.lineSpacing = <span class="built_in">UILABEL_LINE_SPACE</span>; <span class="comment">//设置行间距</span></div><div class="line">    paraStyle.hyphenationFactor = <span class="number">1.0</span>;</div><div class="line">    paraStyle.firstLineHeadIndent = <span class="number">0.0</span>;</div><div class="line">    paraStyle.paragraphSpacingBefore = <span class="number">0.0</span>;</div><div class="line">    paraStyle.headIndent = <span class="number">0</span>;</div><div class="line">    paraStyle.tailIndent = <span class="number">0</span>;</div><div class="line">    <span class="comment">//设置字间距 NSKernAttributeName:@1.5f</span></div><div class="line">    <span class="built_in">NSDictionary</span> *dic = @&#123;<span class="built_in">NSFontAttributeName</span>:font, <span class="built_in">NSParagraphStyleAttributeName</span>:paraStyle, <span class="built_in">NSKernAttributeName</span>:@<span class="number">1.5</span>f</div><div class="line">&#125;; </div><div class="line"> <span class="built_in">NSAttributedString</span> *attributeStr = [[<span class="built_in">NSAttributedString</span> alloc] initWithString:str attributes:dic];</div><div class="line">    label.attributedText = attributeStr;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//计算UILabel的高度（带有行间距的情况）</span></div><div class="line"></div><div class="line">-(<span class="built_in">CGFloat</span>)getSpaceLabelHeight:(<span class="built_in">NSString</span>*)str withFont:(<span class="built_in">UIFont</span>*)font withWidth:(<span class="built_in">CGFloat</span>)width &#123;</div><div class="line">    <span class="built_in">NSMutableParagraphStyle</span> *paraStyle = [[<span class="built_in">NSMutableParagraphStyle</span> alloc] init];</div><div class="line">    paraStyle.lineBreakMode = <span class="built_in">NSLineBreakByCharWrapping</span>;</div><div class="line">    paraStyle.alignment = <span class="built_in">NSTextAlignmentLeft</span>;</div><div class="line">    paraStyle.lineSpacing = <span class="built_in">UILABEL_LINE_SPACE</span>;</div><div class="line">    paraStyle.hyphenationFactor = <span class="number">1.0</span>;</div><div class="line">    paraStyle.firstLineHeadIndent = <span class="number">0.0</span>;</div><div class="line">    paraStyle.paragraphSpacingBefore = <span class="number">0.0</span>;</div><div class="line">    paraStyle.headIndent = <span class="number">0</span>;</div><div class="line">    paraStyle.tailIndent = <span class="number">0</span>;</div><div class="line">    <span class="built_in">NSDictionary</span> *dic = @&#123;<span class="built_in">NSFontAttributeName</span>:font, <span class="built_in">NSParagraphStyleAttributeName</span>:paraStyle, <span class="built_in">NSKernAttributeName</span>:@<span class="number">1.5</span>f</div><div class="line">&#125;;</div><div class="line">    <span class="built_in">CGSize</span> size = [str boundingRectWithSize:<span class="built_in">CGSizeMake</span>(width, HEIGHT) options:<span class="built_in">NSStringDrawingUsesLineFragmentOrigin</span> attributes:dic context:<span class="literal">nil</span>].size;</div><div class="line">    <span class="keyword">return</span> size.height;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ios</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">UILabel</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/04/17/labelSetAttribute/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
   
     <article id="post-webp-image-format-ios" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -318,6 +390,14 @@
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ios</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">UILabel</a>
+              </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">iOS</a>
