@@ -120,8 +120,8 @@
             photosImgMinSrc 预览图片地址小图
             photosImgSrc 大图地址
           */
-          var photosImgMinSrc = "http://ooneqy20s.bkt.clouddn.com/";
-      		var photosImgSrc = "http://ooneqy20s.bkt.clouddn.com/";
+          var photosImgMinSrc = "http://oonbyfbd4.bkt.clouddn.com/photos/";
+      		var photosImgSrc = "http://oonbyfbd4.bkt.clouddn.com/photos/";
           var photosImgMinSrcLastPath = "?imageView2/1/w/200/h/200/format/jpg/q/75|imageslim";
 
           var minSrc = photosImgMinSrc + data.link[i] + '.jpg' + photosImgMinSrcLastPath;
