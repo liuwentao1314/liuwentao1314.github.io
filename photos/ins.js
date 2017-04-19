@@ -116,15 +116,23 @@
         var data = res.list[j].arr;
         var liTmpl = "";
         for (var i = 0, len = data.link.length; i < len; i++) {
-          var minSrc = 'http://img2.imgtn.bdimg.com/it/u=37110590,4205681190&fm=23&gp=0.jpg';//'http://litten.me/ins-min/' + data.link[i] + '.min.jpg';
-          var src = 'http://img2.imgtn.bdimg.com/it/u=37110590,4205681190&fm=23&gp=0.jpg';//'http://litten.me/ins/' + data.link[i];
+          /*
+            photosImgMinSrc 预览图片地址小图
+            photosImgSrc 大图地址
+          */
+          var photosImgMinSrc = "http://oonbyfbd4.bkt.clouddn.com/photos/";
+      		var photosImgSrc = "http://oonbyfbd4.bkt.clouddn.com/photos/";
+          var photosImgMinSrcLastPath = "?imageView2/1/w/200/h/200/format/jpg/q/75|imageslim";
+
+          var minSrc = photosImgMinSrc + data.link[i] + '.jpg' + photosImgMinSrcLastPath;
+          var src = photosImgSrc + data.link[i];
           var type = data.type[i];
           var target = src + (type === 'video' ? '.mp4' : '.jpg');
           src += '.jpg';
 
           liTmpl += '<figure class="thumb" itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject">\
                 <a href="' + src + '" itemprop="contentUrl" data-size="640x640" data-type="' + type + '" data-target="' + target + '">\
-                  <img class="reward-img" data-type="' + type + '" data-src="' + minSrc + '" src="/assets/img/empty.png" itemprop="thumbnail" onload="lzld(this)">\
+                  <img class="reward-img" data-type="' + type + '" src="' + minSrc + '" itemprop="thumbnail" onload="lzld(this)" style=" width: 100%; height: 100%">\
                 </a>\
                 <figcaption style="display:none" itemprop="caption description">' + data.text[i] + '</figcaption>\
             </figure>';
@@ -193,6 +201,8 @@
 
     var Ins = {
       init: function init() {
+        // alert("23456789");
+
         loadData(function(data) {
           render(data);
         });
