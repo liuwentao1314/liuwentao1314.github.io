@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/04/15/masonryForCell/index.html">
 <meta property="og:site_name" content="LWT'sBlog">
 <meta property="og:description" content="作者[刘文涛] 前言说到iOS自动布局，有很多的解决办法。有的人使用xib/storyboard自动布局，也有人使用frame来适配。对于前者，笔者并不喜欢，也不支持。对于后者，更是麻烦，到处计算高度、宽度等，千万大量代码的冗余，对维护和开发的效率都很低。笔者在这里介绍纯代码自动布局的第三方库：Masonry。这个库使用率相当高，在全世界都有大量的开发者在使用，其star数量也是相当高的。本文Ce">
-<meta property="og:updated_time" content="2017-04-17T08:32:32.000Z">
+<meta property="og:updated_time" content="2017-04-19T05:15:09.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS开发masonry动态布局cell高度">
 <meta name="twitter:description" content="作者[刘文涛] 前言说到iOS自动布局，有很多的解决办法。有的人使用xib/storyboard自动布局，也有人使用frame来适配。对于前者，笔者并不喜欢，也不支持。对于后者，更是麻烦，到处计算高度、宽度等，千万大量代码的冗余，对维护和开发的效率都很低。笔者在这里介绍纯代码自动布局的第三方库：Masonry。这个库使用率相当高，在全世界都有大量的开发者在使用，其star数量也是相当高的。本文Ce">
@@ -190,6 +190,7 @@
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[<span class="keyword">self</span>.L3 makeConstraints:^(MASConstraintMaker *make) &#123;</div><div class="line">    make.left.equalTo(wself.L1.mas_left);           </div><div class="line">    make.top.equalTo(wself.L2.mas_bottom).offset(<span class="number">5</span>);</div><div class="line">    make.width.mas_lessThanOrEqualTo(SCREENWIDTH<span class="number">-32</span>);</div><div class="line">make.bottom.equalTo(wself.contentView.mas_bottom).offset(<span class="number">-10</span>);</div><div class="line">&#125;];</div></pre></td></tr></table></figure>
 <p>4.在tableView heightForRowAtIndexPath 代理中使用一个单独的不显示在屏幕的cell 作为计算cell高度使用，通过下面代码获取cell高度：</p>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">customCell *cell= [customCellshareInstance];  </div><div class="line">   <span class="comment">//返回cell之前重新刷新约束，重新计算高度</span></div><div class="line">   [cell setNeedsUpdateConstraints];</div><div class="line">   [cell updateConstraintsIfNeeded];</div><div class="line"></div><div class="line">   [cell setCellContent:<span class="keyword">self</span>.data[indexPath.row]];</div><div class="line">   [cell setNeedsLayout];</div><div class="line">   [cell layoutIfNeeded];</div><div class="line"></div><div class="line">   <span class="built_in">CGFloat</span> height = [cell.contentViewsystemLayoutSizeFittingSize:<span class="built_in">UILayoutFittingCompressedSize</span>].height;</div><div class="line">   <span class="keyword">return</span> height;</div></pre></td></tr></table></figure>
+<p>本文<a href="https://github.com/liuwentao1314/MasonryCellHeight" target="_blank" rel="external">demo</a></p>
 
       
 
@@ -412,23 +413,7 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ios</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">UILabel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">iOS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">masonry</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">动态布局</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -441,6 +426,22 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">WebP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">masonry</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">动态布局</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ios</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">UILabel</a>
               </li>
             
             <div class="clearfix"></div>
