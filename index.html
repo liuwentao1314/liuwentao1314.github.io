@@ -180,53 +180,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>作者<a href="https://liuwentao1314.github.io" target="_blank" rel="external">刘文涛</a><br>转载请注明出处</p>
-<h1 id="一、简单介绍"><a href="#一、简单介绍" class="headerlink" title="一、简单介绍"></a>一、简单介绍</h1><h2 id="1-什么是GCD"><a href="#1-什么是GCD" class="headerlink" title="1.什么是GCD"></a>1.什么是GCD</h2><p>Grand Central Dispatch是由苹果开发的一个多核编程的解决方案。iOS4.0+才能使用，是替代NSThread， NSOperation的高效和强大的技术。<br>苹果官方给出的解释：GCD是异步执行任务的技术之一。一般将应用程序中记述的线程管理代码在系统集中实现，开发者只需要定义想执行的任务并追加到适当的Dispatch Queue中，GCD就可以生成必要的线程并计划执行任务。<br>GCD是基于C语言的。</p>
-<h2 id="2-GCD的优点"><a href="#2-GCD的优点" class="headerlink" title="2.GCD的优点"></a>2.GCD的优点</h2><p>它具有以下优点：<br>1.GCD可以将花费时间及其长的任务放到后台线程，可以改善应用的响应性能。<br>2.GCD提供一个易于使用的并发模型而不仅仅只是锁和线程，以帮助我们避开并发陷阱。<br>3.GCD具有在常见模式（例如单例）上用更高性能的底层语法优化你的代码的潜在能力等等。<br>我创建一个并行队列queue，并异步执行耗时操作，当耗时操作执行完成后，我拿到其中的资源回到主线程来更新相应的UI，在这个block代码块之外，主线程并不会被耗时任务所堵塞，可以流畅的处理其他的事情。<br>代码片段如下：</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="built_in">dispatch_queue_t</span> queue = dispatch_queue_create(<span class="string">"liuwentao"</span>, DISPATCH_QUEUE_CONCURRENT);</div><div class="line">    <span class="comment">//用异步的方法执行任务</span></div><div class="line">    <span class="built_in">dispatch_async</span>(queue, ^&#123;</div><div class="line">        <span class="comment">/**</span></div><div class="line">         </div><div class="line">         放一些耗时的任务在此执行</div><div class="line">         </div><div class="line">         */</div><div class="line">        <span class="built_in">dispatch_async</span>(dispatch_get_main_queue(), ^&#123;</div><div class="line">            <span class="comment">/**</span></div><div class="line">             </div><div class="line">             耗时的任务完成，拿到资源，回到主线程，更新UI</div><div class="line">             注意：更新UI只能在主线程中</div><div class="line">             */</div><div class="line">        &#125;);</div><div class="line">    &#125;);</div></pre></td></tr></table></figure>
-<h1 id="二、任务和队列"><a href="#二、任务和队列" class="headerlink" title="二、任务和队列"></a>二、任务和队列</h1><p>GCD有两个核心的概念：<br>1.任务：执行什么操作<br>2.队列：用来存放任务<br>GCD的使用步骤：<br>1.定制任务<br>2.确定想做的事情</p>
-<p>将任务添加到队列中，GCD会自动将队列中的任务取出，放到相应的线程中去执行。<br>提示：任务的取出遵循队列的FIFO（first in,first out）原则：先进先出，后进后出。</p>
-<h1 id="三、执行任务"><a href="#三、执行任务" class="headerlink" title="三、执行任务"></a>三、执行任务</h1><h2 id="1-GCD中有2个用来执行任务的函数"><a href="#1-GCD中有2个用来执行任务的函数" class="headerlink" title="1.GCD中有2个用来执行任务的函数"></a>1.GCD中有2个用来执行任务的函数</h2><p> 说明：把右边的参数（任务）提交给左边的参数（队列）进行执行。<br> （1）用同步的方法执行任务 dispatch_sync(dispatch_queue_t queue, dispatch_block_t block);<br>     参数说明：<br>     queue：队列<br>     block：任务<br> （2）用异步的方法执行任务 dispatch_async(dispatch_queue_t queue, dispatch_block_t block);</p>
-<h2 id="2-同步和异步的区别"><a href="#2-同步和异步的区别" class="headerlink" title="2.同步和异步的区别"></a>2.同步和异步的区别</h2><p>  同步：在当前线程中执行<br>  异步：在另一条线程中执行</p>
-<h1 id="四、队列"><a href="#四、队列" class="headerlink" title="四、队列"></a>四、队列</h1><h2 id="1-队列的类型"><a href="#1-队列的类型" class="headerlink" title="1.队列的类型"></a>1.队列的类型</h2><p>GCD的队列可以分为2大类<br>（1）并发队列 （ DISPATCH_QUEUE_CONCURRENT ）<br>    可以让多个任务并发执行（自动开启多个线程同时执行任务）并发功能只有在异步（dispatch——async）函数下才有效<br>（2）串行队列 （ DISPATCH_QUEUE_SERIAL ）<br>    让任务一个接一个的执行 （一个任务执行完毕后，在执行下一个任务）</p>
-<h2 id="2-补充说明"><a href="#2-补充说明" class="headerlink" title="2.补充说明"></a>2.补充说明</h2><p>同步和异步决定了要不要开启新的线程。<br>同步：在当前线程中执行任务，不具备开启新线程的能力<br>异步：在新的线程中执行任务，具备开启新线程的能力</p>
-<p>并发和串行决定了任务的执行方式<br>并发：多个任务同时执行<br>串行：一个任务执行完毕后，在执行下一个任务</p>
-<h2 id="3-串行队列"><a href="#3-串行队列" class="headerlink" title="3.串行队列"></a>3.串行队列</h2><p>GCD中获得串行有两种途径<br>（1）使用dispatch_queue_create函数创建串行队列</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">dispatch_queue_t</span> queue = dispatch_queue_create(&lt;<span class="meta">#const char * _Nullable label#&gt;, <span class="meta-string">&lt;#dispatch_queue_attr_t  _Nullable attr#&gt;</span>)  //// 队列名称， 队列属性，一般用NULL即可</span></div></pre></td></tr></table></figure>
-<p>示例：<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">dispatch_queue_t</span> queue = dispatch_queue_create(<span class="string">"liuwentao"</span>, <span class="literal">NULL</span>);</div></pre></td></tr></table></figure></p>
-<p>（2）使用主队列<br>主队列是GCD自带的一种特殊的串行队列，放在主队列中的任务都会放到主线程中执行 使用dispatch_get_main_queue()获得主队列<br>示例：</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">dispatch_queue_t</span> queue2 = dispatch_get_main_queue();</div></pre></td></tr></table></figure>
-<h2 id="4-并发队列"><a href="#4-并发队列" class="headerlink" title="4.并发队列"></a>4.并发队列</h2><p>GCD默认已经提供全局的并发队列，供整个应用使用，不需要手动创建<br>使用dispatch_get_global_queue函数获得全局的并发队列<br>示例：</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">dispatch_queue_t</span> queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, <span class="number">0</span>);</div><div class="line"></div><div class="line">说明：全局并发队列的优先级</div><div class="line"> <span class="meta">#define DISPATCH_QUEUE_PRIORITY_HIGH 2 // 高</span></div><div class="line"> <span class="meta">#define DISPATCH_QUEUE_PRIORITY_DEFAULT 0 // 默认（中）</span></div><div class="line"> <span class="meta">#define DISPATCH_QUEUE_PRIORITY_LOW (-2) // 低</span></div><div class="line"> <span class="meta">#define DISPATCH_QUEUE_PRIORITY_BACKGROUND INT16_MIN // 后台</span></div></pre></td></tr></table></figure>
-<h2 id="5-各队列的执行效果"><a href="#5-各队列的执行效果" class="headerlink" title="5.各队列的执行效果"></a>5.各队列的执行效果</h2><table>
-<thead>
-<tr>
-<th></th>
-<th style="text-align:center">全局并发队列</th>
-<th style="text-align:center">手动创建串行队列</th>
-<th style="text-align:center">主队列</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>同步（sync）</td>
-<td style="text-align:center">没有开启新线程，串行执行任务</td>
-<td style="text-align:center">没有开启新线程，串行执行任务</td>
-<td style="text-align:center">没有开启新线程，串行执行任务</td>
-</tr>
-<tr>
-<td>异步（async)</td>
-<td style="text-align:center">开启新线程，并发执行任务</td>
-<td style="text-align:center">开启新线程，串行执行任务</td>
-<td style="text-align:center">没有开启新线程，串行执行任务</td>
-</tr>
-</tbody>
-</table>
-<h1 id="五、示例代码"><a href="#五、示例代码" class="headerlink" title="五、示例代码"></a>五、示例代码</h1><h2 id="1-用异步函数往并发队列中添加任务"><a href="#1-用异步函数往并发队列中添加任务" class="headerlink" title="1.用异步函数往并发队列中添加任务"></a>1.用异步函数往并发队列中添加任务</h2><p>示例：</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//1.获得全局的并发队列</span></div><div class="line"> <span class="built_in">dispatch_queue_t</span> queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, <span class="number">0</span>);</div><div class="line"> <span class="comment">//2.添加任务到队列中，就可以执行任务</span></div><div class="line"> <span class="comment">//异步函数：具备开启新线程的能力</span></div><div class="line"> <span class="built_in">dispatch_async</span>(queue, ^&#123;</div><div class="line">     <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">2</span>; ++i) &#123;</div><div class="line">         <span class="built_in">NSLog</span>(<span class="string">@"1------%@"</span>,[<span class="built_in">NSThread</span> currentThread]);</div><div class="line">     &#125;</div><div class="line"> &#125;);</div><div class="line"> <span class="built_in">dispatch_async</span>(queue, ^&#123;</div><div class="line">     <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">2</span>; ++i) &#123;</div><div class="line">         <span class="built_in">NSLog</span>(<span class="string">@"2------%@"</span>,[<span class="built_in">NSThread</span> currentThread]);</div><div class="line">     &#125;</div><div class="line"> &#125;);</div><div class="line"> <span class="built_in">dispatch_async</span>(queue, ^&#123;</div><div class="line">     <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">2</span>; ++i) &#123;</div><div class="line">         <span class="built_in">NSLog</span>(<span class="string">@"3------%@"</span>,[<span class="built_in">NSThread</span> currentThread]);</div><div class="line">     &#125;</div><div class="line"> &#125;);</div><div class="line"> <span class="built_in">NSLog</span>(<span class="string">@"主线程----%@"</span>,[<span class="built_in">NSThread</span> mainThread]);</div></pre></td></tr></table></figure>
-<p>输出：<br><img src="http://ooneqy20s.bkt.clouddn.com/GCD-2.png" alt=""><br>在并发队列+异步执行中可以看出，除了主线程同时又开启了三个子线程，并且任务交替着同时执行。<br>并且任务不是马上执行的，而是将所有的任务添加到队列之后才开始异步执行的。</p>
-<p><a href="http://www.jianshu.com/p/2d57c72016c6" target="_blank" rel="external">http://www.jianshu.com/p/2d57c72016c6</a><br><a href="http://www.cnblogs.com/wendingding/p/3806821.html" target="_blank" rel="external">http://www.cnblogs.com/wendingding/p/3806821.html</a></p>
-
+        <p>作者<a href="https://liuwentao1314.github.io">刘文涛</a><br>转载请注明出处</p>
+<h1 id="一、简单介绍"><a href="#一、简单介绍" class="headerlink" title="一、简单介绍"></a>一、简单介绍</h1><h2 id="1-什么是GCD"><a href="#1-什么是GCD" class="headerlink" title="1.什么是GCD"></a>1.什么是GCD</h2><p>Grand Central Dispatch是由苹果开发的一个多核编程的解决方案。iOS4.0+才能使用，是替代NSThread， NSOperation的高效和强大的技术。<br>苹果官方给出的解释：GCD是异步执行任务的技术之一。一般将应用程序中记述的线程管理代码在系统集中实现，开发者只需要定义想执行的任务并追加到适当的Dispatch Queue中，GCD就可以生成必要的线程并计划执行任务。<br>GCD是基于C语言的。<br>
+        
+          <a class="article-more-a" href="/2017/05/19/GCDInfo/#more">more >></a>
+        
       
 
       
@@ -563,7 +521,23 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ios</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">UILabel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">iOS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">masonry</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">动态布局</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -576,22 +550,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">WebP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ios</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">UILabel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">masonry</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">动态布局</a>
               </li>
             
             <div class="clearfix"></div>

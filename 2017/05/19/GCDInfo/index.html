@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="LWT'sBlog">
 <meta property="og:description" content="作者刘文涛转载请注明出处 一、简单介绍1.什么是GCDGrand Central Dispatch是由苹果开发的一个多核编程的解决方案。iOS4.0+才能使用，是替代NSThread， NSOperation的高效和强大的技术。苹果官方给出的解释：GCD是异步执行任务的技术之一。一般将应用程序中记述的线程管理代码在系统集中实现，开发者只需要定义想执行的任务并追加到适当的Dispatch Queue">
 <meta property="og:image" content="http://ooneqy20s.bkt.clouddn.com/GCD-2.png">
-<meta property="og:updated_time" content="2017-05-19T10:13:20.000Z">
+<meta property="og:updated_time" content="2017-05-19T10:16:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS GCD介绍">
 <meta name="twitter:description" content="作者刘文涛转载请注明出处 一、简单介绍1.什么是GCDGrand Central Dispatch是由苹果开发的一个多核编程的解决方案。iOS4.0+才能使用，是替代NSThread， NSOperation的高效和强大的技术。苹果官方给出的解释：GCD是异步执行任务的技术之一。一般将应用程序中记述的线程管理代码在系统集中实现，开发者只需要定义想执行的任务并追加到适当的Dispatch Queue">
@@ -183,7 +183,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>作者<a href="https://liuwentao1314.github.io" target="_blank" rel="external">刘文涛</a><br>转载请注明出处</p>
-<h1 id="一、简单介绍"><a href="#一、简单介绍" class="headerlink" title="一、简单介绍"></a>一、简单介绍</h1><h2 id="1-什么是GCD"><a href="#1-什么是GCD" class="headerlink" title="1.什么是GCD"></a>1.什么是GCD</h2><p>Grand Central Dispatch是由苹果开发的一个多核编程的解决方案。iOS4.0+才能使用，是替代NSThread， NSOperation的高效和强大的技术。<br>苹果官方给出的解释：GCD是异步执行任务的技术之一。一般将应用程序中记述的线程管理代码在系统集中实现，开发者只需要定义想执行的任务并追加到适当的Dispatch Queue中，GCD就可以生成必要的线程并计划执行任务。<br>GCD是基于C语言的。</p>
+<h1 id="一、简单介绍"><a href="#一、简单介绍" class="headerlink" title="一、简单介绍"></a>一、简单介绍</h1><h2 id="1-什么是GCD"><a href="#1-什么是GCD" class="headerlink" title="1.什么是GCD"></a>1.什么是GCD</h2><p>Grand Central Dispatch是由苹果开发的一个多核编程的解决方案。iOS4.0+才能使用，是替代NSThread， NSOperation的高效和强大的技术。<br>苹果官方给出的解释：GCD是异步执行任务的技术之一。一般将应用程序中记述的线程管理代码在系统集中实现，开发者只需要定义想执行的任务并追加到适当的Dispatch Queue中，GCD就可以生成必要的线程并计划执行任务。<br>GCD是基于C语言的。<br><a id="more"></a></p>
 <h2 id="2-GCD的优点"><a href="#2-GCD的优点" class="headerlink" title="2.GCD的优点"></a>2.GCD的优点</h2><p>它具有以下优点：<br>1.GCD可以将花费时间及其长的任务放到后台线程，可以改善应用的响应性能。<br>2.GCD提供一个易于使用的并发模型而不仅仅只是锁和线程，以帮助我们避开并发陷阱。<br>3.GCD具有在常见模式（例如单例）上用更高性能的底层语法优化你的代码的潜在能力等等。<br>我创建一个并行队列queue，并异步执行耗时操作，当耗时操作执行完成后，我拿到其中的资源回到主线程来更新相应的UI，在这个block代码块之外，主线程并不会被耗时任务所堵塞，可以流畅的处理其他的事情。<br>代码片段如下：</p>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="built_in">dispatch_queue_t</span> queue = dispatch_queue_create(<span class="string">"liuwentao"</span>, DISPATCH_QUEUE_CONCURRENT);</div><div class="line">    <span class="comment">//用异步的方法执行任务</span></div><div class="line">    <span class="built_in">dispatch_async</span>(queue, ^&#123;</div><div class="line">        <span class="comment">/**</span></div><div class="line">         </div><div class="line">         放一些耗时的任务在此执行</div><div class="line">         </div><div class="line">         */</div><div class="line">        <span class="built_in">dispatch_async</span>(dispatch_get_main_queue(), ^&#123;</div><div class="line">            <span class="comment">/**</span></div><div class="line">             </div><div class="line">             耗时的任务完成，拿到资源，回到主线程，更新UI</div><div class="line">             注意：更新UI只能在主线程中</div><div class="line">             */</div><div class="line">        &#125;);</div><div class="line">    &#125;);</div></pre></td></tr></table></figure>
 <h1 id="二、任务和队列"><a href="#二、任务和队列" class="headerlink" title="二、任务和队列"></a>二、任务和队列</h1><p>GCD有两个核心的概念：<br>1.任务：执行什么操作<br>2.队列：用来存放任务<br>GCD的使用步骤：<br>1.定制任务<br>2.确定想做的事情</p>
@@ -436,7 +436,23 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ios</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">UILabel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">iOS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">masonry</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">动态布局</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -449,22 +465,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">WebP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ios</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">UILabel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">masonry</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">动态布局</a>
               </li>
             
             <div class="clearfix"></div>
