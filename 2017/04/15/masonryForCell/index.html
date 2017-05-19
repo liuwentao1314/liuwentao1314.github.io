@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>iOS开发masonry动态布局cell高度 | LWT&#39;sBlog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="作者[刘文涛] 前言说到iOS自动布局，有很多的解决办法。有的人使用xib/storyboard自动布局，也有人使用frame来适配。对于前者，笔者并不喜欢，也不支持。对于后者，更是麻烦，到处计算高度、宽度等，千万大量代码的冗余，对维护和开发的效率都很低。笔者在这里介绍纯代码自动布局的第三方库：Masonry。这个库使用率相当高，在全世界都有大量的开发者在使用，其star数量也是相当高的。本文Ce">
+  <meta name="description" content="作者刘文涛转载请注明出处 前言说到iOS自动布局，有很多的解决办法。有的人使用xib/storyboard自动布局，也有人使用frame来适配。对于前者，笔者并不喜欢，也不支持。对于后者，更是麻烦，到处计算高度、宽度等，千万大量代码的冗余，对维护和开发的效率都很低。笔者在这里介绍纯代码自动布局的第三方库：Masonry。这个库使用率相当高，在全世界都有大量的开发者在使用，其star数量也是相当高的">
 <meta name="keywords" content="iOS,masonry,动态布局">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS开发masonry动态布局cell高度">
 <meta property="og:url" content="http://yoursite.com/2017/04/15/masonryForCell/index.html">
 <meta property="og:site_name" content="LWT'sBlog">
-<meta property="og:description" content="作者[刘文涛] 前言说到iOS自动布局，有很多的解决办法。有的人使用xib/storyboard自动布局，也有人使用frame来适配。对于前者，笔者并不喜欢，也不支持。对于后者，更是麻烦，到处计算高度、宽度等，千万大量代码的冗余，对维护和开发的效率都很低。笔者在这里介绍纯代码自动布局的第三方库：Masonry。这个库使用率相当高，在全世界都有大量的开发者在使用，其star数量也是相当高的。本文Ce">
-<meta property="og:updated_time" content="2017-04-19T05:15:09.000Z">
+<meta property="og:description" content="作者刘文涛转载请注明出处 前言说到iOS自动布局，有很多的解决办法。有的人使用xib/storyboard自动布局，也有人使用frame来适配。对于前者，笔者并不喜欢，也不支持。对于后者，更是麻烦，到处计算高度、宽度等，千万大量代码的冗余，对维护和开发的效率都很低。笔者在这里介绍纯代码自动布局的第三方库：Masonry。这个库使用率相当高，在全世界都有大量的开发者在使用，其star数量也是相当高的">
+<meta property="og:updated_time" content="2017-05-19T07:30:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS开发masonry动态布局cell高度">
-<meta name="twitter:description" content="作者[刘文涛] 前言说到iOS自动布局，有很多的解决办法。有的人使用xib/storyboard自动布局，也有人使用frame来适配。对于前者，笔者并不喜欢，也不支持。对于后者，更是麻烦，到处计算高度、宽度等，千万大量代码的冗余，对维护和开发的效率都很低。笔者在这里介绍纯代码自动布局的第三方库：Masonry。这个库使用率相当高，在全世界都有大量的开发者在使用，其star数量也是相当高的。本文Ce">
+<meta name="twitter:description" content="作者刘文涛转载请注明出处 前言说到iOS自动布局，有很多的解决办法。有的人使用xib/storyboard自动布局，也有人使用frame来适配。对于前者，笔者并不喜欢，也不支持。对于后者，更是麻烦，到处计算高度、宽度等，千万大量代码的冗余，对维护和开发的效率都很低。笔者在这里介绍纯代码自动布局的第三方库：Masonry。这个库使用率相当高，在全世界都有大量的开发者在使用，其star数量也是相当高的">
   
     <link rel="alternative" href="/atom.xml" title="LWT&#39;sBlog" type="application/atom+xml">
   
@@ -180,7 +180,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>作者[刘文涛]</p>
+        <p>作者<a href="https://liuwentao1314.github.io" target="_blank" rel="external">刘文涛</a><br>转载请注明出处</p>
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>说到iOS自动布局，有很多的解决办法。有的人使用xib/storyboard自动布局，也有人使用frame来适配。对于前者，笔者并不喜欢，也不支持。对于后者，更是麻烦，到处计算高度、宽度等，千万大量代码的冗余，对维护和开发的效率都很低。<br>笔者在这里介绍纯代码自动布局的第三方库：Masonry。这个库使用率相当高，在全世界都有大量的开发者在使用，其star数量也是相当高的。<br>本文Cell内容通过Masonry自动布局并且cell巧妙利用自动布局计算cell的动态高度。<br><a id="more"></a></p>
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>实现思路：例如cell中有三个label，label1，label2，label3.<br>1.为label1添加约束（以cell.cntentView为基准）</p>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">CGFloat</span> one_W = SCREENWIDTH/<span class="number">2</span>;</div><div class="line">[<span class="keyword">self</span>.L1 makeConstraints:^*(MASConstraintMaker *make)&#123;</div><div class="line">    make.left.mas_equalTo(<span class="number">16</span>);</div><div class="line">    make.top.mas_equalTo (<span class="number">10</span>);</div><div class="line">    make.width.mas_lessThanOrEqualTo(one_W);</div><div class="line">&#125;];</div></pre></td></tr></table></figure>
