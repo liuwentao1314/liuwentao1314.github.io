@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/05/10/NSThread/index.html">
 <meta property="og:site_name" content="LWT'sBlog">
 <meta property="og:description" content="作者刘文涛转载请注明出处 一、简单介绍iOS支持多个层次的多线程编程，层次越高的抽象程度越高，使用也越方便，也是苹果最推荐的使用方法。下面根据抽象层次从低到高依次列出iOS所支持的多线程编程方法：1.Thread：是三种方法里相对轻量级的，但是需要管理线程的生命周期、同步、加锁问题，这会导致一定的性能开销；2.Cocoa Operations：是基于OC实现的，NSOperation以面向对象的方">
-<meta property="og:updated_time" content="2017-06-01T02:26:15.000Z">
+<meta property="og:updated_time" content="2017-06-01T03:52:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS多线程编程 NSThread介绍">
 <meta name="twitter:description" content="作者刘文涛转载请注明出处 一、简单介绍iOS支持多个层次的多线程编程，层次越高的抽象程度越高，使用也越方便，也是苹果最推荐的使用方法。下面根据抽象层次从低到高依次列出iOS所支持的多线程编程方法：1.Thread：是三种方法里相对轻量级的，但是需要管理线程的生命周期、同步、加锁问题，这会导致一定的性能开销；2.Cocoa Operations：是基于OC实现的，NSOperation以面向对象的方">
@@ -182,7 +182,7 @@
       
         <p>作者<a href="https://liuwentao1314.github.io" target="_blank" rel="external">刘文涛</a><br>转载请注明出处</p>
 <h2 id="一、简单介绍"><a href="#一、简单介绍" class="headerlink" title="一、简单介绍"></a>一、简单介绍</h2><p>iOS支持多个层次的多线程编程，层次越高的抽象程度越高，使用也越方便，也是苹果最推荐的使用方法。下面根据抽象层次从低到高依次列出iOS所支持的多线程编程方法：<br>1.<strong>Thread</strong>：是三种方法里相对轻量级的，但是需要管理线程的生命周期、同步、加锁问题，这会导致一定的性能开销；<br>2.<strong>Cocoa Operations</strong>：是基于OC实现的，NSOperation以面向对象的方式封装了需要执行的操作，不必关心线程管理、同步等问题。NSOperation是一个抽象基类，iOS提供了两种默认实现：NSInvocationOperation和NSBlockOperation，当然也可以自定义NSOperation；<br>3.<strong>Grand Central Dispatch</strong>（简称GCD，iOS4才开始支持的）：提供了一些新特性、运行库来支持多核并行编程，它的关注点更高：如何在多个CPU上提升效率；</p>
-<p>这篇文章简单的介绍了第一种多线程的编程方式，主要利用NSThread这个类，一个NSThread实例代表着一条多线程。</p>
+<p>这篇文章简单的介绍了第一种多线程的编程方式，主要利用NSThread这个类，一个NSThread实例代表着一条多线程。<br><a id="more"></a></p>
 <h2 id="二、NSthread的初始化"><a href="#二、NSthread的初始化" class="headerlink" title="二、NSthread的初始化"></a>二、NSthread的初始化</h2><h3 id="1-动态方法"><a href="#1-动态方法" class="headerlink" title="1.动态方法"></a>1.动态方法</h3><pre><code>- (instancetype)initWithTarget:(id)target selector:(SEL)selector object:(nullable id)argument NS_AVAILABLE(10_5, 2_0);
 参数解析：
 target：selector消息发送的对象
@@ -427,15 +427,11 @@ NSDate *date = [NSDate dateWithTimeInterval:2 sinceDate:[NSDate date]];
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">多线程 NSThread</a>
+                <a href="javascript:void(0)" class="js-tag color3">多线程 GCD</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">多线程 NSOperation</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">多线程 GCD</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -451,14 +447,6 @@ NSDate *date = [NSDate dateWithTimeInterval:2 sinceDate:[NSDate date]];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ios</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">UILabel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Xcode</a>
               </li>
              
@@ -468,6 +456,18 @@ NSDate *date = [NSDate dateWithTimeInterval:2 sinceDate:[NSDate date]];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">WebP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">多线程 NSThread</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ios</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">UILabel</a>
               </li>
             
             <div class="clearfix"></div>
