@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>iOS开发-发送邮件及短信 | LWT&#39;sBlog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="作者刘文涛转载请注明出处 前言在iOS开发中，有时候我们会需要用到发送邮件及短信的功能。我们还可以通过发送邮件来接收用户反馈的崩溃通知等等。我用的是iOS原生自带的MFMailComposeViewController来实现的。他不会使程序进入后台，使用模态弹出邮件或短信发送界面。 代码示例1.发送邮件使用前需要导入框架：MessageUI.framework在使用的controller中导入头文">
+  <meta name="description" content="作者刘文涛转载请注明出处 前言在iOS开发中，有时候我们会需要用到发送邮件及短信的功能。我们还可以通过发送邮件来接收用户反馈的崩溃通知等等。我用的是iOS原生自带的MFMailComposeViewController来实现的。他不会使程序进入后台，使用模态弹出邮件或短信发送界面。">
 <meta name="keywords" content="MessageUI">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS开发-发送邮件及短信">
 <meta property="og:url" content="http://yoursite.com/2017/06/01/mailAndMessage/index.html">
 <meta property="og:site_name" content="LWT'sBlog">
-<meta property="og:description" content="作者刘文涛转载请注明出处 前言在iOS开发中，有时候我们会需要用到发送邮件及短信的功能。我们还可以通过发送邮件来接收用户反馈的崩溃通知等等。我用的是iOS原生自带的MFMailComposeViewController来实现的。他不会使程序进入后台，使用模态弹出邮件或短信发送界面。 代码示例1.发送邮件使用前需要导入框架：MessageUI.framework在使用的controller中导入头文">
-<meta property="og:updated_time" content="2017-06-01T09:17:25.000Z">
+<meta property="og:description" content="作者刘文涛转载请注明出处 前言在iOS开发中，有时候我们会需要用到发送邮件及短信的功能。我们还可以通过发送邮件来接收用户反馈的崩溃通知等等。我用的是iOS原生自带的MFMailComposeViewController来实现的。他不会使程序进入后台，使用模态弹出邮件或短信发送界面。">
+<meta property="og:updated_time" content="2017-06-01T09:19:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS开发-发送邮件及短信">
-<meta name="twitter:description" content="作者刘文涛转载请注明出处 前言在iOS开发中，有时候我们会需要用到发送邮件及短信的功能。我们还可以通过发送邮件来接收用户反馈的崩溃通知等等。我用的是iOS原生自带的MFMailComposeViewController来实现的。他不会使程序进入后台，使用模态弹出邮件或短信发送界面。 代码示例1.发送邮件使用前需要导入框架：MessageUI.framework在使用的controller中导入头文">
+<meta name="twitter:description" content="作者刘文涛转载请注明出处 前言在iOS开发中，有时候我们会需要用到发送邮件及短信的功能。我们还可以通过发送邮件来接收用户反馈的崩溃通知等等。我用的是iOS原生自带的MFMailComposeViewController来实现的。他不会使程序进入后台，使用模态弹出邮件或短信发送界面。">
   
     <link rel="alternative" href="/atom.xml" title="LWT&#39;sBlog" type="application/atom+xml">
   
@@ -181,7 +181,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>作者<a href="https://liuwentao1314.github.io" target="_blank" rel="external">刘文涛</a><br>转载请注明出处</p>
-<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在iOS开发中，有时候我们会需要用到发送邮件及短信的功能。我们还可以通过发送邮件来接收用户反馈的崩溃通知等等。我用的是iOS原生自带的<strong>MFMailComposeViewController</strong>来实现的。他不会使程序进入后台，使用模态弹出邮件或短信发送界面。</p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在iOS开发中，有时候我们会需要用到发送邮件及短信的功能。我们还可以通过发送邮件来接收用户反馈的崩溃通知等等。我用的是iOS原生自带的<strong>MFMailComposeViewController</strong>来实现的。他不会使程序进入后台，使用模态弹出邮件或短信发送界面。<br><a id="more"></a></p>
 <h2 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h2><h3 id="1-发送邮件"><a href="#1-发送邮件" class="headerlink" title="1.发送邮件"></a>1.发送邮件</h3><p>使用前需要导入框架：MessageUI.framework<br>在使用的controller中导入头文件：<br>    <code>#import &lt;MessageUI/MessageUI.h&gt;</code><br>实现代理：<code>&lt;MFMailComposeViewControllerDelegate,MFMessageComposeViewControllerDelegate&gt;</code><br>获取用户是否设置了邮箱账户：</p>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> ([MFMailComposeViewController canSendMail]) &#123; </div><div class="line">        <span class="comment">// 用户已设置邮件账户</span></div><div class="line">        [<span class="keyword">self</span> sendEmailAction]; <span class="comment">// 调用发送邮件的代码</span></div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"用户未设置邮箱账户"</span>);</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
 <p>sendEmailAction方法代码：</p>
@@ -418,11 +418,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">GCD</a>
+                <a href="javascript:void(0)" class="js-tag color2">NSOperation</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">NSThread</a>
+                <a href="javascript:void(0)" class="js-tag color4">GCD</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -434,11 +434,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">MessageUI</a>
+                <a href="javascript:void(0)" class="js-tag color4">NSThread</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">NSOperation</a>
+                <a href="javascript:void(0)" class="js-tag color5">MessageUI</a>
               </li>
              
               <li class="article-tag-list-item">
