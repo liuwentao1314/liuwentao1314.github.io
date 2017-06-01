@@ -6,12 +6,12 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>iOS GCD介绍 | LWT&#39;sBlog</title>
+  <title>iOS多线程编程 GCD介绍 | LWT&#39;sBlog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="作者刘文涛转载请注明出处 一、简单介绍1.什么是GCDGrand Central Dispatch是由苹果开发的一个多核编程的解决方案。iOS4.0+才能使用，是替代NSThread， NSOperation的高效和强大的技术。苹果官方给出的解释：GCD是异步执行任务的技术之一。一般将应用程序中记述的线程管理代码在系统集中实现，开发者只需要定义想执行的任务并追加到适当的Dispatch Queue">
-<meta name="keywords">
+<meta name="keywords" content="多线程 GCD">
 <meta property="og:type" content="article">
-<meta property="og:title" content="iOS GCD介绍">
+<meta property="og:title" content="iOS多线程编程 GCD介绍">
 <meta property="og:url" content="http://yoursite.com/2017/05/19/GCDInfo/index.html">
 <meta property="og:site_name" content="LWT'sBlog">
 <meta property="og:description" content="作者刘文涛转载请注明出处 一、简单介绍1.什么是GCDGrand Central Dispatch是由苹果开发的一个多核编程的解决方案。iOS4.0+才能使用，是替代NSThread， NSOperation的高效和强大的技术。苹果官方给出的解释：GCD是异步执行任务的技术之一。一般将应用程序中记述的线程管理代码在系统集中实现，开发者只需要定义想执行的任务并追加到适当的Dispatch Queue">
@@ -24,9 +24,9 @@
 <meta property="og:image" content="http://ooneqy20s.bkt.clouddn.com/GCD_7.png">
 <meta property="og:image" content="http://ooneqy20s.bkt.clouddn.com/GCD_8.png">
 <meta property="og:image" content="http://ooneqy20s.bkt.clouddn.com/GCD_9.png">
-<meta property="og:updated_time" content="2017-05-22T06:35:38.000Z">
+<meta property="og:updated_time" content="2017-06-01T01:56:05.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS GCD介绍">
+<meta name="twitter:title" content="iOS多线程编程 GCD介绍">
 <meta name="twitter:description" content="作者刘文涛转载请注明出处 一、简单介绍1.什么是GCDGrand Central Dispatch是由苹果开发的一个多核编程的解决方案。iOS4.0+才能使用，是替代NSThread， NSOperation的高效和强大的技术。苹果官方给出的解释：GCD是异步执行任务的技术之一。一般将应用程序中记述的线程管理代码在系统集中实现，开发者只需要定义想执行的任务并追加到适当的Dispatch Queue">
 <meta name="twitter:image" content="http://ooneqy20s.bkt.clouddn.com/GCD-2.png">
   
@@ -177,7 +177,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      iOS GCD介绍
+      iOS多线程编程 GCD介绍
     </h1>
   
 
@@ -300,6 +300,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">多线程 GCD</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -364,11 +375,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/04/15/masonryForCell/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/05/11/NSOperation/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          iOS开发masonry动态布局cell高度
+          iOS多线程编程 NSOperation
         
       </div>
     </a>
@@ -472,6 +483,18 @@
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">多线程 NSThread</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">多线程 NSOperation</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">多线程 GCD</a>
+              </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">iOS</a>

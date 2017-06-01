@@ -6,28 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>如何使UIWebview/WKWebView支持WebP格式图片 | LWT&#39;sBlog</title>
+  <title>iOS多线程编程 NSThread介绍 | LWT&#39;sBlog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="作者Talent•C转载自Talent•C 前言在一般的app中占用流量最大的内容一般都是图片,以苹果公司 Retina 产品为代表的高 PPI 屏对图片的质量提出了更高的要求，如何保证在图片的精细度不降低的前提下缩小图片体积，成为了一个有价值且值得探索的事情。但如今对于 JPEG、PNG 和 GIF 这些图片格式的优化几乎已经达到了极致， 若想改变现状开辟新局面，便要有釜底抽薪的胆量和气魄，而">
-<meta name="keywords" content="iOS,Xcode,WebView,WebP">
+  <meta name="description" content="作者刘文涛转载请注明出处 一、简单介绍iOS支持多个层次的多线程编程，层次越高的抽象程度越高，使用也越方便，也是苹果最推荐的使用方法。下面根据抽象层次从低到高依次列出iOS所支持的多线程编程方法：1.Thread：是三种方法里相对轻量级的，但是需要管理线程的生命周期、同步、加锁问题，这会导致一定的性能开销；2.Cocoa Operations：是基于OC实现的，NSOperation以面向对象的方">
+<meta name="keywords" content="多线程 NSThread">
 <meta property="og:type" content="article">
-<meta property="og:title" content="如何使UIWebview/WKWebView支持WebP格式图片">
-<meta property="og:url" content="http://yoursite.com/2017/04/13/webp-image-format-ios/index.html">
+<meta property="og:title" content="iOS多线程编程 NSThread介绍">
+<meta property="og:url" content="http://yoursite.com/2017/05/10/NSThread/index.html">
 <meta property="og:site_name" content="LWT'sBlog">
-<meta property="og:description" content="作者Talent•C转载自Talent•C 前言在一般的app中占用流量最大的内容一般都是图片,以苹果公司 Retina 产品为代表的高 PPI 屏对图片的质量提出了更高的要求，如何保证在图片的精细度不降低的前提下缩小图片体积，成为了一个有价值且值得探索的事情。但如今对于 JPEG、PNG 和 GIF 这些图片格式的优化几乎已经达到了极致， 若想改变现状开辟新局面，便要有釜底抽薪的胆量和气魄，而">
-<meta property="og:image" content="http://on9f8tjnd.bkt.clouddn.com/githubPagesForWebp/webp-1.png">
-<meta property="og:image" content="http://on9f8tjnd.bkt.clouddn.com/githubPagesForWebp/webp-2.png?imageView2/0/format/jpg/q/80|watermark/2/text/VGFsZW504oCiQw==/font/YXJpYWw=/fontsize/600/fill/I0JEQjJCMg==/dissolve/89/gravity/SouthEast/dx/16/dy/16|imageslim">
-<meta property="og:image" content="http://on9f8tjnd.bkt.clouddn.com/githubPagesForWebp/webp-3.png?imageView2/0/format/jpg/q/80|watermark/2/text/VGFsZW504oCiQw==/font/YXJpYWw=/fontsize/600/fill/I0JEQjJCMg==/dissolve/89/gravity/SouthEast/dx/16/dy/16|imageslim">
-<meta property="og:image" content="http://on9f8tjnd.bkt.clouddn.com/githubPagesForWebp/webp05.jpg?imageView2/0/format/jpg/q/80|watermark/2/text/VGFsZW504oCiQw==/font/YXJpYWw=/fontsize/600/fill/I0JEQjJCMg==/dissolve/89/gravity/SouthEast/dx/16/dy/16|imageslim">
-<meta property="og:image" content="http://on9f8tjnd.bkt.clouddn.com/githubPagesForWebp/webp06.jpg?imageView2/0/format/jpg/q/80|watermark/2/text/VGFsZW504oCiQw==/font/YXJpYWw=/fontsize/600/fill/I0JEQjJCMg==/dissolve/89/gravity/SouthEast/dx/16/dy/16|imageslim">
-<meta property="og:image" content="http://on9f8tjnd.bkt.clouddn.com/githubPagesForWebp/webp-4.jpg?imageView2/0/format/jpg/q/80|watermark/2/text/VGFsZW504oCiQw==/font/YXJpYWw=/fontsize/600/fill/I0JEQjJCMg==/dissolve/89/gravity/SouthEast/dx/16/dy/16|imageslim">
-<meta property="og:image" content="http://on9f8tjnd.bkt.clouddn.com/githubPagesForWebp/webp07.jpg?imageView2/0/format/jpg/q/80|watermark/2/text/VGFsZW504oCiQw==/font/YXJpYWw=/fontsize/600/fill/I0JEQjJCMg==/dissolve/89/gravity/SouthEast/dx/16/dy/16|imageslim">
-<meta property="og:image" content="http://on9f8tjnd.bkt.clouddn.com/githubPagesForWebp/webp08.jpg?imageView2/0/format/jpg/q/80|watermark/2/text/VGFsZW504oCiQw==/font/YXJpYWw=/fontsize/600/fill/I0JEQjJCMg==/dissolve/89/gravity/SouthEast/dx/16/dy/16|imageslim">
-<meta property="og:updated_time" content="2017-04-14T06:06:02.000Z">
+<meta property="og:description" content="作者刘文涛转载请注明出处 一、简单介绍iOS支持多个层次的多线程编程，层次越高的抽象程度越高，使用也越方便，也是苹果最推荐的使用方法。下面根据抽象层次从低到高依次列出iOS所支持的多线程编程方法：1.Thread：是三种方法里相对轻量级的，但是需要管理线程的生命周期、同步、加锁问题，这会导致一定的性能开销；2.Cocoa Operations：是基于OC实现的，NSOperation以面向对象的方">
+<meta property="og:updated_time" content="2017-06-01T02:26:15.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="如何使UIWebview/WKWebView支持WebP格式图片">
-<meta name="twitter:description" content="作者Talent•C转载自Talent•C 前言在一般的app中占用流量最大的内容一般都是图片,以苹果公司 Retina 产品为代表的高 PPI 屏对图片的质量提出了更高的要求，如何保证在图片的精细度不降低的前提下缩小图片体积，成为了一个有价值且值得探索的事情。但如今对于 JPEG、PNG 和 GIF 这些图片格式的优化几乎已经达到了极致， 若想改变现状开辟新局面，便要有釜底抽薪的胆量和气魄，而">
-<meta name="twitter:image" content="http://on9f8tjnd.bkt.clouddn.com/githubPagesForWebp/webp-1.png">
+<meta name="twitter:title" content="iOS多线程编程 NSThread介绍">
+<meta name="twitter:description" content="作者刘文涛转载请注明出处 一、简单介绍iOS支持多个层次的多线程编程，层次越高的抽象程度越高，使用也越方便，也是苹果最推荐的使用方法。下面根据抽象层次从低到高依次列出iOS所支持的多线程编程方法：1.Thread：是三种方法里相对轻量级的，但是需要管理线程的生命周期、同步、加锁问题，这会导致一定的性能开销；2.Cocoa Operations：是基于OC实现的，NSOperation以面向对象的方">
   
     <link rel="alternative" href="/atom.xml" title="LWT&#39;sBlog" type="application/atom+xml">
   
@@ -169,58 +160,49 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-webp-image-format-ios" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-NSThread" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      如何使UIWebview/WKWebView支持WebP格式图片
+      iOS多线程编程 NSThread介绍
     </h1>
   
 
         
-        <a href="/2017/04/13/webp-image-format-ios/" class="archive-article-date">
-  	<time datetime="2017-04-13T05:43:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-13</time>
+        <a href="/2017/05/10/NSThread/" class="archive-article-date">
+  	<time datetime="2017-05-10T01:35:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-10</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>作者<a href="https://chuliangliang.github.io" target="_blank" rel="external">Talent•C</a><br>转载自<a href="https://chuliangliang.github.io" target="_blank" rel="external">Talent•C</a></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在一般的app中占用流量最大的内容一般都是图片,以苹果公司 Retina 产品为代表的高 PPI 屏对图片的质量提出了更高的要求，如何保证在图片的精细度不降低的前提下缩小图片体积，成为了一个有价值且值得探索的事情。<br>但如今对于 JPEG、PNG 和 GIF 这些图片格式的优化几乎已经达到了极致， 若想改变现状开辟新局面，便要有釜底抽薪的胆量和气魄，而 Google 给了我们一个新选择：WebP。<br><a id="more"></a></p>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h2 id="WebP是什么"><a href="#WebP是什么" class="headerlink" title="WebP是什么?"></a>WebP是什么?</h2><blockquote>
-<p>WebP（发音 weppy，来自:<a href="https://developers.google.com/speed/WebP/" target="_blank" rel="external">Google WebP</a>），是一种支持有损压缩和无损压缩的图片文件格式，派生自图像编码格式 VP8。根据 Google 的测试，无损压缩后的 WebP 比 PNG 文件少了 45％ 的文件大小，即使这些 PNG 文件经过其他压缩工具压缩之后，WebP 还是可以减少 28％ 的文件大小。<br>在 Google 的明星产品如 Youtube、Gmail、Google Play 中都可以看到 WebP 的身影，而 Chrome 网上商店甚至已完全使用了 WebP。国外公司如 Facebook、ebay 和国内公司如腾讯、淘宝、美团等也早已尝鲜。<br>下面是QQ图片格式对比图<br><img src="http://on9f8tjnd.bkt.clouddn.com/githubPagesForWebp/webp-1.png" alt=""></p>
-</blockquote>
-<h2 id="iOS中如何使用WebP格式图片"><a href="#iOS中如何使用WebP格式图片" class="headerlink" title="iOS中如何使用WebP格式图片?"></a>iOS中如何使用WebP格式图片?</h2><p>很幸运,SDWebImage支持WebP格式图片,可以讲WebP数据–&gt;NSData–&gt;UIImage</p>
-<blockquote>
-<p>There are 3 subspecs available now: Core, MapKit and WebP (this means you can install only some of the SDWebImage modules. By default, you get just Core, so if you need WebP, you need to specify it).<br>Podfile example:<br>$pod ‘SDWebImage/WebP’<br>摘自<a href="https://github.com/rs/SDWebImage" target="_blank" rel="external">SDWebImage</a></p>
-</blockquote>
-<p>我们需要手动下载WebP这个库,由于是从Google下载的,如果下载失败,请翻墙重试!!!<br>下载后的文件路径<br><img src="http://on9f8tjnd.bkt.clouddn.com/githubPagesForWebp/webp-2.png?imageView2/0/format/jpg/q/80|watermark/2/text/VGFsZW504oCiQw==/font/YXJpYWw=/fontsize/600/fill/I0JEQjJCMg==/dissolve/89/gravity/SouthEast/dx/16/dy/16|imageslim" alt=""></p>
-<p>Xcode 需要如下配置 targets-&gt;build settings -&gt;preprocessor Macros 填写 SD_WEBP=1 如图<br><img src="http://on9f8tjnd.bkt.clouddn.com/githubPagesForWebp/webp-3.png?imageView2/0/format/jpg/q/80|watermark/2/text/VGFsZW504oCiQw==/font/YXJpYWw=/fontsize/600/fill/I0JEQjJCMg==/dissolve/89/gravity/SouthEast/dx/16/dy/16|imageslim" alt=""><br>到此app 中支持 WebP图片基本完成,但是重点来了,由于部分app使用到了<code>UIWebview/WKWebview</code> 这两个控件是不支持WebP图片的,目前有两种方式可以让其支持WebP格式图片。</p>
-<h2 id="实现方式一-NSURLProtocol"><a href="#实现方式一-NSURLProtocol" class="headerlink" title="实现方式一 NSURLProtocol"></a>实现方式一 <code>NSURLProtocol</code></h2><p>对于NSURLProtocol的作用及使用以后找个时间再讲了~~~~可以参考<a href="https://developer.apple.com/reference/foundation/nsurlprotocol?language=objc" target="_blank" rel="external">Apple 开发者文档</a><br>NSURLProtocol, UIWebView 直接就可以支持,但是WKWebView是不支持的,如何让WKWebView也支持NSURLProtocol可以<a href="http://www.wtoutiao.com/p/75957Pr.html" target="_blank" rel="external">参考这篇文章</a>,不过WKWebView自定义NSURLProtocol会丢失boay数据。文章结尾会附上Demo下载地址。</p>
-<p>WKWebView 拓展支持NSURLProtocol 具体代码如下<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">FOUNDATION_STATIC_INLINE Class ContextControllerClass() &#123;</div><div class="line">    <span class="keyword">static</span> Class cls;</div><div class="line">    <span class="keyword">if</span> (!cls) &#123;</div><div class="line">        cls = [[[<span class="built_in">WKWebView</span> new] valueForKey:<span class="string">@"browsingContextController"</span>] <span class="keyword">class</span>];</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> cls;</div><div class="line">&#125;</div><div class="line">FOUNDATION_STATIC_INLINE SEL RegisterSchemeSelector() &#123;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">NSSelectorFromString</span>(<span class="string">@"registerSchemeForCustomProtocol:"</span>);</div><div class="line">&#125;</div><div class="line">FOUNDATION_STATIC_INLINE SEL UnregisterSchemeSelector() &#123;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">NSSelectorFromString</span>(<span class="string">@"unregisterSchemeForCustomProtocol:"</span>);</div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">NSURLProtocol</span> (<span class="title">WebKitExt</span>)</span></div><div class="line">+ (<span class="keyword">void</span>)wk_registerScheme:(<span class="built_in">NSString</span> *)scheme &#123;</div><div class="line">    Class cls = ContextControllerClass();</div><div class="line">    SEL sel = RegisterSchemeSelector();</div><div class="line">    <span class="keyword">if</span> ([(<span class="keyword">id</span>)cls respondsToSelector:sel]) &#123;</div><div class="line"><span class="meta">#pragma clang diagnostic push</span></div><div class="line"><span class="meta">#pragma clang diagnostic ignored <span class="meta-string">"-Warc-performSelector-leaks"</span></span></div><div class="line">        [(<span class="keyword">id</span>)cls performSelector:sel withObject:scheme];</div><div class="line"><span class="meta">#pragma clang diagnostic pop</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">+ (<span class="keyword">void</span>)wk_unregisterScheme:(<span class="built_in">NSString</span> *)scheme &#123;</div><div class="line">    Class cls = ContextControllerClass();</div><div class="line">    SEL sel = UnregisterSchemeSelector();</div><div class="line">    <span class="keyword">if</span> ([(<span class="keyword">id</span>)cls respondsToSelector:sel]) &#123;</div><div class="line"><span class="meta">#pragma clang diagnostic push</span></div><div class="line"><span class="meta">#pragma clang diagnostic ignored <span class="meta-string">"-Warc-performSelector-leaks"</span></span></div><div class="line">        [(<span class="keyword">id</span>)cls performSelector:sel withObject:scheme];</div><div class="line"><span class="meta">#pragma clang diagnostic pop</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>好了,现在UIWebView与WKWebView 都已经支持自定义NSURLProtocol了;<br>我们创建一个类CLURLProtocol 继承自<code>NSURLProtocol</code><br>下面这几个方法必须实现</p>
-<blockquote>
-<p>+(BOOL)canInitWithRequest:(NSURLRequest <em>)request;<br>+(NSURLRequest </em>)canonicalRequestForRequest:(NSURLRequest *)request;<br>-(void)stopLoading;<br>-(void)startLoading;</p>
-</blockquote>
-<p>这里不过多废话了 直接上代码<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">+ (<span class="built_in">BOOL</span>)canInitWithRequest:(<span class="built_in">NSURLRequest</span> *)request &#123;</div><div class="line">  <span class="comment">/**</span></div><div class="line">   判断是否启用SD_WEBP 并且图片格式为webp 如果为YES 则标记请求需要自行处理并且防止无限循环 为NO则不处理</div><div class="line">   */</div><div class="line">    <span class="built_in">BOOL</span> useCustomUrlProtocol = <span class="literal">NO</span>;</div><div class="line">    <span class="built_in">NSString</span> *urlString = request.URL.absoluteString;</div><div class="line">    <span class="keyword">if</span> (!SD_WEBP || ([urlString.pathExtension compare:<span class="string">@"webp"</span>] != <span class="built_in">NSOrderedSame</span>)) &#123;</div><div class="line">        useCustomUrlProtocol = <span class="literal">NO</span>;</div><div class="line">    &#125;<span class="keyword">else</span> &#123;</div><div class="line">      <span class="comment">//防止无限循环</span></div><div class="line">        <span class="keyword">if</span> ([<span class="built_in">NSURLProtocol</span> propertyForKey:<span class="built_in">CLProtocolKey</span> inRequest:request] == <span class="literal">nil</span>) &#123;</div><div class="line">            useCustomUrlProtocol = <span class="literal">YES</span>;</div><div class="line">        &#125;<span class="keyword">else</span> &#123;</div><div class="line">            useCustomUrlProtocol = <span class="literal">NO</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> useCustomUrlProtocol;</div><div class="line">&#125;</div><div class="line">+ (<span class="built_in">NSURLRequest</span> *)canonicalRequestForRequest:(<span class="built_in">NSURLRequest</span> *)request &#123;</div><div class="line">    <span class="keyword">return</span> request;</div><div class="line">&#125;</div><div class="line">- (<span class="keyword">void</span>)stopLoading&#123;</div><div class="line">  <span class="comment">//将截获的请求使用NSURLConnection | NSURLSession 获取数据  这里使用的是NSURLConnection</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>我们在创建一个WebV继承自UIViewController 用来展示webView<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)viewDidLoad &#123;</div><div class="line">    [<span class="keyword">super</span> viewDidLoad];</div><div class="line">    <span class="keyword">self</span>.automaticallyAdjustsScrollViewInsets = <span class="literal">NO</span>;</div><div class="line">    <span class="keyword">if</span> ([<span class="keyword">self</span>.webView isKindOfClass:[<span class="built_in">WKWebView</span> <span class="keyword">class</span>]]) &#123;</div><div class="line">        <span class="comment">//WKWebView 注册自定义 NSURLProtocol</span></div><div class="line">        [<span class="built_in">NSURLProtocol</span> registerClass:<span class="built_in">NSClassFromString</span>(<span class="string">@"CLURLProtocol"</span>)];</div><div class="line">        [<span class="built_in">NSURLProtocol</span> wk_registerScheme:<span class="string">@"http"</span>];</div><div class="line">        [<span class="built_in">NSURLProtocol</span> wk_registerScheme:<span class="string">@"https"</span>];</div><div class="line">        <span class="comment">//发起请求</span></div><div class="line">        <span class="built_in">WKWebView</span> *web = (<span class="built_in">WKWebView</span> *)<span class="keyword">self</span>.webView;</div><div class="line">        [web loadRequest:[<span class="built_in">NSURLRequest</span> requestWithURL:[<span class="built_in">NSURL</span> URLWithString:<span class="string">@"http://onzbjws3p.bkt.clouddn.com/testForwebpSrc/testWebpForHtml.html"</span>]]];</div><div class="line"></div><div class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span> ([<span class="keyword">self</span>.webView isKindOfClass:[<span class="built_in">UIWebView</span> <span class="keyword">class</span>]])</div><div class="line">    &#123;</div><div class="line">        <span class="comment">//UIWebView 注册自定义 NSURLProtocol</span></div><div class="line">        [<span class="built_in">NSURLProtocol</span> registerClass:<span class="built_in">NSClassFromString</span>(<span class="string">@"CLURLProtocol"</span>)];</div><div class="line">        <span class="comment">//发起请求</span></div><div class="line">        <span class="built_in">UIWebView</span> *web = (<span class="built_in">UIWebView</span> *)<span class="keyword">self</span>.webView;</div><div class="line">        [web loadRequest:[<span class="built_in">NSURLRequest</span> requestWithURL:[<span class="built_in">NSURL</span> URLWithString:<span class="string">@"http://onzbjws3p.bkt.clouddn.com/testForwebpSrc/testWebpForHtml.html"</span>]]];</div><div class="line">    &#125;    </div><div class="line">&#125;</div><div class="line"><span class="comment">//因为NSURLProtocol 一旦被注册将会使整个app的request请求都会被拦截 我们这里只在进入WebVC时向系统注册,退出WebVC时取消注册 具体时机请自行决定</span></div><div class="line">- (<span class="keyword">void</span>)dealloc</div><div class="line">&#123;</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"WebVC -- dealloc"</span>);</div><div class="line">    <span class="keyword">if</span> ([<span class="keyword">self</span>.webView isKindOfClass:[<span class="built_in">WKWebView</span> <span class="keyword">class</span>]]) &#123;</div><div class="line">        [<span class="built_in">NSURLProtocol</span> unregisterClass:<span class="built_in">NSClassFromString</span>(<span class="string">@"CLURLProtocol"</span>)];</div><div class="line">        [<span class="built_in">NSURLProtocol</span> wk_unregisterScheme:<span class="string">@"http"</span>];</div><div class="line">        [<span class="built_in">NSURLProtocol</span> wk_unregisterScheme:<span class="string">@"https"</span>];</div><div class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span> ([<span class="keyword">self</span>.webView isKindOfClass:[<span class="built_in">UIWebView</span> <span class="keyword">class</span>]])</div><div class="line">    &#123;</div><div class="line">        [<span class="built_in">NSURLProtocol</span> unregisterClass:<span class="built_in">NSClassFromString</span>(<span class="string">@"CLURLProtocol"</span>)];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>到此为止UIWebView/WKWebView 均已支持加载webp格式图片<br>效果如图<br>WKWebView 展示效果<br><img src="http://on9f8tjnd.bkt.clouddn.com/githubPagesForWebp/webp05.jpg?imageView2/0/format/jpg/q/80|watermark/2/text/VGFsZW504oCiQw==/font/YXJpYWw=/fontsize/600/fill/I0JEQjJCMg==/dissolve/89/gravity/SouthEast/dx/16/dy/16|imageslim" alt=""></p>
-<p>UIWebView 展示效果<br><img src="http://on9f8tjnd.bkt.clouddn.com/githubPagesForWebp/webp06.jpg?imageView2/0/format/jpg/q/80|watermark/2/text/VGFsZW504oCiQw==/font/YXJpYWw=/fontsize/600/fill/I0JEQjJCMg==/dissolve/89/gravity/SouthEast/dx/16/dy/16|imageslim" alt=""></p>
-<p>UIImageView 展示效果<br><img src="http://on9f8tjnd.bkt.clouddn.com/githubPagesForWebp/webp-4.jpg?imageView2/0/format/jpg/q/80|watermark/2/text/VGFsZW504oCiQw==/font/YXJpYWw=/fontsize/600/fill/I0JEQjJCMg==/dissolve/89/gravity/SouthEast/dx/16/dy/16|imageslim" alt=""></p>
-<p><strong>优点:</strong><br> 适合所有网页,可以不用修改网页内部<code>html</code>内容。</p>
-<p> <strong>缺点:</strong><br> NSURLProtocol 拦截App 的所有请求, 使用时需要根据个人项目情况而定, WKWebView 在post请求时会丢失boay, 目前解决方式为在WKWebView的 开始加载的 代理方法判断是否为post,为post解除注册自定义的NSURLProtocol,为GET请求时注册自定义NSURLProtocol。</p>
-<h2 id="实现方式二-通过JavaScript与OC共同完成"><a href="#实现方式二-通过JavaScript与OC共同完成" class="headerlink" title="实现方式二 通过JavaScript与OC共同完成"></a>实现方式二 通过<code>JavaScript</code>与<code>OC</code>共同完成</h2><p>实现思路:<br>1、向网页内注入<code>JS</code><br>2、在App 本地开启线程下载图片,下载完成后,将图片转码由 webP—&gt; png—&gt;Base64。<br>3、将 Base64及原图片下载地址一一对应调用<code>JS</code>准备好的方法进行替换。<br>4、将下载后的图片进行缓存,并进行管理。</p>
-<p><strong>注意注意:</strong><br>A、图片未真正加载完毕时,网页中图片为了体验好可以添加默认占位图片。<br>B、图片显示成功前应该保持网页布局不调整,需要由<code>JS</code>预先设置好布局。<br>C、图片在本地的缓存需要管理。</p>
-<p>获取网页<code>img</code>标签的<code>js</code>代码<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function">function <span class="title">talentcGetAllImageSrc</span> <span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">  var imagesList = document.images;</div><div class="line">  var srcList = [];</div><div class="line">  var patt1 = <span class="keyword">new</span> RegExp(<span class="string">"\.webp$"</span>);</div><div class="line">  <span class="keyword">for</span>(var i = <span class="number">0</span>; i &lt; imagesList.length; i++) &#123;</div><div class="line">    <span class="keyword">if</span>(patt1.test(imagesList[i].src)) &#123;</div><div class="line">        srcList.push(imagesList[i].src);</div><div class="line">      &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> JSON.stringify(srcList);</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
-<p>替换网页<code>img</code>标签的<code>js</code>代码<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function">function <span class="title">talentcReplaceWebPImg</span> <span class="params">(src, localPath)</span></span></div><div class="line">&#123;</div><div class="line">    var elementList = document.querySelectorAll(<span class="string">'img[src="'</span>+src+<span class="string">'"]'</span>);</div><div class="line">    <span class="keyword">for</span>(var element in elementList) &#123;</div><div class="line">        elementList[element].src = localPath;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p><strong>优点:</strong><br>对于<code>UIWebview</code> 与 <code>WKWebView</code>是通用不需要特殊处理,也不会拦截App中的请求。</p>
-<p><strong>缺点:</strong><br>对于展示的第三方网页需要根据网页做一些适配, 例如部分网页展示图片使用的<code>div</code>的<code>background-image</code>。</p>
-<p>UIWebView 展示效果<br><img src="http://on9f8tjnd.bkt.clouddn.com/githubPagesForWebp/webp07.jpg?imageView2/0/format/jpg/q/80|watermark/2/text/VGFsZW504oCiQw==/font/YXJpYWw=/fontsize/600/fill/I0JEQjJCMg==/dissolve/89/gravity/SouthEast/dx/16/dy/16|imageslim" alt=""></p>
-<p>WKWebView 展示效果<br><img src="http://on9f8tjnd.bkt.clouddn.com/githubPagesForWebp/webp08.jpg?imageView2/0/format/jpg/q/80|watermark/2/text/VGFsZW504oCiQw==/font/YXJpYWw=/fontsize/600/fill/I0JEQjJCMg==/dissolve/89/gravity/SouthEast/dx/16/dy/16|imageslim" alt=""><br>全文终 <a href="https://github.com/chuliangliang/TalentCWebp" target="_blank" rel="external">本文demo 下载</a></p>
+        <p>作者<a href="https://liuwentao1314.github.io" target="_blank" rel="external">刘文涛</a><br>转载请注明出处</p>
+<h2 id="一、简单介绍"><a href="#一、简单介绍" class="headerlink" title="一、简单介绍"></a>一、简单介绍</h2><p>iOS支持多个层次的多线程编程，层次越高的抽象程度越高，使用也越方便，也是苹果最推荐的使用方法。下面根据抽象层次从低到高依次列出iOS所支持的多线程编程方法：<br>1.<strong>Thread</strong>：是三种方法里相对轻量级的，但是需要管理线程的生命周期、同步、加锁问题，这会导致一定的性能开销；<br>2.<strong>Cocoa Operations</strong>：是基于OC实现的，NSOperation以面向对象的方式封装了需要执行的操作，不必关心线程管理、同步等问题。NSOperation是一个抽象基类，iOS提供了两种默认实现：NSInvocationOperation和NSBlockOperation，当然也可以自定义NSOperation；<br>3.<strong>Grand Central Dispatch</strong>（简称GCD，iOS4才开始支持的）：提供了一些新特性、运行库来支持多核并行编程，它的关注点更高：如何在多个CPU上提升效率；</p>
+<p>这篇文章简单的介绍了第一种多线程的编程方式，主要利用NSThread这个类，一个NSThread实例代表着一条多线程。</p>
+<h2 id="二、NSthread的初始化"><a href="#二、NSthread的初始化" class="headerlink" title="二、NSthread的初始化"></a>二、NSthread的初始化</h2><h3 id="1-动态方法"><a href="#1-动态方法" class="headerlink" title="1.动态方法"></a>1.动态方法</h3><pre><code>- (instancetype)initWithTarget:(id)target selector:(SEL)selector object:(nullable id)argument NS_AVAILABLE(10_5, 2_0);
+参数解析：
+target：selector消息发送的对象
+selector：线程执行的方法，这个selector最多只能接收一个参数
+argument：传给selector的唯一参数，也可以是nil
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">//初始化线程</div><div class="line">   NSThread *thread = [[NSThread alloc] initWithTarget:self selector:@selector(run) object:nil];</div><div class="line">   //设置线程的优先级（0.0 -- 1.0 ,1.0是最高级）</div><div class="line">   thread.threadPriority = 1.0;</div><div class="line">   //开启线程</div><div class="line">   [thread start];</div></pre></td></tr></table></figure>
+<h3 id="2-静态方法"><a href="#2-静态方法" class="headerlink" title="2.静态方法"></a>2.静态方法</h3><pre><code>+ (void)detachNewThreadSelector:(SEL)selector toTarget:(id)target withObject:(nullable id)argument;
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[NSThread detachNewThreadSelector:@selector(run) toTarget:self withObject:nil];</div><div class="line">//调用完毕后，会马上创建并开启新的线程</div></pre></td></tr></table></figure>
+<h3 id="3-隐式创建线程的方法"><a href="#3-隐式创建线程的方法" class="headerlink" title="3.隐式创建线程的方法"></a>3.隐式创建线程的方法</h3><pre><code>[self performSelectorInBackground:@selector(run) withObject:nil];
+</code></pre><h2 id="三、获取当前线程"><a href="#三、获取当前线程" class="headerlink" title="三、获取当前线程"></a>三、获取当前线程</h2><pre><code>NSThread *current = [NSThread currentThread];
+</code></pre><h2 id="四、获取主线程"><a href="#四、获取主线程" class="headerlink" title="四、获取主线程"></a>四、获取主线程</h2><pre><code>NSThread *mainThread = [NSThread mainThread];
+</code></pre><h2 id="五、暂停当前线程"><a href="#五、暂停当前线程" class="headerlink" title="五、暂停当前线程"></a>五、暂停当前线程</h2><pre><code>//暂停2.0s
+[NSThread sleepForTimeInterval:2.0];
+//或者
+NSDate *date = [NSDate dateWithTimeInterval:2 sinceDate:[NSDate date]];
+[NSThread sleepUntilDate:date];
+</code></pre><h2 id="六、线程间的通信"><a href="#六、线程间的通信" class="headerlink" title="六、线程间的通信"></a>六、线程间的通信</h2><h3 id="1-在指定线程上执行操作"><a href="#1-在指定线程上执行操作" class="headerlink" title="1.在指定线程上执行操作"></a>1.在指定线程上执行操作</h3><pre><code>[self performSelector:@selector(run) onThread:thread withObject:nil waitUntilDone:YES];
+</code></pre><h3 id="2-在主线程上执行操作"><a href="#2-在主线程上执行操作" class="headerlink" title="2.在主线程上执行操作"></a>2.在主线程上执行操作</h3><pre><code>[self performSelectorOnMainThread:@selector(run) withObject:nil waitUntilDone:YES];
+</code></pre><h3 id="3-在当前线程执行操作"><a href="#3-在当前线程执行操作" class="headerlink" title="3.在当前线程执行操作"></a>3.在当前线程执行操作</h3><pre><code>[self performSelector:@selector(run) withObject:nil];
+</code></pre><h2 id="七、优缺点"><a href="#七、优缺点" class="headerlink" title="七、优缺点"></a>七、优缺点</h2><p>优点：NSTread比其他两种多线程方案较轻量级，更直观的控制线程对象<br>缺点：需要自己管理线程的生命周期，线程同步。线程同步对数据加锁或有一定的系统开销。</p>
 
       
 
@@ -260,19 +242,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Xcode</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">WebView</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">WebP</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">多线程 NSThread</a>
         		</li>
       		
 		</ul>
@@ -328,7 +298,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/04/13/webp-image-format-ios/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/05/10/NSThread/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -342,18 +312,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/04/10/labelSetAttribute/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/04/15/masonryForCell/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          UIlabel设置行间距,字间距
+          iOS开发masonry动态布局cell高度
         
       </div>
     </a>
   
   
-    <a href="/2017/04/15/masonryForCell/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">iOS开发masonry动态布局cell高度</div>
+    <a href="/2017/05/11/NSOperation/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">iOS多线程编程 NSOperation</div>
       <i class="icon-circle-right"></i>
     </a>
   
