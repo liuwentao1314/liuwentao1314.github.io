@@ -17,7 +17,7 @@
 <meta property="og:description" content="作者刘文涛转载请注明出处 一、功能简介1.前言为了实现更好的字体效果，有些应用在自己的应用资源包中加入了字体文件。但自己打包字体文件比较麻烦，原因在于：1.字体文件通常比较大，10~20M是常见的字体库大小。如果只是很少量的按钮字体需要设置，可以用一些工具把使用的汉字字体编码从字体库中抽取出来，以节省体积。但是如果是一些变化的内容需要自定义的字体，那么就只能打包整个字体库了。2.中文字体都是有版权">
 <meta property="og:image" content="http://ooneqy20s.bkt.clouddn.com/Font-1.png">
 <meta property="og:image" content="http://ooneqy20s.bkt.clouddn.com/Font-2.png">
-<meta property="og:updated_time" content="2017-06-07T07:34:59.000Z">
+<meta property="og:updated_time" content="2017-06-07T07:37:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS 动态下载系统提供的多种中文字体">
 <meta name="twitter:description" content="作者刘文涛转载请注明出处 一、功能简介1.前言为了实现更好的字体效果，有些应用在自己的应用资源包中加入了字体文件。但自己打包字体文件比较麻烦，原因在于：1.字体文件通常比较大，10~20M是常见的字体库大小。如果只是很少量的按钮字体需要设置，可以用一些工具把使用的汉字字体编码从字体库中抽取出来，以节省体积。但是如果是一些变化的内容需要自定义的字体，那么就只能打包整个字体库了。2.中文字体都是有版权">
@@ -195,7 +195,7 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <p>作者<a href="https://liuwentao1314.github.io" target="_blank" rel="external">刘文涛</a><br>转载请注明出处</p>
-<h2 id="一、功能简介"><a href="#一、功能简介" class="headerlink" title="一、功能简介"></a>一、功能简介</h2><h3 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h3><p>为了实现更好的字体效果，有些应用在自己的应用资源包中加入了字体文件。但自己打包字体文件比较麻烦，原因在于：<br>1.字体文件通常比较大，10~20M是常见的字体库大小。如果只是很少量的按钮字体需要设置，可以用一些工具把使用的汉字字体编码从字体库中抽取出来，以节省体积。但是如果是一些变化的内容需要自定义的字体，那么就只能打包整个字体库了。<br>2.中文字体都是有版权的，在应用中加入特殊中文字体还需要处理相应的版权问题。<br>从iOS6开始，苹果开始支持动态下载官方提供的中文字体到系统中。使用苹果官方的中文字体，即可以避免版权问题，又可以节省应用体积。</p>
+<h2 id="一、功能简介"><a href="#一、功能简介" class="headerlink" title="一、功能简介"></a>一、功能简介</h2><h3 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h3><p>为了实现更好的字体效果，有些应用在自己的应用资源包中加入了字体文件。但自己打包字体文件比较麻烦，原因在于：<br>1.字体文件通常比较大，10~20M是常见的字体库大小。如果只是很少量的按钮字体需要设置，可以用一些工具把使用的汉字字体编码从字体库中抽取出来，以节省体积。但是如果是一些变化的内容需要自定义的字体，那么就只能打包整个字体库了。<br>2.中文字体都是有版权的，在应用中加入特殊中文字体还需要处理相应的版权问题。<br>从iOS6开始，苹果开始支持动态下载官方提供的中文字体到系统中。使用苹果官方的中文字体，即可以避免版权问题，又可以节省应用体积。<br><a id="more"></a></p>
 <h3 id="2-功能介绍"><a href="#2-功能介绍" class="headerlink" title="2.功能介绍"></a>2.功能介绍</h3><p>使用动态下载中文字体的API可以动态的向iOS系统中添加字体文件，这些字体文件都是下载带到系统的目录中（模拟器中运行的目录是<code>/Users/iosdev/Library/Developer/CoreSimulator/Devices/46DE5A8B-1C81-41F0-994D-BD6502EDEB58/data/Library/Assets/com_apple_MobileAsset_Font3/6da938c9f7fa36cae9ee066f7d75195c222fec07.asset/AssetData/WawaSC-Regular.otf</code>）,所以并不会造成应用体积的增加。虽然第一次下载相关的中文字体需要一些网络开销和下载时间，但是这些字体文件下载完后可以在所有应用间共享，所以大部分应用都不需提示用户下载字体，因为很可能这些字体在之前被其他应用下载过了。</p>
 <h3 id="3-字体列表"><a href="#3-字体列表" class="headerlink" title="3.字体列表"></a>3.字体列表</h3><p>在官方文档中，苹果列出了提供动态下载和使用的中文字体文件列表。不过，由于下载的时候需要使用的名字是PostScript名称，所以如果你真正要动态下载相应的字体的话，还需要使用Mac内自带的应用<strong>字体册(Font Book)</strong>来获得相应字体的PostScript名称。下面是从字体册中获取“娃娃体-简 常规体”字体的PostScript名称的截图。<br><img src="http://ooneqy20s.bkt.clouddn.com/Font-1.png" alt=""></p>
 <h2 id="二、使用教程"><a href="#二、使用教程" class="headerlink" title="二、使用教程"></a>二、使用教程</h2><h3 id="1-相关API介绍"><a href="#1-相关API介绍" class="headerlink" title="1.相关API介绍"></a>1.相关API介绍</h3><p>苹果提供了动态下载代码的<a href="https://developer.apple.com/library/content/samplecode/DownloadFont/Listings/DownloadFont_ViewController_m.html#//apple_ref/doc/uid/DTS40013404-DownloadFont_ViewController_m-DontLinkElementID_6" target="_blank" rel="external">Demo</a>工程。将此Demo工程下载下来，可以学习相关API的使用。下面对该工程中相关API做简单的介绍。<br>假如我们现在要下载<strong>“娃娃体”</strong>，他的PostScript名称为<strong>“DFWaWaSC-W5”</strong>。具体操作步骤如下。<br>1.我们先判断该字体是否已经被下载下来，示例代码：</p>
@@ -445,11 +445,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">NSThread</a>
+                <a href="javascript:void(0)" class="js-tag color2">NSOperation</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">NSOperation</a>
+                <a href="javascript:void(0)" class="js-tag color4">NSThread</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -458,6 +458,14 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">UILabel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">UIWindow</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">MessageUI</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -470,14 +478,6 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">动态布局</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">UIWindow</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">MessageUI</a>
               </li>
              
               <li class="article-tag-list-item">
