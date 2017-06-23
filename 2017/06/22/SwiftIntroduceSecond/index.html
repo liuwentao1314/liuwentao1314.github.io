@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Swift学习之路--Swift基础(二) | LWT&#39;sBlog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="作者刘文涛转载请注明出处">
-<meta name="keywords">
+  <meta name="description" content="作者刘文涛转载请注明出处 前言Swift 包含了 C 和 Objective-C 上所有基础数据类型，int表示整型值；Double 和 Float表示浮点型的值。Bool是布尔型值； String是文本型数据。Swift还提供了三个基本的集合类型，Array， Set 和 Dictionary，详见集合类型。 就像 C 语言一样，Swift使用变量来进行存储并通过变量名来关联值。在Swift中，">
+<meta name="keywords" content="Swift">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Swift学习之路--Swift基础(二)">
 <meta property="og:url" content="http://yoursite.com/2017/06/22/SwiftIntroduceSecond/index.html">
 <meta property="og:site_name" content="LWT'sBlog">
-<meta property="og:description" content="作者刘文涛转载请注明出处">
-<meta property="og:updated_time" content="2017-06-22T05:39:45.000Z">
+<meta property="og:description" content="作者刘文涛转载请注明出处 前言Swift 包含了 C 和 Objective-C 上所有基础数据类型，int表示整型值；Double 和 Float表示浮点型的值。Bool是布尔型值； String是文本型数据。Swift还提供了三个基本的集合类型，Array， Set 和 Dictionary，详见集合类型。 就像 C 语言一样，Swift使用变量来进行存储并通过变量名来关联值。在Swift中，">
+<meta property="og:updated_time" content="2017-06-23T09:34:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift学习之路--Swift基础(二)">
-<meta name="twitter:description" content="作者刘文涛转载请注明出处">
+<meta name="twitter:description" content="作者刘文涛转载请注明出处 前言Swift 包含了 C 和 Objective-C 上所有基础数据类型，int表示整型值；Double 和 Float表示浮点型的值。Bool是布尔型值； String是文本型数据。Swift还提供了三个基本的集合类型，Array， Set 和 Dictionary，详见集合类型。 就像 C 语言一样，Swift使用变量来进行存储并通过变量名来关联值。在Swift中，">
   
     <link rel="alternative" href="/atom.xml" title="LWT&#39;sBlog" type="application/atom+xml">
   
@@ -192,7 +192,54 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <p>作者<a href="https://liuwentao1314.github.io" target="_blank" rel="external">刘文涛</a><br>转载请注明出处</p>
-
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>Swift 包含了 C 和 Objective-C 上所有基础数据类型，<code>int</code>表示整型值；<code>Double</code> 和 <code>Float</code>表示浮点型的值。<code>Bool</code>是布尔型值； <code>String</code>是文本型数据。Swift还提供了三个基本的集合类型，<code>Array</code>， <code>Set</code> 和 <code>Dictionary</code>，详见集合类型。</p>
+<p>就像 C 语言一样，Swift使用变量来进行存储并通过变量名来关联值。在Swift中，广泛的使用着值不可变的变量，它们就是常量，而且比 C 的语言常量更强大。在Swift中，如果你要处理的值不需要改变，那使用常量可以让你的代码更加安全并且更清晰的表达你的意图。<br><a id="more"></a><br>除了我们熟悉的类型，Swift还增加了 OC 中没有的高阶数据类型比如元组（Tuple）。元组可以让你创建或者传递一组数据，比如作为函数的返回值时，你可以用一个元组可以返回多个值。</p>
+<p>Swift还增加了可选（Optional）类型，用于处理值缺失的情况。可选表示“那有一个值，并且它等于 x”或者“那没有值”。可选有点像在 OC 中使用 nil，但是它可以用在任何类型上，不仅仅是类。可选类型对比 OC 中的 nil 指针更加安全也更具表现力，它是 Swift 许多强大特性的重要组成部分。</p>
+<p>Swift 是一门类型安全的语言，这意味着 Swift 可以让你清除的知道值的类型。如果你的代码期望得到一个 <code>String</code> ，类型安全会阻止你不小心传入一个 <code>Int</code>。同样的，如果你的代码期望得到一个 <code>String</code>，类型安全会阻止你意外传入一个可选的<code>String</code>。类型安全可以帮助你在开发阶段尽早发现并修正错误。</p>
+<h2 id="常量和变量"><a href="#常量和变量" class="headerlink" title="常量和变量"></a>常量和变量</h2><p>常量和变量把一个名字和一个指定类型的值关联起来。常量的值一旦设定就不能改变，而变量的值可以随意更改。</p>
+<h3 id="声明常量和变量"><a href="#声明常量和变量" class="headerlink" title="声明常量和变量"></a>声明常量和变量</h3><p>常量和变量必须在使用前声明，用<code>let</code>来声明常量，用<code>var</code>来声明变量。下面的例子展示了如何用常量和变量来记录用户尝试登陆的次数：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">let maximumNumberOfLoginAttempts = <span class="number">10</span></div><div class="line">var currentLoginAttempt = <span class="number">0</span></div></pre></td></tr></table></figure>
+<p>这两行代码可以被理解为：<br>“声明一个名字是 <code>maximumNumberOfLoginAttempts</code> 的新常量,并给它一个值 10 。然后,声明一个名字是 <code>rrentLoginAttempt</code> 的变量并将它的值初始化为 0 。”</p>
+<p>在这个例子中，允许最大尝试登陆次数被声明为一个常量，因为这个值不会改变。当前尝试登陆次数被声明为一个变量，因为每次尝试登陆失败的时候都需要增加这个值。</p>
+<p>你可以在一行中声明多个常量或者多个变量，使用逗号隔开：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var x = <span class="number">0.0</span>, y = <span class="number">0.0</span>, z = <span class="number">0.0</span></div></pre></td></tr></table></figure>
+<p><strong>注意：如果你的代码中有不需要改变的值，请使用<code>let</code>关键字将它声明为常量。只将需要改变的值声明为变量。</strong></p>
+<h3 id="类型标注"><a href="#类型标注" class="headerlink" title="类型标注"></a>类型标注</h3><p>当你声明常量或者变量的时候可以加上类型标注（type annotation），说明常量或者变量中要存储的值的类型。如果要添加类型标注，需要在常量或者变量名后面加上一个冒号和空格，然后加上类型名称。<br>这个例子给<code>welcomeMessage</code>变量添加了类型标注，表示这个变量可以存储<code>String</code>类型的值：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var welcomeMessage: String</div></pre></td></tr></table></figure>
+<p>声明中的冒号代表着”是…类型“，所以这行代码可以被理解为：<br>”声明一个类型为<code>String</code>，名字为<code>welcomeMessage</code>的变量。“<br>类型为<code>String</code>的意思是”可以存储任意<code>String</code>类型的值。“<br><code>welcomeMessage</code> 变量现在可以被设置成任意字符串：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">welcomeMessage = <span class="string">"Hello"</span></div></pre></td></tr></table></figure>
+<p>你可以在一行中定义多个同样类型的变量，用逗号分割，并在最后一个变量名之后添加类型标注：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var red, green, blue: Double</div></pre></td></tr></table></figure>
+<p><strong>注意：一般来说你很少需要写类型标注。如果你在声明常量或者变量的时候赋了一个初始值，Swift可以推断出这个常量或者变量的类型。在上面的例子中,没有给 <code>welcomeMessage</code> 赋初始 值,所以变量 <code>welcomeMessage</code> 的类型是通过一个类型标注指定的,而不是通过初始值推断的。</strong></p>
+<h3 id="常量和变量的命名"><a href="#常量和变量的命名" class="headerlink" title="常量和变量的命名"></a>常量和变量的命名</h3><p>你可以用任何你喜欢的字符作为常量和变量名，包括 Unicode 字符：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">let π = <span class="number">3.14</span></div><div class="line">let 你好 = <span class="string">"你好"</span></div></pre></td></tr></table></figure>
+<p>常量和变量名不能包含数学符号，箭头，保留的（或者非法的）Unicode 码位，连线与制表符。也不能以数字开头，但是可以在常量与变量名的其他地方包含数字。</p>
+<p>一旦你将常量或者变量声明为确定的类型，你就不能使用相同的名字再次进行声明，或者改变其存储的值的类型。同时，你也不能将常量与变量进行互转。<br><strong>注意：如果你需要使用与Swift保留关键字相同的名称作为常量或者变量名，你可以使用反引号（`）将关键字包围的方式将其作为名字使用。无论如何,你应当避免使用关键字作为常量或变量名,除非你别无选择。</strong></p>
+<p>你可以更改现有的变量值为其他同类型的值，在下面的例子中，<code>friendlyWelcome</code>的值从 <code>&quot;Hello!&quot;</code>改为了 <code>&quot;Bonjour!&quot;</code></p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var friendlyWelcome = <span class="string">"Hello!"</span></div><div class="line">friendlyWelcome = <span class="string">"Bonjour!"</span></div><div class="line"><span class="comment">// friendlyWelcome 现在是 "Bonjour!"</span></div></pre></td></tr></table></figure>
+<p>与变量不同，常量的值一旦被确定就不能更改了。尝试这样做会导致编译器报错：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">let languageName = <span class="string">"Swift"</span>languageName = <span class="string">"Swift++"</span><span class="comment">// 这会报编译时错误 - languageName 不可改变</span></div></pre></td></tr></table></figure>
+<h3 id="输出常量和变量"><a href="#输出常量和变量" class="headerlink" title="输出常量和变量"></a>输出常量和变量</h3><p>你可以用<code>print()</code>函数来输出当前常量或变量的值：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">print(friendlyWelcome)</div></pre></td></tr></table></figure>
+<p>Swift 用字符串插值(string interpolation)的方式把常量名或者变量名当做占位符加入到长字符串中，Swift会用当前常量或者变量的值替换这些占位符。将常量或变量名放入圆括号中，并在开括号前使用反斜杠将其转义：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">print(<span class="string">"The current value of friendlyWelcome is \(friendlyWelcome)"</span>) </div><div class="line"><span class="comment">// 输出 "The current value of friendlyWelcome is Bonjour!</span></div></pre></td></tr></table></figure>
+<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><p>请将你的代码中的非执行文本注释成提示或者笔记以方便你将来阅读。<br>Swift的注释与 C 语言的注释非常相似。单行注释以双正斜杠（<code>//</code>）作为起始标记：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 这是一个注释</span></div></pre></td></tr></table></figure>
+<p>你也可以进行多行注释,其起始标记为单个正斜杠后跟随一个星号( <code>/*</code>),终止标记为一个星号后跟随单个正斜 杠(<code>*/</code>):</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* 这是一个,</span></div><div class="line"> 多行注释 */</div></pre></td></tr></table></figure>
+<p> 与C语言多行注释不同，Swift的多行注释可以嵌套在其它的多行注释之中。你可以先生成一个多行注释块，然后在这个注释块之中在嵌套成第二个多行注释。终止注释时先插入第二个注释块的终止标记，然后再插入第一个注释块的终止标记：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* 这是第一个多行注释的开头</span></div><div class="line"> /*</div><div class="line">    这是第二个被嵌套的多行注释</div><div class="line"> */</div><div class="line">  这是第一个多行注释的结尾*/</div></pre></td></tr></table></figure>
+<p>通过运用嵌套多行注释，你可以快捷方便的注释掉一大段代码，即使这段代码之中已经含有了多行注释块。</p>
+<h3 id="分号"><a href="#分号" class="headerlink" title="分号"></a>分号</h3><p>与其他大部分编程语言不同，Swift并不强制要求你在每条语句的结尾处使用分号（<code>;</code>），当然你也可以按照你自己的习惯添加分号。有一种情况下必须要使用分号，即你打算在同一行内写多条独立的语句：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">let cat = <span class="string">"?"</span>; print(cat)</div><div class="line">输出 ?</div></pre></td></tr></table></figure>
+<h3 id="整数"><a href="#整数" class="headerlink" title="整数"></a>整数</h3><p>整数就是没有小数部分的数字，比如 <code>42</code>,<code>-23</code>。这些整数类型和 C 语言的命名方式很像，比如8位无符号整数类型是 <code>UInt8</code>，32位有符号整数类型是 <code>Int32</code>。就像Swift的其他类型一样，整数类型采用大写命名法。</p>
+<h4 id="整数范围"><a href="#整数范围" class="headerlink" title="整数范围"></a>整数范围</h4><p>你可以访问不同整数类型的 <code>min</code> 和 <code>max</code> 属性来获取对应类型的最小值和最大值：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">let minValue = <span class="built_in">UInt8</span>.min   <span class="comment">// minValue 为 0,是 UInt8 类型</span></div><div class="line">let maxValue = <span class="built_in">UInt8</span>.max   <span class="comment">// maxValue 为 255,是 UInt8 类型</span></div></pre></td></tr></table></figure>
+<p><code>min</code> 和 <code>max</code>所传回值的类型，正是其所对的整数类型（如上例UInt8, 所传回的类型是UInt8），可用在表达式中相同类型值旁。</p>
+<h4 id="Int"><a href="#Int" class="headerlink" title="Int"></a>Int</h4><p>一般来说，你不需要专门指定整数的长度。Swift提供了一个特殊的整数类型<code>Int</code>，长度与当前平台的原生字长相同：<br>• 在32位平台上, <code>Int</code> 和 <code>Int32</code> 长度相同。<br>• 在64位平台上,  <code>Int</code> 和 <code>Int64</code> 长度相同。<br>除非你需要特定长度的整数，一般来说使用<code>Int</code>就够了。这可以提高代码一致性和可复用性。即使是32位平台上，<code>Int</code>可以存储的整数范围也可以达到 <code>-2,147,483,648</code> ~  <code>2,147,483,647</code>,大多数时候这已经足够大了。</p>
+<h4 id="UInt"><a href="#UInt" class="headerlink" title="UInt"></a>UInt</h4><p>Swift 也提供了一个特殊的无符号类型<code>UInt</code>，长度与当前平台的原生字长相同：<br>• 在32位平台上, <code>UInt</code> 和 <code>UInt32</code> 长度相同。<br>• 在64位平台上,  <code>UInt</code> 和 <code>UInt64</code> 长度相同。</p>
+<p><strong>注意：尽量不要使用UInt,除非你真的需要存储一个和当前平台原生字长相同的无符号整数。除了这种情况，最好使用 Int ，即使你要存储的值已知是非负的。同意使用 Int 可以提高代码的可复用性，避免不同类型数字之间的转换，并且匹配数字的类型推断。</strong></p>
+<h3 id="浮点数"><a href="#浮点数" class="headerlink" title="浮点数"></a>浮点数</h3>
       
 
       
@@ -226,6 +273,17 @@ var _hmt = _hmt || [];
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Swift</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -400,31 +458,19 @@ var _hmt = _hmt || [];
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">UIFont</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">下载字体</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">多线程</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">GCD</a>
+                <a href="javascript:void(0)" class="js-tag color2">NSOperation</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">NSThread</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Swift</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">UIWindow</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">NSOperation</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -433,6 +479,26 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">UILabel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">GCD</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">UIWindow</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">MessageUI</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">UIFont</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">下载字体</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -448,10 +514,6 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">NSThread</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Xcode</a>
               </li>
              
@@ -461,10 +523,6 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">WebP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">MessageUI</a>
               </li>
             
             <div class="clearfix"></div>
