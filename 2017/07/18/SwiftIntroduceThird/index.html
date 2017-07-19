@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Swift学习之路--Swift基础(三) | LWT&#39;sBlog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="作者刘文涛转载请注明出处 前言由于最近工作比较忙，一直没时间跟新博客。最近项目告一段落了，继续开始我的Swift学习之路。 数值型字面量整数字面量可以被写作：一个十进制数，没有前缀一个二进制数，前缀 0b一个八进制数，前缀 0o一个十六进制数，前缀 0x下面的所有整数字面量的十进制都是 17： 1234let decimalInteger = 17 let binaryInteger = 0b10">
+  <meta name="description" content="作者刘文涛转载请注明出处 前言由于最近工作比较忙，一直没时间跟新博客。最近项目告一段落了，继续开始我的Swift学习之路。 数值型字面量">
 <meta name="keywords" content="Swift">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Swift学习之路--Swift基础(三)">
 <meta property="og:url" content="http://yoursite.com/2017/07/18/SwiftIntroduceThird/index.html">
 <meta property="og:site_name" content="LWT'sBlog">
-<meta property="og:description" content="作者刘文涛转载请注明出处 前言由于最近工作比较忙，一直没时间跟新博客。最近项目告一段落了，继续开始我的Swift学习之路。 数值型字面量整数字面量可以被写作：一个十进制数，没有前缀一个二进制数，前缀 0b一个八进制数，前缀 0o一个十六进制数，前缀 0x下面的所有整数字面量的十进制都是 17： 1234let decimalInteger = 17 let binaryInteger = 0b10">
-<meta property="og:updated_time" content="2017-07-19T07:08:31.000Z">
+<meta property="og:description" content="作者刘文涛转载请注明出处 前言由于最近工作比较忙，一直没时间跟新博客。最近项目告一段落了，继续开始我的Swift学习之路。 数值型字面量">
+<meta property="og:updated_time" content="2017-07-19T07:11:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift学习之路--Swift基础(三)">
-<meta name="twitter:description" content="作者刘文涛转载请注明出处 前言由于最近工作比较忙，一直没时间跟新博客。最近项目告一段落了，继续开始我的Swift学习之路。 数值型字面量整数字面量可以被写作：一个十进制数，没有前缀一个二进制数，前缀 0b一个八进制数，前缀 0o一个十六进制数，前缀 0x下面的所有整数字面量的十进制都是 17： 1234let decimalInteger = 17 let binaryInteger = 0b10">
+<meta name="twitter:description" content="作者刘文涛转载请注明出处 前言由于最近工作比较忙，一直没时间跟新博客。最近项目告一段落了，继续开始我的Swift学习之路。 数值型字面量">
   
     <link rel="alternative" href="/atom.xml" title="LWT&#39;sBlog" type="application/atom+xml">
   
@@ -193,7 +193,8 @@ var _hmt = _hmt || [];
       
         <p>作者<a href="https://liuwentao1314.github.io" target="_blank" rel="external">刘文涛</a><br>转载请注明出处</p>
 <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>由于最近工作比较忙，一直没时间跟新博客。最近项目告一段落了，继续开始我的Swift学习之路。</p>
-<h3 id="数值型字面量"><a href="#数值型字面量" class="headerlink" title="数值型字面量"></a>数值型字面量</h3><p>整数字面量可以被写作：<br><strong>一个十进制数，没有前缀</strong><br><strong>一个二进制数，前缀 0b</strong><br><strong>一个八进制数，前缀 0o</strong><br><strong>一个十六进制数，前缀 0x</strong><br>下面的所有整数字面量的十进制都是 17：</p>
+<h3 id="数值型字面量"><a href="#数值型字面量" class="headerlink" title="数值型字面量"></a>数值型字面量</h3><a id="more"></a>
+<p>整数字面量可以被写作：<br><strong>一个十进制数，没有前缀</strong><br><strong>一个二进制数，前缀 0b</strong><br><strong>一个八进制数，前缀 0o</strong><br><strong>一个十六进制数，前缀 0x</strong><br>下面的所有整数字面量的十进制都是 17：</p>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">let decimalInteger = <span class="number">17</span> </div><div class="line">let binaryInteger = <span class="number">0</span>b10001    <span class="comment">//二进制的17</span></div><div class="line">let octalInteger = <span class="number">0</span>o21        <span class="comment">//八进制的17</span></div><div class="line">let hexadecimalInteger = <span class="number">0x11</span>  <span class="comment">//十六进制的17</span></div></pre></td></tr></table></figure>
 <h3 id="数值型类型转换"><a href="#数值型类型转换" class="headerlink" title="数值型类型转换"></a>数值型类型转换</h3><p>通常来讲，即使代码中的整数常量和变量已知非负，也请使用 Int 类型。总是使用默认的整数类型可以保证你的整数常量和变量可以直接被复用并且可以匹配整数类字面量的类型推断。<br>只有在必要的时候才使用其他整数类型，比如要处理外部额长度明确的数据或者为了优化性能、内存占用等等。使用显示指定长度的类型可以及时发现值溢出并且可以暗示正在处理特殊数据。</p>
 <h4 id="整数转换"><a href="#整数转换" class="headerlink" title="整数转换"></a>整数转换</h4><p>不同整数类型的变量和常量可以存储不同范围的数字。Int8 类型的常量或者变量可以存储的数字范围是 -128~127，而 UInt8 类型能存储的数字范围是 0~255 。如果数字超出了常量或者变量可存储的范围，编译的时候会报错：</p>
@@ -481,7 +482,19 @@ var _hmt = _hmt || [];
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">UIFont</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">下载字体</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">多线程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">GCD</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -493,27 +506,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">GCD</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Swift</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">UIFont</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">下载字体</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">UIWindow</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">MessageUI</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -522,6 +519,10 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">UILabel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">MessageUI</a>
               </li>
              
               <li class="article-tag-list-item">
