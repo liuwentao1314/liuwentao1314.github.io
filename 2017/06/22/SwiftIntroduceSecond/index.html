@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/06/22/SwiftIntroduceSecond/index.html">
 <meta property="og:site_name" content="LWT'sBlog">
 <meta property="og:description" content="作者刘文涛转载请注明出处 前言Swift 包含了 C 和 Objective-C 上所有基础数据类型，int表示整型值；Double 和 Float表示浮点型的值。Bool是布尔型值； String是文本型数据。Swift还提供了三个基本的集合类型，Array， Set 和 Dictionary，详见集合类型。 就像 C 语言一样，Swift使用变量来进行存储并通过变量名来关联值。在Swift中，">
-<meta property="og:updated_time" content="2017-06-23T09:34:41.000Z">
+<meta property="og:updated_time" content="2017-07-17T10:02:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift学习之路--Swift基础(二)">
 <meta name="twitter:description" content="作者刘文涛转载请注明出处 前言Swift 包含了 C 和 Objective-C 上所有基础数据类型，int表示整型值；Double 和 Float表示浮点型的值。Bool是布尔型值； String是文本型数据。Swift还提供了三个基本的集合类型，Array， Set 和 Dictionary，详见集合类型。 就像 C 语言一样，Swift使用变量来进行存储并通过变量名来关联值。在Swift中，">
@@ -239,7 +239,10 @@ var _hmt = _hmt || [];
 <h4 id="Int"><a href="#Int" class="headerlink" title="Int"></a>Int</h4><p>一般来说，你不需要专门指定整数的长度。Swift提供了一个特殊的整数类型<code>Int</code>，长度与当前平台的原生字长相同：<br>• 在32位平台上, <code>Int</code> 和 <code>Int32</code> 长度相同。<br>• 在64位平台上,  <code>Int</code> 和 <code>Int64</code> 长度相同。<br>除非你需要特定长度的整数，一般来说使用<code>Int</code>就够了。这可以提高代码一致性和可复用性。即使是32位平台上，<code>Int</code>可以存储的整数范围也可以达到 <code>-2,147,483,648</code> ~  <code>2,147,483,647</code>,大多数时候这已经足够大了。</p>
 <h4 id="UInt"><a href="#UInt" class="headerlink" title="UInt"></a>UInt</h4><p>Swift 也提供了一个特殊的无符号类型<code>UInt</code>，长度与当前平台的原生字长相同：<br>• 在32位平台上, <code>UInt</code> 和 <code>UInt32</code> 长度相同。<br>• 在64位平台上,  <code>UInt</code> 和 <code>UInt64</code> 长度相同。</p>
 <p><strong>注意：尽量不要使用UInt,除非你真的需要存储一个和当前平台原生字长相同的无符号整数。除了这种情况，最好使用 Int ，即使你要存储的值已知是非负的。同意使用 Int 可以提高代码的可复用性，避免不同类型数字之间的转换，并且匹配数字的类型推断。</strong></p>
-<h3 id="浮点数"><a href="#浮点数" class="headerlink" title="浮点数"></a>浮点数</h3>
+<h3 id="浮点数"><a href="#浮点数" class="headerlink" title="浮点数"></a>浮点数</h3><p>浮点数是有小数部分的数字，比如：3.1415，0.1 和 -273.15。<br>浮点类型比整数类型表示的范围更大，可以存储比 Int 类型更大或者更小的数字。Swift提供了两种有符号浮点数类型：<br><code>Double</code> 表示64位浮点数。当你需要存储很大或者很高精度的浮点数时请使用此类型。<br><code>Float</code> 表示32位浮点数。精度要求不高的话可以使用此类型。<br><strong>注意：Double 精确度很高，至少有15位数字，而Float只有6位数字。选择哪个类型取决于你的代码需要处理的值的范围，在两种类型都匹配的情况下，将优先选择 Double。</strong></p>
+<h3 id="类型安全和类型推断"><a href="#类型安全和类型推断" class="headerlink" title="类型安全和类型推断"></a>类型安全和类型推断</h3><p>Swift是一个类型安全（type safe）的语言。类型安全的语言可以让你清楚地知道代码要处理的值的类型。如果你的代码需要一个String，你绝对不可能不小心传进去一个Int。<br>由于Swift是类型安全的，所以它会在编译你的代码时进行类型检查（type checks），并把不匹配的类型标记为错误，这可以让你在开发的时候尽早发现并修复错误。<br>当你要处理不同的类型的值时，类型检查可以帮你避免错误。然而，这并不是说你每次声明常量和变量的时候都需要显式指定类型。如果你没有显式指定类型，Swift会使用类型推断（type inference）来选择合适的类型。有了类型推断，编译器可以在编译代码的时候自动推断出表达式的类型。原理很简单，只要检查你赋的值即可。<br>因为有类型的推断，和C或者OC比起来Swift很少需要声明类型。常量和变量虽然需要明确类型，但是大部分工作并不需要你自己来完成。<br>当你声明常量或者变量并赋初值的时候类型推断非常有用。例如，如果你给一个新常量赋值 42 并且没有标明类型，Swift可以推断出常量类型是Int，因为你给它赋的初始值看起来像一个整数。同理，如果你没有给浮点字面量标明类型，Swift会推断你想要的是Double。<br>如果表达式中同时出现了整数和浮点数，会被推断为 Double 类型。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">let pi = <span class="number">3</span> + <span class="number">0.14159</span>   <span class="comment">// pi 会被推测为 Double 类型</span></div></pre></td></tr></table></figure>
+
       
 
       
@@ -358,6 +361,11 @@ var _hmt = _hmt || [];
     </a>
   
   
+    <a href="/2017/07/18/SwiftIntroduceThird/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Swift学习之路--Swift基础(三)</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
 </nav>
 
 
@@ -458,19 +466,7 @@ var _hmt = _hmt || [];
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">UIFont</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">下载字体</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">多线程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">GCD</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -482,11 +478,27 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">GCD</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Swift</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">UIFont</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">下载字体</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">UIWindow</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">MessageUI</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -495,10 +507,6 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">UILabel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">MessageUI</a>
               </li>
              
               <li class="article-tag-list-item">
