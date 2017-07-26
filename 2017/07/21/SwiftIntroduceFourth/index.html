@@ -6,17 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: NSThread | LWT&#39;sBlog</title>
+  <title>Swift学习之路--Swift基础(四) | LWT&#39;sBlog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="对生活充满向往的iOS开发工程师">
-<meta property="og:type" content="website">
-<meta property="og:title" content="LWT'sBlog">
-<meta property="og:url" content="http://yoursite.com/tags/NSThread/index.html">
+  <meta name="description" content="作者刘文涛转载请注明出处 基本运算符运算符是检查、改变、合并值的特殊符号或短语。例如，加号(+)将两个数相加（如 let i = 1 + 2）。更复杂的运算例子包括 逻辑与运算符 &amp;amp;&amp;amp; （如 if enteredDoorCode &amp;amp;&amp;amp; passedRetinaScan）。Swift支持大部分标准 C 语言的运算符，且改进许多特性来减少常规编码错误。如：赋值符 （=）">
+<meta name="keywords" content="Swift">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Swift学习之路--Swift基础(四)">
+<meta property="og:url" content="http://yoursite.com/2017/07/21/SwiftIntroduceFourth/index.html">
 <meta property="og:site_name" content="LWT'sBlog">
-<meta property="og:description" content="对生活充满向往的iOS开发工程师">
+<meta property="og:description" content="作者刘文涛转载请注明出处 基本运算符运算符是检查、改变、合并值的特殊符号或短语。例如，加号(+)将两个数相加（如 let i = 1 + 2）。更复杂的运算例子包括 逻辑与运算符 &amp;amp;&amp;amp; （如 if enteredDoorCode &amp;amp;&amp;amp; passedRetinaScan）。Swift支持大部分标准 C 语言的运算符，且改进许多特性来减少常规编码错误。如：赋值符 （=）">
+<meta property="og:updated_time" content="2017-07-21T08:32:10.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LWT'sBlog">
-<meta name="twitter:description" content="对生活充满向往的iOS开发工程师">
+<meta name="twitter:title" content="Swift学习之路--Swift基础(四)">
+<meta name="twitter:description" content="作者刘文涛转载请注明出处 基本运算符运算符是检查、改变、合并值的特殊符号或短语。例如，加号(+)将两个数相加（如 let i = 1 + 2）。更复杂的运算例子包括 逻辑与运算符 &amp;amp;&amp;amp; （如 if enteredDoorCode &amp;amp;&amp;amp; passedRetinaScan）。Swift支持大部分标准 C 语言的运算符，且改进许多特性来减少常规编码错误。如：赋值符 （=）">
   
     <link rel="alternative" href="/atom.xml" title="LWT&#39;sBlog" type="application/atom+xml">
   
@@ -169,64 +171,195 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-SwiftIntroduceFourth" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/10/NSThread/" class="archive-article-date">
-  	<time datetime="2017-05-10T01:35:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-10</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/10/NSThread/">iOS多线程编程 NSThread介绍</a>
+    <h1 class="article-title" itemprop="name">
+      Swift学习之路--Swift基础(四)
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/07/21/SwiftIntroduceFourth/" class="archive-article-date">
+  	<time datetime="2017-07-21T02:59:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>作者<a href="https://liuwentao1314.github.io" target="_blank" rel="external">刘文涛</a><br>转载请注明出处</p>
+<h2 id="基本运算符"><a href="#基本运算符" class="headerlink" title="基本运算符"></a>基本运算符</h2><p>运算符是检查、改变、合并值的特殊符号或短语。例如，加号(<code>+</code>)将两个数相加（如 <code>let i = 1 + 2</code>）。更复杂的运算例子包括 逻辑与运算符 <code>&amp;&amp;</code> （如 <code>if enteredDoorCode &amp;&amp; passedRetinaScan</code>）。<br>Swift支持大部分标准 C 语言的运算符，且改进许多特性来减少常规编码错误。如：赋值符 （<code>=</code>）不返回值，以防止把想要判断相等运算符（<code>==</code>）的地方写成赋值符导致的错误。算数运算符（<code>+,-,*,/,%</code>等）会检测并不允许值溢出，以此来避免保存变量时由于变量大于或小于其类型所能承载的范围时导致的异常结果。当然允许你使用Swift的溢出运算符来实现溢出。</p>
+<p>Swift还提供了 C 语言没有的表达两数之间的值的区间运算符（<code>a..&lt;b</code> 和 <code>a...b</code>），这方便我们表达一个区间内的数值。</p>
+<h3 id="术语"><a href="#术语" class="headerlink" title="术语"></a>术语</h3><p>运算符分为一元、二元和三元运算符：</p>
+<p>• 一元运算符对单一操作对象操作(如 <code>-a</code> )。一元运算符分前置运算符和后置运算符,前置运算符需紧跟在 操作对象之前(如 <code>!b</code> ),后置运算符需紧跟在操作对象之后(如 <code>c!</code> )。<br>• 二元运算符操作两个操作对象(如 <code>2 + 3</code> ),是中置的,因为它们出现在两个操作对象之间。<br>• 三元运算符操作三个操作对象,和 C 语言一样,Swift 只有一个三元运算符,就是三目运算符( <code>a ? b : c</code>)。</p>
+<p>受运算符影响的值叫操作数，在表达式 <code>1 + 2</code> 中，加号 <code>+</code> 是二元运算符，他的两个操作数是值 <code>1</code> 和 <code>2</code> 。</p>
+<h3 id="溢出运算符"><a href="#溢出运算符" class="headerlink" title="溢出运算符"></a>溢出运算符</h3><p>Swfit为整型计算提供了5个&amp;符号开头的溢出运算符。</p>
+<p><strong>溢出加法 <code>&amp;+</code></strong><br><strong>溢出减法 <code>&amp;-</code></strong><br><strong>溢出乘法 <code>&amp;*</code></strong><br><strong>溢出除法 <code>&amp;/</code></strong><br><strong>溢出求余 <code>&amp;%</code></strong></p>
+<p>比如溢出加法运算符（<code>&amp;+</code>）。所有的这些溢出运算符都是以 <code>&amp;</code> 开头的。</p>
+<h4 id="值的上溢出"><a href="#值的上溢出" class="headerlink" title="值的上溢出"></a>值的上溢出</h4><p>下面的例子使用了溢出加法 <code>&amp;+</code>来解剖的无符整数的上溢出</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var willOverflow = <span class="built_in">UInt8</span>.max</div><div class="line"><span class="comment">//willOverflow 等于UInt8的最大整数 255</span></div><div class="line">willOverflow = willOverflow &amp;+ <span class="number">1</span></div><div class="line"><span class="comment">//这时候 willOverflow 等于 0</span></div></pre></td></tr></table></figure>
+<p><code>willOverflow</code> 用 <code>UInt8</code> 所能承载的最大值 255（二进制 <code>11111111</code>），然后用 <code>&amp;+</code> 加1.然后 <code>UInt8</code> 就无法表达这个新值的二进制了，也就导致了这个新值上溢出了。溢出后，新值在 <code>UInt8</code> 的承载范围内的那部分是 <code>00000000</code>，也就是 0。</p>
+<h3 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h3><p>赋值运算符 （<code>a = b</code> ），表示用 b 的值来初始化或者更新 a 的值。<br>与 C 语言和 Objective-C 不同，Swift 的赋值操作并不返回任何值。所以下面的代码是错误的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">let (x, y) = (1, 2)</div><div class="line">// 现在 x 等于 1,y 等于 2</div><div class="line"></div><div class="line">if x == y &#123;</div><div class="line">    //此句错误, 因为 x = y 并不返回任何值</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这个特性使你无法把（<code>==</code>）错写成（<code>=</code>），由于 <code>if  x = y</code> 是错误代码，Swift能帮你避免此类错误的发生。</p>
+<h3 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h3><p>Swift 中所有的数值类型都支持了基本的四则算术运算符：<br>• 加法(<code>+</code>)<br>• 减法(<code>-</code>)<br>• 乘法(<code>*</code>)<br>• 除法(<code>/</code>)</p>
+<p>加法运算符也可用于 <code>String</code> 的拼接：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&quot;hello&quot; + &quot; world&quot; //等于&quot;hello world&quot;</div></pre></td></tr></table></figure>
+<h4 id="求余运算符"><a href="#求余运算符" class="headerlink" title="求余运算符"></a>求余运算符</h4><p>求余运算符 （<code>a % b</code>） 是计算 b 的多少倍刚刚好可以容入a,返回多出来的那部分 （余数）。<br>在对负数求余时，负数的符号会被忽略。这意味着 <code>a % b</code> 和 <code>a % -b</code> 的结果是相同的。</p>
+<h3 id="空合运算符"><a href="#空合运算符" class="headerlink" title="空合运算符"></a>空合运算符</h3><p>空合运算符 （<code>a ?? b</code>）将对可选类型 a 进行空判断，如果 a 包含一个值就进行解封，否则就返回一个默认值 b。表达式 a 必须是 Optional 类型。默认值 b 的类型必须要和 a 存储值的类型保持一致。<br>空合运算符是对以下代码的简短表达方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">a != nil ? a! : b</div></pre></td></tr></table></figure>
+<p>上述代码使用了三目运算符，当可选类型 a 的值不为空时，进行强制解封 (<code>a!</code>)，访问 a 中的值;反之返回默认值 b 。无疑空合运算符<code>( ?? )</code>提供了一种更为优 的方式去封装条件判断和解封两种行为,显得简洁以及更具可读性。</p>
+<p><strong>注意：<br>如果 a 为非空值（non-nil），那么值 b 将不会被计算。这也就是所谓的短路求值。</strong></p>
+<p>下文例子采用空合运算符,实现了在默认颜色名和可选自定义颜色名之间抉择:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">let defaultColorName = &quot;red&quot;</div><div class="line">var userDefinedColorName: String?  //默认值为 nil</div><div class="line">var colorNameToUse = userDefinedColorName ?? defaultColorName</div><div class="line">// userDefinedColorName 的值为空，所以 colorNameToUse 的值为 “red”</div></pre></td></tr></table></figure>
+<h3 id="区间运算符"><a href="#区间运算符" class="headerlink" title="区间运算符"></a>区间运算符</h3><p>Swift 提供了两个方便表达一个区间的值的区间运算符。</p>
+<h4 id="闭区间运算符"><a href="#闭区间运算符" class="headerlink" title="闭区间运算符"></a>闭区间运算符</h4><p>闭区间运算符（a…b）定义一个包含从 a 到 b （包含 a 和 b）的所有值的区间。 a 的值不能超过 b。</p>
+<h4 id="半开区间运算符"><a href="#半开区间运算符" class="headerlink" title="半开区间运算符"></a>半开区间运算符</h4><p>半开区间运算符( <code>a..&lt;b</code> )定义一个从 a 到 b 但不包括 b 的区间。之所以称为半开区间，是因为该区间包含第一个值而不包含最后的值。<br>半开区间的实用性在于当你使用一个从 0 开始的列表(如数组)时,非常方便地从0数到列表的长度。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">let names = [&quot;Mike&quot;,&quot;Jack&quot;,&quot;Alex&quot;,&quot;Brian&quot;]</div><div class="line">let count = names.count</div><div class="line">for i in 0..&lt;count &#123;</div><div class="line">    print(&quot;第 \(i + 1) 个人叫 \(names[i])&quot;)</div><div class="line">&#125;</div><div class="line">/**</div><div class="line"> 第 1 个人叫 Mike</div><div class="line"> 第 2 个人叫 Jack</div><div class="line"> 第 3 个人叫 Alex</div><div class="line"> 第 4 个人叫 Brian</div><div class="line"> */</div></pre></td></tr></table></figure>
+<h3 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h3><p>逻辑运算符的操作对象是逻辑布尔值。Swift 支持 C 语言的三个标准逻辑运算。<br>• 逻辑非( )<br>• 逻辑与( )<br>• 逻辑或( )</p>
+<h4 id="逻辑非运算符"><a href="#逻辑非运算符" class="headerlink" title="逻辑非运算符"></a>逻辑非运算符</h4><p>逻辑非运算符（<code>!a</code>）对一个布尔值取反，使得 true 变 false，false 变 true。<br>它是一个前置运算符,需紧跟在操作数之前,且不加空格。读作 非 a 。</p>
+<h4 id="逻辑与运算符"><a href="#逻辑与运算符" class="headerlink" title="逻辑与运算符"></a>逻辑与运算符</h4><p>逻辑与运算符( <code>a &amp;&amp; b</code> )表达了只有 a 和 b 的值都为 true 时,整个表达式的值才会是 true 。</p>
+<h4 id="逻辑或运算符"><a href="#逻辑或运算符" class="headerlink" title="逻辑或运算符"></a>逻辑或运算符</h4><p>逻辑或运算符( <code>a || b</code> )是一个由两个连续的 | 组成的中置运算符。它表示了两个逻辑表达式的其中一个为 true ,整个表达式就为 true 。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢打赏<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="http://ooneqy20s.bkt.clouddn.com/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">多线程</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">NSThread</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Swift</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/07/21/SwiftIntroduceFourth/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/07/18/SwiftIntroduceThird/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Swift学习之路--Swift基础(三)
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2017/07/24/SwiftIntroduceFifth/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Swift学习之路--Swift基础(五)</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+    <div class="duoshuo"></div>
   
 
-    
+
 
 
           </div>
@@ -249,9 +382,9 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",
