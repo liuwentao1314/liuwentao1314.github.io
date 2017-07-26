@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/07/21/SwiftIntroduceFourth/index.html">
 <meta property="og:site_name" content="LWT'sBlog">
 <meta property="og:description" content="作者刘文涛转载请注明出处 基本运算符运算符是检查、改变、合并值的特殊符号或短语。例如，加号(+)将两个数相加（如 let i = 1 + 2）。更复杂的运算例子包括 逻辑与运算符 &amp;amp;&amp;amp; （如 if enteredDoorCode &amp;amp;&amp;amp; passedRetinaScan）。Swift支持大部分标准 C 语言的运算符，且改进许多特性来减少常规编码错误。如：赋值符 （=）">
-<meta property="og:updated_time" content="2017-07-21T08:32:10.000Z">
+<meta property="og:updated_time" content="2017-07-26T02:24:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift学习之路--Swift基础(四)">
 <meta name="twitter:description" content="作者刘文涛转载请注明出处 基本运算符运算符是检查、改变、合并值的特殊符号或短语。例如，加号(+)将两个数相加（如 let i = 1 + 2）。更复杂的运算例子包括 逻辑与运算符 &amp;amp;&amp;amp; （如 if enteredDoorCode &amp;amp;&amp;amp; passedRetinaScan）。Swift支持大部分标准 C 语言的运算符，且改进许多特性来减少常规编码错误。如：赋值符 （=）">
@@ -194,6 +194,7 @@ var _hmt = _hmt || [];
         <p>作者<a href="https://liuwentao1314.github.io" target="_blank" rel="external">刘文涛</a><br>转载请注明出处</p>
 <h2 id="基本运算符"><a href="#基本运算符" class="headerlink" title="基本运算符"></a>基本运算符</h2><p>运算符是检查、改变、合并值的特殊符号或短语。例如，加号(<code>+</code>)将两个数相加（如 <code>let i = 1 + 2</code>）。更复杂的运算例子包括 逻辑与运算符 <code>&amp;&amp;</code> （如 <code>if enteredDoorCode &amp;&amp; passedRetinaScan</code>）。<br>Swift支持大部分标准 C 语言的运算符，且改进许多特性来减少常规编码错误。如：赋值符 （<code>=</code>）不返回值，以防止把想要判断相等运算符（<code>==</code>）的地方写成赋值符导致的错误。算数运算符（<code>+,-,*,/,%</code>等）会检测并不允许值溢出，以此来避免保存变量时由于变量大于或小于其类型所能承载的范围时导致的异常结果。当然允许你使用Swift的溢出运算符来实现溢出。</p>
 <p>Swift还提供了 C 语言没有的表达两数之间的值的区间运算符（<code>a..&lt;b</code> 和 <code>a...b</code>），这方便我们表达一个区间内的数值。</p>
+<a id="more"></a>
 <h3 id="术语"><a href="#术语" class="headerlink" title="术语"></a>术语</h3><p>运算符分为一元、二元和三元运算符：</p>
 <p>• 一元运算符对单一操作对象操作(如 <code>-a</code> )。一元运算符分前置运算符和后置运算符,前置运算符需紧跟在 操作对象之前(如 <code>!b</code> ),后置运算符需紧跟在操作对象之后(如 <code>c!</code> )。<br>• 二元运算符操作两个操作对象(如 <code>2 + 3</code> ),是中置的,因为它们出现在两个操作对象之间。<br>• 三元运算符操作三个操作对象,和 C 语言一样,Swift 只有一个三元运算符,就是三目运算符( <code>a ? b : c</code>)。</p>
 <p>受运算符影响的值叫操作数，在表达式 <code>1 + 2</code> 中，加号 <code>+</code> 是二元运算符，他的两个操作数是值 <code>1</code> 和 <code>2</code> 。</p>
@@ -448,6 +449,14 @@ var _hmt = _hmt || [];
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">NSOperation</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">UIFont</a>
               </li>
              
@@ -456,11 +465,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Swift</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
+                <a href="javascript:void(0)" class="js-tag color4">GCD</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -468,11 +473,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">GCD</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">NSOperation</a>
+                <a href="javascript:void(0)" class="js-tag color1">Swift</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -488,6 +489,10 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">MessageUI</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">iOS</a>
               </li>
              
@@ -497,10 +502,6 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">动态布局</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">MessageUI</a>
               </li>
              
               <li class="article-tag-list-item">

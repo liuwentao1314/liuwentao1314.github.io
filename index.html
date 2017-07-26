@@ -191,56 +191,12 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>作者<a href="https://liuwentao1314.github.io" target="_blank" rel="external">刘文涛</a><br>转载请注明出处</p>
+        <p>作者<a href="https://liuwentao1314.github.io">刘文涛</a><br>转载请注明出处</p>
 <h2 id="字符串和字符"><a href="#字符串和字符" class="headerlink" title="字符串和字符"></a>字符串和字符</h2><p>字符串是例如 <code>&quot;hello world&quot;</code> , <code>&quot;albatross&quot;</code> 这样有序的 <code>Character</code>（字符）类型的值的集合。通过 <code>String</code> 类型来表示。<br>Swift 的 <code>String</code> 和 <code>Character</code> 类型提供了快速和兼容 <code>Unicode</code> 的方式供你的代码使用。创建和操作字符串的语法与 <code>C</code> 语言中字符串操作相似,轻量并且易读。 字符串连接操作只需要简单地通过 <code>+</code> 符号将两个字符串相连即 可。与 Swift 中其他值一样,能否更改字符串的值,取决于其被定义为常量还是变量。你也可以在字符串内插过程中使用字符串插入常量、变量、字面量表达成更长的字符串,这样可以很容易的创建自定义的字符串值,进行展示、存储以及打印。</p>
 <p><strong>注意：<br>Swift的 String 类型与 Foundation NSString 类进行了无缝桥接。Foundation 也可以对 String 进行扩展，暴露在 NSString 中定义的方法。这意味着，如果你在 String 中调用这些 NSString 的方法，将不用进行转换。</strong></p>
-<h3 id="字符串字面量"><a href="#字符串字面量" class="headerlink" title="字符串字面量"></a>字符串字面量</h3><p>您可以在您的代码中包含一段预定义的字符串值作为字符串字面量。字符串字面量是由双引号 ( “” ) 包裹着的具 有固定顺序的文本字符 。字符串字面量可以用于为常量和变量提供初始值:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">let someString = &quot;Some String literal Value&quot;</div></pre></td></tr></table></figure>
-<p>注意 <code>someString</code> 常量通过字符串字面量进行初始化,Swift 会推断该常量为 String 类型。</p>
-<h3 id="初始化空字符串"><a href="#初始化空字符串" class="headerlink" title="初始化空字符串"></a>初始化空字符串</h3><p>要创建一个空字符串作为初始值,可以将空的字符串字面量赋值给变量,也可以初始化一个新的 String 实例:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var emptyString = &quot;&quot; // 空字符串字面量 var anotherEmptyString = String() // 初始化方法// 两个字符串均为空并等价。</div></pre></td></tr></table></figure>
-<p>您可以通过检查其 Bool 类型的 <code>isEmpty</code> 属性来判断该字符串是否为空:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">if emptyString.isEmpty &#123;</div><div class="line">    print(&quot;Nothing to see here&quot;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="字符串可变性"><a href="#字符串可变性" class="headerlink" title="字符串可变性"></a>字符串可变性</h3><p>你可以通过将一个字符串分配给一个变量来对其进行修改，或者分配给一个常量来保证其不会被修改：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var varString = &quot;Horse&quot;</div><div class="line">varString += &quot;and carriage&quot;</div><div class="line">// variableString 现在为 &quot;Horse and carriage&quot;</div><div class="line">let constantString = &quot;Highlander&quot;</div><div class="line">constantString += &quot;and another&quot;</div><div class="line">// 这会报告一个编译错误 (compile-time error) - 常量字符串不可以被修改。</div></pre></td></tr></table></figure>
-<p><strong>注意：<br>在 Objective-C 和 Cocoa 中，您需要通过选择两个不同的类（NSString 和 NSMutableString）来指定字符串是否是可修改的。</strong></p>
-<h3 id="字符串是值类型"><a href="#字符串是值类型" class="headerlink" title="字符串是值类型"></a>字符串是值类型</h3><p>Swift 的 <code>String</code> 类型是值类型。如果你创建了一个新的字符串，那么当其进行常量、变量赋值操作，或在函数/方法中传递时，会进行值拷贝。任何情况下，都会对已有字符串值创建新副本，并对该新副本进行传递或赋值操作。<br>Swift 默认字符串拷贝的方式保证了在函数/方法中传递的是字符串的值。 很明显无论该值来自于哪里，都是您独自拥有的。 您可以确信传递的字符串不会被修改，除非你自己去修改它。<br>在实际编译时，Swift 编译器会优化字符串的使用，使实际的复制只发生在绝对必要的情况下，这意味着您将字符串作为值类型的同时可以获得极高的性能。</p>
-<h3 id="使用字符"><a href="#使用字符" class="headerlink" title="使用字符"></a>使用字符</h3><p>你可以通过 <code>for - in</code> 循环来遍历字符串中的 <code>characters</code> 属性来获取每一个字符的值：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">for character in &quot;Dog!?&quot;.characters &#123;    print(character)&#125;// D// o// g// !// ?</div></pre></td></tr></table></figure>
-<p>字符串可以通过传递一个值类型为 <code>character</code> 的数组作为自变量来初始化：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">let catCharacters: [character] = [&quot;C&quot;,&quot;a&quot;,&quot;t&quot;,&quot;!&quot;]</div><div class="line">let catString = String(catCharacters)</div></pre></td></tr></table></figure>
-<h3 id="连接字符串和字符"><a href="#连接字符串和字符" class="headerlink" title="连接字符串和字符"></a>连接字符串和字符</h3><p>字符串可以通过加法运算符（+）相加在一起，创建一个新的字符串；<br>你也可以通过加法赋值运算符（+=）将一个字符串添加到一个已经存在字符串变量上；<br>你也可以用 <code>append()</code> 方法将一个字符附加到一个字符附加到一个字符串变量的尾部：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var welcome = &quot;hello world&quot;</div><div class="line">let exclamationMark: Character = &quot;!&quot;</div><div class="line">wlecome.append(exclamationMark)</div></pre></td></tr></table></figure>
-<p><strong>注意：<br>你不能将一个字符串或者字符添加到一个已经存在的字符变量上，因为字符变量只能包含一个字符。</strong></p>
-<h3 id="字符串插值"><a href="#字符串插值" class="headerlink" title="字符串插值"></a>字符串插值</h3><p>字符串插值是一种构建新字符串的方式，可以在其中包含常量、变量、字面量和表达式。您插入的字符串字面量的每一项都在以反斜线为前缀的圆括号中：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">let multiplier = 3</div><div class="line">let message = &quot;\(multiplier) times 2.5 is \(Double(multiplier) * 2.5)&quot;</div><div class="line">//message 是 &quot;3 times 2.5 is 7.5&quot;</div></pre></td></tr></table></figure>
-<p><strong>注意：<br>插值字符串中写在括号中的表达式不能包含非转义反斜杠（\），并且不能包含回车或者换行符。不过插值字符串可以包含其他字面量。</strong></p>
-<h3 id="Unicode"><a href="#Unicode" class="headerlink" title="Unicode"></a>Unicode</h3><p>Unicode是一个国际标准，用于文本的编码和表示。它使您可以用标准格式表示来自任意语言几乎所有的字 符，并能够对文本文件或网页这样的外部资源中的字符进行读写操作。 Swift 的 String 和 Character 类型是完全兼容 Unicode 标准的。</p>
-<h4 id="字符串字面量的特殊字符"><a href="#字符串字面量的特殊字符" class="headerlink" title="字符串字面量的特殊字符"></a>字符串字面量的特殊字符</h4><p>字符串字面量可以包含以下特殊字符:<br>• 转义字符  <code>\0</code>(空字符)、<code>\\</code>(反斜线)、<code>\t</code>(水平制表符)、<code>\n</code>(回车符)、<code>\&quot;</code>（双引号）、<code>\&#39;</code>(单引号)。<br>• Unicode 标量，写成<code>\u{n}</code>(u为小写)，其中 <code>n</code>为任意一到八位十六进制数且可用的 Unicode位码。</p>
-<h3 id="计算字符数量"><a href="#计算字符数量" class="headerlink" title="计算字符数量"></a>计算字符数量</h3><p>如果你想获得一个字符串中 <code>Character</code>值的数量，可以使用字符串的 <code>characters</code> 属性的 <code>count</code> 属性：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">let unusualMenagerie = &quot;Koala ?, Snail ?, Penguin ?, Dromedary ?&quot;</div><div class="line">print(&quot;unusualMenagerie has \(unusualMenagerie.characters.count) characters&quot;) </div><div class="line">// 打印输出 &quot;unusualMenagerie has 40 characters&quot;</div></pre></td></tr></table></figure>
-<h3 id="访问和修改字符串"><a href="#访问和修改字符串" class="headerlink" title="访问和修改字符串"></a>访问和修改字符串</h3><p>你可以通过字符串的属性和方法来访问和修改它，当然也可以用下标语法完成。</p>
-<h4 id="字符串索引"><a href="#字符串索引" class="headerlink" title="字符串索引"></a>字符串索引</h4><p>每一个 String 值都有一个关联的索引（index）类型，<code>String.Index</code>，它对应着字符串中的每一个<code>Character</code> 的位置。<br>前面提到，不同的字符可能会占用不同数量的内存空间，所以要知道 <code>Character</code> 的确定位置，就必须从 String 开头遍历每一个 Unicode 标量直到结尾。因此，Swift 的字符串不能用整数（integer）做索引。<br>使用 <code>startIndex</code> 属性可以获取一个 String 的第一个<code>Character</code> 的索引。使用 <code>endIndex</code> 属性可以获取最后一个 <code>Character</code>的后一个位置的索引。因此，<code>endIndex</code> 属性不能作为一个字符串的有效下标。如果 String 是空串，<code>startIndex</code> 和 <code>endIndex</code> 是相等的。<br>通过调用 String 的 <code>index(before:)</code> 或 <code>index(after:)</code> 方法，可以立即得到前面或后面的一个索引。您还 可以通过调用 <code>index(_:offsetBy:)</code> 方法来获取对应偏移量的索引，这种方式可以避免多次调用 <code>index(befor e:)</code> 或<code>index(after:)</code> 方法。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">let greeting = &quot;Guten Tag&quot;</div><div class="line">greeting[greeting.startIndex]</div><div class="line">// G </div><div class="line">greeting[greeting.index(before: greeting.endIndex)]</div><div class="line">// g</div><div class="line">greeting[greeting.index(after: greeting.startIndex)]</div><div class="line">// u</div><div class="line">greeting.index(before: greeting.endIndex)</div><div class="line">// 8</div><div class="line">let index = greeting.index(greeting.startIndex, offsetBy: 7)</div><div class="line">greeting[index]</div><div class="line">// a</div></pre></td></tr></table></figure>
-<p>试图获取越界索引对应的 <code>Character</code> ，将引发一个运行时错误。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">greeting[greeting.endIndex] // errorgreeting.index(after: endIndex) // error</div></pre></td></tr></table></figure>
-<p>使用 <code>characters</code> 属性的 <code>indices</code> 属性会创建一个包含全部索引的范围(Range)，用来在一个字符串中访问单个字符。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">for index in greeting.characters.indices &#123;</div><div class="line">    print(&quot;\(greeting[index]) &quot;,terminator: &quot;&quot;)</div><div class="line">&#125;</div><div class="line">// 由于Swift2 将print 和 println 合并了，并且默认的行为是 println，所以如果你不想自动在字符串末尾添加new line的话，就需要使用terminator参数来指定字符串的结尾。</div><div class="line">//打印输出 ：G u t e n   T a g</div></pre></td></tr></table></figure>
-<h4 id="插入和删除"><a href="#插入和删除" class="headerlink" title="插入和删除"></a>插入和删除</h4><p>调用 <code>insert(_:at:)</code> 方法可以在一个字符串的指定索引插入一个字符，调用 <code>insert(contentsOf:at:)</code> 方法可以在一个字符串的指定索引插入一段字符串。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var welcome = &quot;hello&quot;</div><div class="line">welcome.insert(&quot;!&quot;, at: welcome.endIndex)</div><div class="line">// welcome 变量现在等于 &quot;hello!&quot;</div><div class="line">welcome.insert(contentsOf: &quot; there&quot;.characters, at: welcome.index(before: welcome.endIndex))</div><div class="line">// welcome 变量现在等于 &quot;hello there!&quot;</div></pre></td></tr></table></figure>
-<p>调用 <code>remove(at:)</code> 方法可以在一个字符串的指定索引删除一个字符，调用 <code>removeSubrange(_:)</code> 方法可以在一个字符串的指定索引删除一个子字符串。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">welcome.remove(at: welcome.index(before: welcome.endIndex))</div><div class="line">// welcome 现在等于 &quot;hello there&quot;</div><div class="line"></div><div class="line">let range = welcome.index(welcome.endIndex, offsetBy: -6)..&lt;welcome.endIndex</div><div class="line">welcome.removeSubrange(range)</div><div class="line">// welcome 现在等于 &quot;hello there&quot;</div></pre></td></tr></table></figure>
-<h3 id="比较字符串"><a href="#比较字符串" class="headerlink" title="比较字符串"></a>比较字符串</h3><p>Swift 提供了三种方式来比较文本值：字符串字符相等、前缀相等和后缀相等。</p>
-<h4 id="字符串-字符相等"><a href="#字符串-字符相等" class="headerlink" title="字符串/字符相等"></a>字符串/字符相等</h4><p>字符串/字符可以用等于操作符（<code>==</code>）和不等于操作符（<code>!=</code>）。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">let quotation = &quot;We&apos;re a lot alike, you and I.&quot;let sameQuotation = &quot;We&apos;re a lot alike, you and I.&quot;if quotation == sameQuotation &#123;    print(&quot;These two strings are considered equal&quot;)&#125;// 打印输出 &quot;These two strings are considered equal&quot;</div></pre></td></tr></table></figure>
-<h4 id="前缀-后缀相等"><a href="#前缀-后缀相等" class="headerlink" title="前缀/后缀相等"></a>前缀/后缀相等</h4><p>通过调用字符串的 <code>hasPrefix(_:)</code> / <code>hasSuffix(_:)</code> 方法来检查字符串是否拥有特定前缀/后缀，两个方法均接收一个 String 类型的参数，并返回一个布尔值。</p>
-<p>下面的例子以一个字符串数组表示莎士比亚话剧《罗密欧与朱丽叶》中前两场的场景位置:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">let romeoAndJuliet = [     &quot;Act 1 Scene 1: Verona, A public place&quot;,     &quot;Act 1 Scene 2: Capulet&apos;s mansion&quot;,     &quot;Act 1 Scene 3: A room in Capulet&apos;s mansion&quot;,     &quot;Act 1 Scene 4: A street outside Capulet&apos;s mansion&quot;,     &quot;Act 1 Scene 5: The Great Hall in Capulet&apos;s mansion&quot;,     &quot;Act 2 Scene 1: Outside Capulet&apos;s mansion&quot;,     &quot;Act 2 Scene 2: Capulet&apos;s orchard&quot;,     &quot;Act 2 Scene 3: Outside Friar Lawrence&apos;s cell&quot;,     &quot;Act 2 Scene 4: A street in Verona&quot;,     &quot;Act 2 Scene 5: Capulet&apos;s mansion&quot;,     &quot;Act 2 Scene 6: Friar Lawrence&apos;s cell&quot;]</div></pre></td></tr></table></figure>
-<p>您可以调用 <code>hasPrefix(_:)</code> 方法来计算话剧中第一幕的场景数:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var act1SceneCount = 0 for scene in romeoAndJuliet &#123;     if scene.hasPrefix(&quot;Act 1 &quot;) &#123;         act1SceneCount += 1&#125; &#125;print(&quot;There are \(act1SceneCount) scenes in Act 1&quot;) // 打印输出 &quot;There are 5 scenes in Act 1&quot;</div></pre></td></tr></table></figure>
-<p>相似地，您可以用 <code>hasSuffix(_:)</code> 方法来计算发生在不同地方的场景数:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var mansionCount = 0var cellCount = 0for scene in romeoAndJuliet &#123;    if scene.hasSuffix(&quot;Capulet&apos;s mansion&quot;) &#123;        mansionCount += 1    &#125; else if scene.hasSuffix(&quot;Friar Lawrence&apos;s cell&quot;)         </div><div class="line">    &#123;         cellCount += 1    &#125;</div><div class="line"> &#125;</div><div class="line"> print(&quot;\(mansionCount) mansion scenes; \(cellCount) cell scenes&quot;) </div><div class="line"> // 打印输出 &quot;6 mansion scenes; 2 cell scenes&quot;</div></pre></td></tr></table></figure>
-
+        
+          <a class="article-more-a" href="/2017/07/24/SwiftIntroduceFifth/#more">more >></a>
+        
       
 
       
@@ -301,40 +257,12 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>作者<a href="https://liuwentao1314.github.io" target="_blank" rel="external">刘文涛</a><br>转载请注明出处</p>
+        <p>作者<a href="https://liuwentao1314.github.io">刘文涛</a><br>转载请注明出处</p>
 <h2 id="基本运算符"><a href="#基本运算符" class="headerlink" title="基本运算符"></a>基本运算符</h2><p>运算符是检查、改变、合并值的特殊符号或短语。例如，加号(<code>+</code>)将两个数相加（如 <code>let i = 1 + 2</code>）。更复杂的运算例子包括 逻辑与运算符 <code>&amp;&amp;</code> （如 <code>if enteredDoorCode &amp;&amp; passedRetinaScan</code>）。<br>Swift支持大部分标准 C 语言的运算符，且改进许多特性来减少常规编码错误。如：赋值符 （<code>=</code>）不返回值，以防止把想要判断相等运算符（<code>==</code>）的地方写成赋值符导致的错误。算数运算符（<code>+,-,*,/,%</code>等）会检测并不允许值溢出，以此来避免保存变量时由于变量大于或小于其类型所能承载的范围时导致的异常结果。当然允许你使用Swift的溢出运算符来实现溢出。</p>
 <p>Swift还提供了 C 语言没有的表达两数之间的值的区间运算符（<code>a..&lt;b</code> 和 <code>a...b</code>），这方便我们表达一个区间内的数值。</p>
-<h3 id="术语"><a href="#术语" class="headerlink" title="术语"></a>术语</h3><p>运算符分为一元、二元和三元运算符：</p>
-<p>• 一元运算符对单一操作对象操作(如 <code>-a</code> )。一元运算符分前置运算符和后置运算符,前置运算符需紧跟在 操作对象之前(如 <code>!b</code> ),后置运算符需紧跟在操作对象之后(如 <code>c!</code> )。<br>• 二元运算符操作两个操作对象(如 <code>2 + 3</code> ),是中置的,因为它们出现在两个操作对象之间。<br>• 三元运算符操作三个操作对象,和 C 语言一样,Swift 只有一个三元运算符,就是三目运算符( <code>a ? b : c</code>)。</p>
-<p>受运算符影响的值叫操作数，在表达式 <code>1 + 2</code> 中，加号 <code>+</code> 是二元运算符，他的两个操作数是值 <code>1</code> 和 <code>2</code> 。</p>
-<h3 id="溢出运算符"><a href="#溢出运算符" class="headerlink" title="溢出运算符"></a>溢出运算符</h3><p>Swfit为整型计算提供了5个&amp;符号开头的溢出运算符。</p>
-<p><strong>溢出加法 <code>&amp;+</code></strong><br><strong>溢出减法 <code>&amp;-</code></strong><br><strong>溢出乘法 <code>&amp;*</code></strong><br><strong>溢出除法 <code>&amp;/</code></strong><br><strong>溢出求余 <code>&amp;%</code></strong></p>
-<p>比如溢出加法运算符（<code>&amp;+</code>）。所有的这些溢出运算符都是以 <code>&amp;</code> 开头的。</p>
-<h4 id="值的上溢出"><a href="#值的上溢出" class="headerlink" title="值的上溢出"></a>值的上溢出</h4><p>下面的例子使用了溢出加法 <code>&amp;+</code>来解剖的无符整数的上溢出</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var willOverflow = <span class="built_in">UInt8</span>.max</div><div class="line"><span class="comment">//willOverflow 等于UInt8的最大整数 255</span></div><div class="line">willOverflow = willOverflow &amp;+ <span class="number">1</span></div><div class="line"><span class="comment">//这时候 willOverflow 等于 0</span></div></pre></td></tr></table></figure>
-<p><code>willOverflow</code> 用 <code>UInt8</code> 所能承载的最大值 255（二进制 <code>11111111</code>），然后用 <code>&amp;+</code> 加1.然后 <code>UInt8</code> 就无法表达这个新值的二进制了，也就导致了这个新值上溢出了。溢出后，新值在 <code>UInt8</code> 的承载范围内的那部分是 <code>00000000</code>，也就是 0。</p>
-<h3 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h3><p>赋值运算符 （<code>a = b</code> ），表示用 b 的值来初始化或者更新 a 的值。<br>与 C 语言和 Objective-C 不同，Swift 的赋值操作并不返回任何值。所以下面的代码是错误的：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">let (x, y) = (1, 2)</div><div class="line">// 现在 x 等于 1,y 等于 2</div><div class="line"></div><div class="line">if x == y &#123;</div><div class="line">    //此句错误, 因为 x = y 并不返回任何值</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>这个特性使你无法把（<code>==</code>）错写成（<code>=</code>），由于 <code>if  x = y</code> 是错误代码，Swift能帮你避免此类错误的发生。</p>
-<h3 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h3><p>Swift 中所有的数值类型都支持了基本的四则算术运算符：<br>• 加法(<code>+</code>)<br>• 减法(<code>-</code>)<br>• 乘法(<code>*</code>)<br>• 除法(<code>/</code>)</p>
-<p>加法运算符也可用于 <code>String</code> 的拼接：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&quot;hello&quot; + &quot; world&quot; //等于&quot;hello world&quot;</div></pre></td></tr></table></figure>
-<h4 id="求余运算符"><a href="#求余运算符" class="headerlink" title="求余运算符"></a>求余运算符</h4><p>求余运算符 （<code>a % b</code>） 是计算 b 的多少倍刚刚好可以容入a,返回多出来的那部分 （余数）。<br>在对负数求余时，负数的符号会被忽略。这意味着 <code>a % b</code> 和 <code>a % -b</code> 的结果是相同的。</p>
-<h3 id="空合运算符"><a href="#空合运算符" class="headerlink" title="空合运算符"></a>空合运算符</h3><p>空合运算符 （<code>a ?? b</code>）将对可选类型 a 进行空判断，如果 a 包含一个值就进行解封，否则就返回一个默认值 b。表达式 a 必须是 Optional 类型。默认值 b 的类型必须要和 a 存储值的类型保持一致。<br>空合运算符是对以下代码的简短表达方法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">a != nil ? a! : b</div></pre></td></tr></table></figure>
-<p>上述代码使用了三目运算符，当可选类型 a 的值不为空时，进行强制解封 (<code>a!</code>)，访问 a 中的值;反之返回默认值 b 。无疑空合运算符<code>( ?? )</code>提供了一种更为优 的方式去封装条件判断和解封两种行为,显得简洁以及更具可读性。</p>
-<p><strong>注意：<br>如果 a 为非空值（non-nil），那么值 b 将不会被计算。这也就是所谓的短路求值。</strong></p>
-<p>下文例子采用空合运算符,实现了在默认颜色名和可选自定义颜色名之间抉择:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">let defaultColorName = &quot;red&quot;</div><div class="line">var userDefinedColorName: String?  //默认值为 nil</div><div class="line">var colorNameToUse = userDefinedColorName ?? defaultColorName</div><div class="line">// userDefinedColorName 的值为空，所以 colorNameToUse 的值为 “red”</div></pre></td></tr></table></figure>
-<h3 id="区间运算符"><a href="#区间运算符" class="headerlink" title="区间运算符"></a>区间运算符</h3><p>Swift 提供了两个方便表达一个区间的值的区间运算符。</p>
-<h4 id="闭区间运算符"><a href="#闭区间运算符" class="headerlink" title="闭区间运算符"></a>闭区间运算符</h4><p>闭区间运算符（a…b）定义一个包含从 a 到 b （包含 a 和 b）的所有值的区间。 a 的值不能超过 b。</p>
-<h4 id="半开区间运算符"><a href="#半开区间运算符" class="headerlink" title="半开区间运算符"></a>半开区间运算符</h4><p>半开区间运算符( <code>a..&lt;b</code> )定义一个从 a 到 b 但不包括 b 的区间。之所以称为半开区间，是因为该区间包含第一个值而不包含最后的值。<br>半开区间的实用性在于当你使用一个从 0 开始的列表(如数组)时,非常方便地从0数到列表的长度。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">let names = [&quot;Mike&quot;,&quot;Jack&quot;,&quot;Alex&quot;,&quot;Brian&quot;]</div><div class="line">let count = names.count</div><div class="line">for i in 0..&lt;count &#123;</div><div class="line">    print(&quot;第 \(i + 1) 个人叫 \(names[i])&quot;)</div><div class="line">&#125;</div><div class="line">/**</div><div class="line"> 第 1 个人叫 Mike</div><div class="line"> 第 2 个人叫 Jack</div><div class="line"> 第 3 个人叫 Alex</div><div class="line"> 第 4 个人叫 Brian</div><div class="line"> */</div></pre></td></tr></table></figure>
-<h3 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h3><p>逻辑运算符的操作对象是逻辑布尔值。Swift 支持 C 语言的三个标准逻辑运算。<br>• 逻辑非( )<br>• 逻辑与( )<br>• 逻辑或( )</p>
-<h4 id="逻辑非运算符"><a href="#逻辑非运算符" class="headerlink" title="逻辑非运算符"></a>逻辑非运算符</h4><p>逻辑非运算符（<code>!a</code>）对一个布尔值取反，使得 true 变 false，false 变 true。<br>它是一个前置运算符,需紧跟在操作数之前,且不加空格。读作 非 a 。</p>
-<h4 id="逻辑与运算符"><a href="#逻辑与运算符" class="headerlink" title="逻辑与运算符"></a>逻辑与运算符</h4><p>逻辑与运算符( <code>a &amp;&amp; b</code> )表达了只有 a 和 b 的值都为 true 时,整个表达式的值才会是 true 。</p>
-<h4 id="逻辑或运算符"><a href="#逻辑或运算符" class="headerlink" title="逻辑或运算符"></a>逻辑或运算符</h4><p>逻辑或运算符( <code>a || b</code> )是一个由两个连续的 | 组成的中置运算符。它表示了两个逻辑表达式的其中一个为 true ,整个表达式就为 true 。</p>
-
+        
+          <a class="article-more-a" href="/2017/07/21/SwiftIntroduceFourth/#more">more >></a>
+        
       
 
       
@@ -865,6 +793,14 @@ var _hmt = _hmt || [];
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">NSOperation</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">UIFont</a>
               </li>
              
@@ -873,11 +809,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Swift</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
+                <a href="javascript:void(0)" class="js-tag color4">GCD</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -885,11 +817,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">GCD</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">NSOperation</a>
+                <a href="javascript:void(0)" class="js-tag color1">Swift</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -905,6 +833,10 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">MessageUI</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">iOS</a>
               </li>
              
@@ -914,10 +846,6 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">动态布局</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">MessageUI</a>
               </li>
              
               <li class="article-tag-list-item">
