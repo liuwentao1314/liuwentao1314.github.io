@@ -6,17 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: WebP | LWT&#39;sBlog</title>
+  <title>Swift学习之路--Swift基础(七) | LWT&#39;sBlog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="对生活充满向往的iOS开发工程师">
-<meta property="og:type" content="website">
-<meta property="og:title" content="LWT'sBlog">
-<meta property="og:url" content="http://yoursite.com/tags/WebP/index.html">
+  <meta name="description" content="作者刘文涛转载请注明出处 控制流(Control Flow)Swift 提供了多种流程控制结构，包括可以多次执行任务的 while 循环，基于特定条件选择执行不同代码分支的 if，guard和switch语句，还有控制流程跳转到其他代码位置的break和continue语句。Swift还提供了 for-in 循环，用来更简单地遍历数组，字典，区间（range），字符串和其他序列类型。Swift 的">
+<meta name="keywords" content="Swift">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Swift学习之路--Swift基础(七)">
+<meta property="og:url" content="http://yoursite.com/2017/08/16/SwiftIntroduceSeventh/index.html">
 <meta property="og:site_name" content="LWT'sBlog">
-<meta property="og:description" content="对生活充满向往的iOS开发工程师">
+<meta property="og:description" content="作者刘文涛转载请注明出处 控制流(Control Flow)Swift 提供了多种流程控制结构，包括可以多次执行任务的 while 循环，基于特定条件选择执行不同代码分支的 if，guard和switch语句，还有控制流程跳转到其他代码位置的break和continue语句。Swift还提供了 for-in 循环，用来更简单地遍历数组，字典，区间（range），字符串和其他序列类型。Swift 的">
+<meta property="og:updated_time" content="2017-10-20T07:25:35.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LWT'sBlog">
-<meta name="twitter:description" content="对生活充满向往的iOS开发工程师">
+<meta name="twitter:title" content="Swift学习之路--Swift基础(七)">
+<meta name="twitter:description" content="作者刘文涛转载请注明出处 控制流(Control Flow)Swift 提供了多种流程控制结构，包括可以多次执行任务的 while 循环，基于特定条件选择执行不同代码分支的 if，guard和switch语句，还有控制流程跳转到其他代码位置的break和continue语句。Swift还提供了 for-in 循环，用来更简单地遍历数组，字典，区间（range），字符串和其他序列类型。Swift 的">
   
     <link rel="alternative" href="/atom.xml" title="LWT&#39;sBlog" type="application/atom+xml">
   
@@ -169,72 +171,173 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-SwiftIntroduceSeventh" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/04/13/webp-image-format-ios/" class="archive-article-date">
-  	<time datetime="2017-04-13T05:43:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-13</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/13/webp-image-format-ios/">如何使UIWebview/WKWebView支持WebP格式图片</a>
+    <h1 class="article-title" itemprop="name">
+      Swift学习之路--Swift基础(七)
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/08/16/SwiftIntroduceSeventh/" class="archive-article-date">
+  	<time datetime="2017-08-16T05:59:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>作者<a href="https://liuwentao1314.github.io" target="_blank" rel="external">刘文涛</a><br>转载请注明出处</p>
+<h2 id="控制流-Control-Flow"><a href="#控制流-Control-Flow" class="headerlink" title="控制流(Control Flow)"></a>控制流(Control Flow)</h2><p>Swift 提供了多种流程控制结构，包括可以多次执行任务的 <code>while</code> 循环，基于特定条件选择执行不同代码分支的 <code>if</code>，<code>guard</code>和<code>switch</code>语句，还有控制流程跳转到其他代码位置的<code>break</code>和<code>continue</code>语句。<br>Swift还提供了 <code>for-in</code> 循环，用来更简单地遍历数组，字典，区间（range），字符串和其他序列类型。<br>Swift 的<code>switch</code>语句比C语言中更强大。在C语言中，如果某个case不小心漏写了<code>break</code>，这个case就会贯穿至下一个case，Swift无需写<code>break</code>，所以不会发生这种贯穿的情况。case 还可以匹配很多不同的模式，包括间隔匹配(interval match)，元组(tuple)和转换到特定类型。 switch 语句的 <code>case</code> 中匹配的值可以绑定成临时常量或变量，在case体内使用，也可以用 <code>where</code> 来描述更复杂的匹配条件。</p>
+<a id="more"></a>
+<h3 id="For-In-循环"><a href="#For-In-循环" class="headerlink" title="For-In 循环"></a>For-In 循环</h3><p>你可以使用 <code>for-in</code>循环来遍历一个集合中的所有元素，例如数字范围、数组中的元素或者字符串中的字符。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">let base = 3</div><div class="line">let power = 10</div><div class="line">var answer = 1</div><div class="line">for _ in 1...power &#123;</div><div class="line">    answer *= base</div><div class="line">&#125;</div><div class="line">print(&quot;\(base) to the power of \(power) is \(answer)&quot;)</div><div class="line">//输出 3 to the power of 10 is 59049</div></pre></td></tr></table></figure></p>
+<p>这个例子计算 base 这个数的 power 次幂。进行遍历的元素是使用闭区间操作符( … )表示的从 1 到 10 的数字区间。这个计算并不需要知道每一次循环中计数器具体的值，只需要执行了正确的次数即可。下划线符号 <code>_</code>（替代循环中的变量）能够忽略当前值，并且不提供循环遍历时对值的访问。</p>
+<h3 id="While-循环"><a href="#While-循环" class="headerlink" title="While 循环"></a>While 循环</h3><p>while 循环会一直运行一段语句知道条件变成 false 。这类循环适合使用在第一次迭代前，迭代次数未知的情况下。Swift提供两种 while 循环形式：<br>• while循环，每次在循环开始时计算条件是否符合;<br>• repeat-while循环，每次在循环结束时计算条件是否符合。</p>
+<p><code>while</code>循环从计算一个条件开始。如果条件为<code>true</code>，会重复运行一段语句，直到条件变为<code>false</code>。<br><code>while</code>循环的另外一种形式是<code>repeat-while</code>，它和<code>while</code>的区别是在判断循环条件之前，先执行一次循环的代码块。然后重复循环直到条件为<code>false</code>。<br>Swift语言的 repeat-while 循环和其他语言中的 do-while 循环是类似的。<br>下面是 <code>repeat-while</code> 循环的一般格式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">repeat &#123;</div><div class="line">    statements</div><div class="line">&#125; while condition</div></pre></td></tr></table></figure></p>
+<h3 id="条件语句"><a href="#条件语句" class="headerlink" title="条件语句"></a>条件语句</h3><p>Swift提供两种类型的条件语句：if 语句和 switch 语句。通常，当条件较为简单且可能的情况很少时，使用 if 语句。而 switch 语句更适用于条件较复杂。有更多排列组合的时候。并且 switch 在需要用到模式匹配(pattern-matching)的情况下会更有用。</p>
+<p>if<br>if 语句最简单的形式就是只包含一个条件，只有该条件为 true 时，才执行相关代码。当然，if 语句允许二选一执行，叫做else从句。也就是当条件为false时，执行else语句。<br>switch<br>switch语句会尝试把某个值与若干个模式进行匹配。根据第一个匹配成功的模式，switch语句会执行对应的代码。当有可能的情况较多时，通常用switch语句替换if语句。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">let somePoint = (1,1)</div><div class="line"></div><div class="line">switch somePoint &#123;</div><div class="line">case (0,0):</div><div class="line">    print(&quot;(0, 0) is at the origin&quot;)</div><div class="line">    case (1,0),</div><div class="line">         (0,1):</div><div class="line">    print(&quot;(1, 0) or (0, 1) is at the origin&quot;)</div><div class="line">default:</div><div class="line">    print(&quot;(1, 1) is at the origin&quot;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>switch 语句必须是完备的。这就是说，每一个可能的值都必须至少有一个 case 分支与之对应。在某些不可能涵盖所有值的情况下，你可以使用默认( default )分支来涵盖其它所有没有对应的值，这个默认分支必须在 switch 语句的最后面。<br>不存在隐式的贯通<br>与 C 和 Objective-C 中的 switch 语句不同，在 Swift 中，当匹配的 case 分支中的代码执行完毕后，程序会终止 switch 语句，而不会继续执行下一个 case 分支。这也就是说，不需要在 case 分支中显式地使用 break 语句。这使得 switch 语句更安全、更易用，也避免了因忘记写 break 语句而产生的错误。<br>每一个 case 分支都必须包含至少一条语句。<br>为了让单个case同时匹配 a 和 A ，可以将这个两个值组合成一个复合匹配，并且用逗号分开。<br>不像C语言，Swift允许多个case匹配同一个值。但是，如果存在多个匹配，那么只会执行第一个被匹配到的case分支。因此剩下的能够匹配的分支都会被忽视掉。<br>值绑定<br>case 分支允许将匹配的值绑定到一个临时的常量或变量，并且在case分支体内使用 – 这种行为被称为值绑定，因为匹配的值在case分支体内，与临时的常量或变量绑定。<br>下面的例子展示了如何在一个 (Int, Int) 类型的元组中使用值绑定来分类下图中的点(x, y):</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">let anotherPoint = (2, 0)</div><div class="line">switch anotherPoint &#123;</div><div class="line">case (let x, 0):</div><div class="line">    print(&quot;on the x-axis with an x value of \(x)&quot;)</div><div class="line">case (0,let y):</div><div class="line">    print(&quot;on the y-axis with a y value of \(y)&quot;)</div><div class="line">case let (x, y):</div><div class="line">    print(&quot;somewhere else at (\(x), \(y))&quot;)</div><div class="line">&#125;</div><div class="line">//输出 on the x-axis with an x value of 2</div></pre></td></tr></table></figure>
+<p>请注意，这个 switch 语句不包含默认分支。这是因为最后一个 case —— case let(x, y) 声明了一个可以匹配余下所有值的元组。这使得 switch 语句已经完备了，因此不需要再书写默认分支。<br>where<br>case 分支的模式可以使用where语句来判断额外的条件。<br>下面的例子把下图中的点(x, y)进行了分类:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">let yetAnotherPoint = (1, -1)</div><div class="line">switch yetAnotherPoint &#123;</div><div class="line">case let (x, y) where x == y:</div><div class="line">    print(&quot;(\(x), \(y)) is on the line x == y&quot;)</div><div class="line">case let (x, y) where x == -y :</div><div class="line">    print(&quot;(\(x), \(y)) is on the line x == -y&quot;)</div><div class="line">case let (x, y):</div><div class="line">    print(&quot;(\(x), \(y)) is just some arbitrary point&quot;)</div><div class="line">&#125;</div><div class="line">// 输出 &quot;(1, -1) is on the line x == -y&quot;</div></pre></td></tr></table></figure>
+<p>这三个 case 都声明了常量 x 和 y 的占位符，用于临时获取元组 yetAnotherPoint 的两个值。这两个常量被用作 where 语句的一部分，从而创建一个动态的过滤器(filter)。当且仅当 where 语句的条件为 true 时，匹配到的case 分支才会被执行。<br>就像是值绑定中的例子，由于最后一个 case 分支匹配了余下所有可能的值， switch 语句就已经完备了，因此不需要再书写默认分支。</p>
+<h3 id="控制转移语句"><a href="#控制转移语句" class="headerlink" title="控制转移语句"></a>控制转移语句</h3><p>控制转移语句改变你代码的执行顺序，通过它可以实现代码的跳转。Swift 有五种控制转移语句：<br>• continue<br>• break<br>• fallthrough<br>• return<br>• throw</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢打赏<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="http://ooneqy20s.bkt.clouddn.com/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Xcode</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">WebView</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">WebP</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Swift</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/08/16/SwiftIntroduceSeventh/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/07/26/SwiftIntroduceSixth/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Swift学习之路--Swift基础(六)
+        
+      </div>
+    </a>
   
   
-    </div></section>
+</nav>
+
+
+
+
+
+
+  
+    <div class="duoshuo"></div>
   
 
-    
+
 
 
           </div>
@@ -257,9 +360,9 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",
