@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>iOS使用UIWindow | LWT&#39;sBlog</title>
+  <title>Swift学习之路--Swift基础(八) | LWT&#39;sBlog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="作者刘文涛转载请注明出处 UIWindow简介在iOS应用中，我们使用UIWindow和UIView来呈现界面。UIWindow是最顶层的界面容器。UIWindow并不包含任何默认的内容，但是它被当做UIView的容器，用于放置应用中的所有UIView。而每一个UIView通常都用来表示具体的某一部分界面，例如一段文字、一张图片等。当然你可以用UIView来当做其他UIView的容器。所以UIWi">
-<meta name="keywords" content="UIWindow">
+  <meta name="description" content="作者刘文涛转载请注明出处 函数(Functions)函数是一段完成特定任务的独立代码片段。你可以通过给函数命名来标识某个函数的功能，这个名字可以被用来在需要的时候“调用”这个函数来完成任务。Swift统一的函数语法非常灵活，可以用来表示任何函数，包括从最简单的没有参数名字的C风格函数，到复杂的带局部和外部参数名的Objective-C风格函数。参数可以提供默认值，以简化函数调用。参数也可以即当做传">
+<meta name="keywords" content="Swift">
 <meta property="og:type" content="article">
-<meta property="og:title" content="iOS使用UIWindow">
-<meta property="og:url" content="http://yoursite.com/2017/06/06/UIWindow/index.html">
+<meta property="og:title" content="Swift学习之路--Swift基础(八)">
+<meta property="og:url" content="http://yoursite.com/2017/10/25/SwiftIntroduceEighth/index.html">
 <meta property="og:site_name" content="LWT'sBlog">
-<meta property="og:description" content="作者刘文涛转载请注明出处 UIWindow简介在iOS应用中，我们使用UIWindow和UIView来呈现界面。UIWindow是最顶层的界面容器。UIWindow并不包含任何默认的内容，但是它被当做UIView的容器，用于放置应用中的所有UIView。而每一个UIView通常都用来表示具体的某一部分界面，例如一段文字、一张图片等。当然你可以用UIView来当做其他UIView的容器。所以UIWi">
-<meta property="og:updated_time" content="2017-06-06T07:42:45.000Z">
+<meta property="og:description" content="作者刘文涛转载请注明出处 函数(Functions)函数是一段完成特定任务的独立代码片段。你可以通过给函数命名来标识某个函数的功能，这个名字可以被用来在需要的时候“调用”这个函数来完成任务。Swift统一的函数语法非常灵活，可以用来表示任何函数，包括从最简单的没有参数名字的C风格函数，到复杂的带局部和外部参数名的Objective-C风格函数。参数可以提供默认值，以简化函数调用。参数也可以即当做传">
+<meta property="og:updated_time" content="2017-11-07T02:37:53.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS使用UIWindow">
-<meta name="twitter:description" content="作者刘文涛转载请注明出处 UIWindow简介在iOS应用中，我们使用UIWindow和UIView来呈现界面。UIWindow是最顶层的界面容器。UIWindow并不包含任何默认的内容，但是它被当做UIView的容器，用于放置应用中的所有UIView。而每一个UIView通常都用来表示具体的某一部分界面，例如一段文字、一张图片等。当然你可以用UIView来当做其他UIView的容器。所以UIWi">
+<meta name="twitter:title" content="Swift学习之路--Swift基础(八)">
+<meta name="twitter:description" content="作者刘文涛转载请注明出处 函数(Functions)函数是一段完成特定任务的独立代码片段。你可以通过给函数命名来标识某个函数的功能，这个名字可以被用来在需要的时候“调用”这个函数来完成任务。Swift统一的函数语法非常灵活，可以用来表示任何函数，包括从最简单的没有参数名字的C风格函数，到复杂的带局部和外部参数名的Objective-C风格函数。参数可以提供默认值，以简化函数调用。参数也可以即当做传">
   
     <link rel="alternative" href="/atom.xml" title="LWT&#39;sBlog" type="application/atom+xml">
   
@@ -171,20 +171,20 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-UIWindow" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-SwiftIntroduceEighth" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      iOS使用UIWindow
+      Swift学习之路--Swift基础(八)
     </h1>
   
 
         
-        <a href="/2017/06/06/UIWindow/" class="archive-article-date">
-  	<time datetime="2017-06-06T02:29:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-06</time>
+        <a href="/2017/10/25/SwiftIntroduceEighth/" class="archive-article-date">
+  	<time datetime="2017-10-25T07:39:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-25</time>
 </a>
         
       </header>
@@ -192,25 +192,130 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <p>作者<a href="https://liuwentao1314.github.io" target="_blank" rel="external">刘文涛</a><br>转载请注明出处</p>
-<h2 id="UIWindow简介"><a href="#UIWindow简介" class="headerlink" title="UIWindow简介"></a>UIWindow简介</h2><p>在iOS应用中，我们使用UIWindow和UIView来呈现界面。UIWindow是最顶层的界面容器。UIWindow并不包含任何默认的内容，但是它被当做UIView的容器，用于放置应用中的所有UIView。而每一个UIView通常都用来表示具体的某一部分界面，例如一段文字、一张图片等。当然你可以用UIView来当做其他UIView的容器。所以UIWindow更多的时候只是作为UIView的顶层容器存在。<br><a id="more"></a></p>
-<pre><code>NS_CLASS_AVAILABLE_IOS(2_0) @interface UIWindow : UIView
-</code></pre><p>在继承关系上，我们能看到UIWindow继承自UIView，所以UIWindow除了具有UIView的功能外，还增加了一些特有的属性和方法。<br>而我们最常用的方法就是在程序刚启动时，调用UIWindow的makeKeyAndVisible方法，使整个程序界面可见，代码如下所示：</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">- (<span class="built_in">BOOL</span>)application:(<span class="built_in">UIApplication</span> *)application didFinishLaunchingWithOptions:(<span class="built_in">NSDictionary</span> *)launchOptions &#123;</div><div class="line">   <span class="comment">// Override point for customization after application launch.</span></div><div class="line">   </div><div class="line">   <span class="keyword">self</span>.window = [[<span class="built_in">UIWindow</span> alloc] initWithFrame:[<span class="built_in">UIScreen</span> mainScreen].bounds];</div><div class="line">   <span class="keyword">self</span>.window.backgroundColor = [<span class="built_in">UIColor</span> whiteColor];</div><div class="line">   ViewController *vc = [[ViewController alloc] init];</div><div class="line">   vc.view.backgroundColor=[<span class="built_in">UIColor</span> whiteColor];</div><div class="line">   <span class="keyword">self</span>.window.rootViewController = vc;</div><div class="line">   [<span class="keyword">self</span>.window makeKeyAndVisible];</div><div class="line">   </div><div class="line">   <span class="keyword">return</span> <span class="literal">YES</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>所以UIWindow的主要作用有：<br>1.做完UIView的最顶层容器，包含应用显示所需要的所有UIView。<br>2.传递触摸消息和键盘事件给UIView。</p>
-<h2 id="为UIWindow增加UIView"><a href="#为UIWindow增加UIView" class="headerlink" title="为UIWindow增加UIView"></a>为UIWindow增加UIView</h2><p>通常我们有两种方法给UIWindow增加子UIView：<br>1.通过调用addSubView方法。因为UIWindow是UIView的子类，所以它可以使用UIView的addSubView方法给自己增加子VIew，从而承担容器的作用。<br>2.通过设置其特有的rootViewController属性。通过设置该属性为要添加view对应的UIViewController，UIWindow将会自动将其view添加到当前window中，同时负责维护VIewController和view的生命周期。我们在之前的application: didFinishLaunchingWithOptions:示例代码中看到的就是这种方法。</p>
-<h2 id="系统对UIWindow的使用"><a href="#系统对UIWindow的使用" class="headerlink" title="系统对UIWindow的使用"></a>系统对UIWindow的使用</h2><p>通常在一个程序中只会有一个UIWindow，但是有些时候我们调用系统的控件（例如UIAlertView）时，iOS系统为了保证UIAlertView在所有的界面之上，他会临时创建一个新的UIWindow，通过将其UIWindow的UIWindowLevel设置的更高，让UIAlertView盖在所有的应用界面之上。<br>为了验证这一说法，我们创建了一个新的测试Xcode工程,在其主ViewController上添加一个button，点击button弹出一个系统的弹框。示例代码：</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">IBAction</span>)testButtonClicked:(<span class="built_in">UIButton</span> *)sender &#123;</div><div class="line">    <span class="built_in">UIAlertController</span> *alert = [<span class="built_in">UIAlertController</span> alertControllerWithTitle:<span class="literal">nil</span> message:<span class="string">@"测试"</span> preferredStyle:<span class="built_in">UIAlertControllerStyleAlert</span>];</div><div class="line">    [alert addAction:[<span class="built_in">UIAlertAction</span> actionWithTitle:<span class="string">@"取消"</span> style:<span class="built_in">UIAlertActionStyleCancel</span> handler:^(<span class="built_in">UIAlertAction</span> * _Nonnull action) &#123;</div><div class="line">        </div><div class="line">    &#125;]];</div><div class="line">    [<span class="keyword">self</span> presentViewController:alert animated:<span class="literal">YES</span> completion:<span class="literal">nil</span>];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="WindowLevel"><a href="#WindowLevel" class="headerlink" title="WindowLevel"></a>WindowLevel</h3><p>那么是不是新创建的UIWindow一定会在界面的最上层呢？其实不是这样的。UIWindow有一个<strong>WindowLevel</strong>的属性该属性定义了UIWindow的层级，系统定义的WindowLevel一共有三种取值：</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">UIKIT_EXTERN</span> <span class="keyword">const</span> <span class="built_in">UIWindowLevel</span> <span class="built_in">UIWindowLevelNormal</span>;</div><div class="line"><span class="built_in">UIKIT_EXTERN</span> <span class="keyword">const</span> <span class="built_in">UIWindowLevel</span> <span class="built_in">UIWindowLevelAlert</span>;</div><div class="line"><span class="built_in">UIKIT_EXTERN</span> <span class="keyword">const</span> <span class="built_in">UIWindowLevel</span> <span class="built_in">UIWindowLevelStatusBar</span> __TVOS_PROHIBITED;</div></pre></td></tr></table></figure>
-<p>我们将这些值通过代码打印输出：</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSLog</span>(<span class="string">@"UIWindowLevelNormal=%f"</span>,<span class="built_in">UIWindowLevelNormal</span>);</div><div class="line"><span class="built_in">NSLog</span>(<span class="string">@"UIWindowLevelAlert=%f"</span>,<span class="built_in">UIWindowLevelAlert</span>);</div><div class="line"><span class="built_in">NSLog</span>(<span class="string">@"UIWindowLevelStatusBar=%f"</span>,<span class="built_in">UIWindowLevelStatusBar</span>);</div></pre></td></tr></table></figure>
-<p>输出的结果：</p>
-<pre><code>2017-06-06 11:43:09.345 UIWindowDemo[899:667871] UIWindowLevelNormal=0.000000
-2017-06-06 11:43:09.346 UIWindowDemo[899:667871] UIWindowLevelAlert=2000.000000
-2017-06-06 11:43:09.346 UIWindowDemo[899:667871] UIWindowLevelStatusBar=1000.000000   
-</code></pre><p>从中我们可以看出来默认程序的UIWindow的层级是UIWindowLevelNormal，当系统需要在上面覆盖UIAlertView时，就会创建一个层级是UIWindowLevelAlert的UIWindow，因为其WindowLevel的值更高，所以就覆盖在上面了。<br>在实际应用中，WindowLevel的取值并不限于上面提到的3个值。</p>
-<h3 id="手动创建UIWindow"><a href="#手动创建UIWindow" class="headerlink" title="手动创建UIWindow"></a>手动创建UIWindow</h3><p>有些时候我们也希望在应用开发中，将某个界面覆盖在所有的界面最上层。这个时候我们就可以手动创建一个新的UIWindow。需要注意的是，和创建UIView不同，UIWindow一旦被创建，它就会自动被添加到整个界面上了。<br>例如想做一个密码保护功能，在用户按home键退出应用界面，过一段时间后从后台切换回来时，显示一个密码输入界面。用户只有输入正确的密码才能进入退出的前台界面。因为这个密码输入界面可能从任何应用界面弹出，并且需要遮在所有界面的最上层，所以它很适合用UIWindow来实现。</p>
+<h2 id="函数-Functions"><a href="#函数-Functions" class="headerlink" title="函数(Functions)"></a>函数(Functions)</h2><p>函数是一段完成特定任务的独立代码片段。你可以通过给函数命名来标识某个函数的功能，这个名字可以被用来在需要的时候“调用”这个函数来完成任务。<br>Swift统一的函数语法非常灵活，可以用来表示任何函数，包括从最简单的没有参数名字的C风格函数，到复杂的带局部和外部参数名的Objective-C风格函数。参数可以提供默认值，以简化函数调用。参数也可以即当做传入参数，也当做传出参数，也就是说，一旦函数执行结束，传入的参数值将被修改。</p>
+<a id="more"></a>
+<h3 id="函数的定义与调用"><a href="#函数的定义与调用" class="headerlink" title="函数的定义与调用"></a>函数的定义与调用</h3><p>当你定义一个函数时，你可以定义一个或多个有名字的类型的值，作为函数的输入，称为参数，也可以定义某种类型的值作为函数执行结束时的输出，称为返回类型。<br>每个函数有个函数名，用来描述函数执行的任务。要使用一个函数时，用函数名来调用这个函数，并传给它匹配的输入值（称作 实参）。函数的实参必须与函数参数表里参数的顺序一致。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">func greet(person: String) -&gt; String &#123;</div><div class="line">    let greeting = &quot;Hello,&quot; + person + &quot;!&quot;</div><div class="line">    return greeting</div><div class="line">&#125;</div><div class="line">print(greet(person: &quot;Anna&quot;))</div><div class="line">//输出 Hello,Anna!</div></pre></td></tr></table></figure>
+<p>所有的这些信息汇总起来成为函数的定义，并且 func 作为前缀。指定函数返回类型时，用返回箭头 -&gt; 后跟返回类型的名称的方式来表示。<br>该定义描述了函数的功能，它期望接收什么作为参数和执行结束时它返回的结果是什么类型。这样的定义使得函数可以在别的地方以一种清晰的方式被调用。</p>
+<h3 id="函数参数与返回值"><a href="#函数参数与返回值" class="headerlink" title="函数参数与返回值"></a>函数参数与返回值</h3><p>函数参数与返回值在 Swift 中非常的灵活。你可以定义任何类型的函数，包括从只带一个未名参数的简单函数到复杂的带有表达性参数名和不同参数选项的复杂函数。</p>
+<h4 id="无参数函数"><a href="#无参数函数" class="headerlink" title="无参数函数"></a>无参数函数</h4><p>函数可以没有参数。下面这个函数就是一个无参数函数，当被调用时，它返回固定的 String 消息：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">func sayHellloWorld() -&gt; String &#123;</div><div class="line">    return &quot;hello, world&quot;</div><div class="line">&#125;</div><div class="line">print(sayHellloWorld())</div><div class="line">// 输出hello, world</div></pre></td></tr></table></figure>
+<p>尽管这个函数没有参数，但是定义中在函数名后还是需要一对圆括号。当被调用时，也需要在函数名后写一对圆括号。</p>
+<h4 id="多参数函数"><a href="#多参数函数" class="headerlink" title="多参数函数"></a>多参数函数</h4><p>函数可以有多种输入参数，这些参数被包含在函数的括号之中，以逗号分隔。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">func greetAgain(person: String) -&gt; String &#123;</div><div class="line">    return &quot;Hello again, &quot; + person + &quot;!&quot;</div><div class="line">&#125;</div><div class="line">print(greetAgain(person: &quot;Anna&quot;))</div><div class="line"></div><div class="line">func greet(person: String, alredayGreeted: Bool) -&gt; String&#123;</div><div class="line">    if alredayGreeted &#123;</div><div class="line">        return greetAgain(person: person)</div><div class="line">    &#125;else &#123;</div><div class="line">        return greet(person: person ,alredayGreeted: alredayGreeted)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">print(greet(person: &quot;Tim&quot;, alredayGreeted: true))</div><div class="line">//输出Hello again, Tim!</div></pre></td></tr></table></figure>
+<p>你可以通过心思括号内使用逗号分隔来传递一个 String 参数值和一个标识为 alredayGreeted 的Bool值，来调用函数greet(person:alreadyGreeted:)。注意这个函数和上面的greet(person:) 是不同的。</p>
+<h4 id="无返回值函数"><a href="#无返回值函数" class="headerlink" title="无返回值函数"></a>无返回值函数</h4><p>函数可以没有返回值。下面是 <code>greet(person:)</code>函数的另一个版本，这个函数直接打印一个String值，而不是返回它：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">func greet(person: String) &#123;</div><div class="line">    print(&quot;Hello, \(person)&quot;)</div><div class="line">&#125;</div><div class="line">greet (person: &quot;Dave&quot;)</div></pre></td></tr></table></figure>
+<p>因为这个函数不需要返回值，所以这个函数的定义中没有返回箭头和返回类型。<br>被调用时，一个函数的返回值可以被忽略：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"> func printAndCount(string: String) -&gt; Int &#123;     print(string)     return string.characters.count &#125; func printWithoutCounting(string: String) &#123;     let _ = printAndCount(string: string)&#125;printAndCount(string: &quot;hello, world&quot;)// 打印 &quot;hello, world&quot; 并且返回值 12 printWithoutCounting(string: &quot;hello, world&quot;) // 打印 &quot;hello, world&quot; 但是没有返回任何值</div></pre></td></tr></table></figure>
+<p>注意：<br>返回值可以被忽略，但定义了有返回值的函数必须返回一个值，如果在函数定义底部没有返回任何值，将导致编译时错误。</p>
+<h4 id="多重返回值函数"><a href="#多重返回值函数" class="headerlink" title="多重返回值函数"></a>多重返回值函数</h4><p>你可以用元组（tuple）类型让多个值作为一个复合值从函数中返回。<br>下例中定义了一个名为 minMax(array:) 的函数，作用是在一个 Int 类型的数组中找出最小值与最大值。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">func minMax(array: [Int]) -&gt; (min: Int, max: Int)&#123;</div><div class="line">    var currentMin = array[0]</div><div class="line">    var currentMax = array[0]</div><div class="line">    for value in array[1..&lt;array.count] &#123;</div><div class="line">        if value &lt; currentMin &#123;</div><div class="line">            currentMin = value</div><div class="line">        &#125;else if value &gt; currentMax&#123;</div><div class="line">            currentMax = value</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    return (currentMin, currentMax)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>因为元组的成员值已被命名，因此可以通过 . 语法来检索找到最小值与最大值：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">let bounds = minMax(array: [10,30,2,45,23])</div><div class="line">print(&quot;min is \(bounds.min) max is \(bounds.max)&quot;)</div><div class="line">//输出 min is 2 max is 45</div></pre></td></tr></table></figure>
+<p>需要注意的是，元组的成员不需要在元组从函数中返回时命名，因为它们的名字已经在函数返回类型中指定了。</p>
+<h4 id="可选元组返回类型"><a href="#可选元组返回类型" class="headerlink" title="可选元组返回类型"></a>可选元组返回类型</h4><p>如果函数返回的元组类型有可能整个元组都“没有值”，你可以使用可选的（optional）元组返回类型反映整个元组可以是nil的事实。你可以通过在元组类型的右括号后放置一个问号来定义一个可选元组，例如(Int， Int)? 或 (String, Int, Bool)?<br>注意 可选元组类型如 (Int, Int)? 与元组包含可选类型如 (Int?, Int?) 是不同的，可选的元组类型，整个元组是可选的，而不只是元组中的每个元素值。<br>前面的 minMax(array:) 函数返回了一个包含两个 Int 值的元组。但是函数不会对传入的数组执行任何安全检查，如果 array 参数是一个空数组，如上定义的 minMax(array:) 在试图访问 array[0] 时会触发一个运行时错误。<br>为了安全地处理这个空数组问题，将 minMax(array:) 函数改写为使用可选元组返回类型，并且当数组为空时返回 nil：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">func minMax(array: [Int]) -&gt; (min: Int, max: Int)?&#123;</div><div class="line">    if array.isEmpty &#123;</div><div class="line">        return nil</div><div class="line">    &#125;</div><div class="line">    var currentMin = array[0]</div><div class="line">    var currentMax = array[0]</div><div class="line">    for value in array[1..&lt;array.count] &#123;</div><div class="line">        if value &lt; currentMin &#123;</div><div class="line">            currentMin = value</div><div class="line">        &#125;else if value &gt; currentMax&#123;</div><div class="line">            currentMax = value</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    return (currentMin, currentMax)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>你可以使用可选绑定来检查 minMax(array:) 函数返回的是一个存在的元组值还是 nil：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">if let bounds = minMax(array: [10,30,2,45,23]) &#123;</div><div class="line">    print(&quot;min is \(bounds.min) max is \(bounds.max)&quot;)</div><div class="line">    //输出 min is 2 max is 45</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="函数参数标签和参数名称"><a href="#函数参数标签和参数名称" class="headerlink" title="函数参数标签和参数名称"></a>函数参数标签和参数名称</h3><p>每个函数参数都有一个参数标签以及一个参数名称。参数标签在调用函数的时候使用；调用的时候需要将函数的参数标签写在对应的参数前面。参数名称在函数的实现中使用。默认情况下，函数参数使用参数名称来作为他们的参数标签。<br>所有的参数都必须有一个独一无二的名字。虽然多个参数拥有同样的参数标签是可能的，但是一个唯一的函数标签能够使你的代码更具可读性。</p>
+<h4 id="指定参数标签"><a href="#指定参数标签" class="headerlink" title="指定参数标签"></a>指定参数标签</h4><p>你可以在函数名称前指定它的参数标签，中间以空格分隔：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">func someFunction(argumentLabel parameterName: Int)&#123;</div><div class="line">    //在函数体内，parameterName 代表参数值</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这个版本的 greet(person:) 函数，接收一个人的名字和他的家乡，并返回一句问候：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">func greet(person: String, from hometown: String) -&gt; String&#123;</div><div class="line">    return &quot;Hello \(person)! Glad you could visit from \(hometown)&quot;</div><div class="line">&#125;</div><div class="line">print(greet(person: &quot;Bill&quot;, from: &quot;China&quot;))</div><div class="line">// 输出 Hello Bill! Glad you could visit from China</div></pre></td></tr></table></figure>
+<p>参数标签的使用能够让一个函数在调用时更有表达力，更类似自然语言，并且仍保持了函数内部的可读性以及清晰的意图。</p>
+<h4 id="忽略参数标签"><a href="#忽略参数标签" class="headerlink" title="忽略参数标签"></a>忽略参数标签</h4><p>如果你不希望为某个参数添加一个标签，可以使用一个下划线（_）来代替一个明确的参数标签。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">func someFunction(_ firstPName: Int, secondPName: Int)&#123;</div><div class="line">    //在函数体内，firstPName和secondPName代表参数中的第一个和第二个参数值</div><div class="line">&#125;</div><div class="line">someFunction(1, secondPName: 2);</div></pre></td></tr></table></figure>
+<p>如果一个参数有一个标签，那么在调用的时候必须使用标签来标记这个参数。</p>
+<h4 id="默认参数值"><a href="#默认参数值" class="headerlink" title="默认参数值"></a>默认参数值</h4><p>你可以再函数体中通过给参数赋值来为任意一个参数定义默认值。当默认值被定义后，调用这个函数时可以忽略这个参数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">func someFunction(parameterWithoutDefault: Int, parameterWithDefault: Int = 12)&#123;</div><div class="line">    //如果你在调用时候不传第二个参数，parameterWithDefault 默认值为12会传入到函数体中。</div><div class="line">&#125;</div><div class="line">someFunction(parameterWithoutDefault: 4);   //parameterWithDefault = 12</div><div class="line">someFunction(parameterWithoutDefault: 3, parameterWithDefault: 6); //parameterWithDefault = 6</div></pre></td></tr></table></figure>
+<p>将不带有默认值的参数放在函数参数列表的最前。一般来说，没有默认值的参数更加重要，将不带默认值的参数放在最前保证在函数调用时，非默认参数的顺序是一致的，同时也使得相同的函数在不同情况下调用时显得更为清晰。</p>
+<h4 id="可变参数"><a href="#可变参数" class="headerlink" title="可变参数"></a>可变参数</h4><p>一个可变参数可以接受零个或多个值。函数调用时，你可以用可变参数来指定函数参数可以被传入不确定数量的输入值。通过在变量类型后面加入（…）的方式来定义可变参数。<br>可变参数的传入值在函数体中变为此类型的一个数组。例如，一个叫做 numbers 的 Double…型可变参数，在函数体内可以当做一个叫 numbers 的 [Double] 型的数组常量。<br>下面的这个函数用来计算一组任意长度数字的 算术平均值：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">func arithmeticMean(_ numbers: Double...) -&gt; Double &#123;</div><div class="line">    var total: Double = 0</div><div class="line">    for number in numbers &#123;</div><div class="line">        total += number</div><div class="line">    &#125;</div><div class="line">    return total/Double(numbers.count)</div><div class="line">    </div><div class="line">&#125;</div><div class="line">arithmeticMean(1,3,4,2,5,6)</div><div class="line">// 返回 3.5 是这6个数的平均数</div></pre></td></tr></table></figure>
+<p><strong>注意：一个函数最多只能拥有一个可变参数。</strong></p>
+<h4 id="输入输出参数"><a href="#输入输出参数" class="headerlink" title="输入输出参数"></a>输入输出参数</h4><p>函数参数默认是常量。试图在函数体中更改参数值将会导致编译错误。这意味着你不能错误的更改参数值。如果你想要一个函数可以修改参数的值，并且想要在这些修改在函数调用结束后仍然存在，那么就应该把这个参数定义为输入输出参数。<br>定义一个输入输出参数时，在参数定义前加 inout 关键字。一个 输入输出参数 有传入函数的值，这个值被函数修改，然后被传出函数，替换原来的值。<br>你只能传递变量给输入输出参数。你不能传入常量或者字面量，因为这些量是不能被修改的。当传入的参数作为输入输出参数时，需要在参数名前加 <code>&amp;</code> 符，表示这个值可以被函数修改。<br><strong>注意：输入输出参数不能有默认值，而且可变参数不能用 inout 标记。</strong><br>下例中，<code>swapTwoInts(_:_:)</code> 函数有两个分别叫做 a 和 b 的输入输出参数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">func swapTwoInts(_ a: inout Int, _ b: inout Int) &#123;</div><div class="line">    let temporaryA = a</div><div class="line">    a = b</div><div class="line">    b = temporaryA</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>swapTwoInts(_:_:)</code>函数简单的交换 a 和 b 的值。该函数先将 a 的值存到一个临时常量 temporaryA 中，然后将 b 的值赋给 a ，最后将 temporaryA 赋值给 b。<br>你可以用两个 Int 型的变量来调用 <code>swapTwoInts(_:_:)</code> 。需要注意的是，someInt 和 anotherInt 在传入 <code>swapTwoInts(_:_:)</code> 函数前，都加了 <code>&amp;</code> 的前缀:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var someInt = 3</div><div class="line">var anotherInt = 107</div><div class="line">swapTwoInts(&amp;someInt, &amp;anotherInt)</div><div class="line">print(&quot;someInt is now \(someInt), and anotherInt is now \(anotherInt)&quot;)</div><div class="line">// 输出 someInt is now 107, and anotherInt is now 3</div></pre></td></tr></table></figure>
+<p><strong>注意：输入输出参数和返回值是不一样的。上面的swapTwoInts函数并没有定义任何返回值，但仍然修改了 someInt 和 anotherInt的值。输入输出参数是函数对函数体外产生影响的另一种方式。</strong></p>
+<h3 id="函数类型"><a href="#函数类型" class="headerlink" title="函数类型"></a>函数类型</h3><p>每个函数都有种特定的函数类型，函数的类型由函数的参数类型和返回类型组成。<br>例如：</p>
+<p>每个函数都有种特定的函数类型，函数的类型由函数的参数类型和返回类型组成。<br>例如:</p>
+<pre><code>func addTwoInts(_ a: Int, _ b: Int) -&gt; Int {
+    return a + b
+}
+func multiplyTwoInts(_ a: Int, _ b: Int) -&gt; Int {
+return a * b }
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">这个例子中定义了两个简单的数学函数:``addTwoInts`` 和``multiplyTwoInts``。这两个函数都接受两个 ``Int``` 值， 返回一个 ``Int`` 值。这两个函数的类型是 ``(Int, Int) -&gt; Int`` ，可以解读为“这个函数类型有两个 Int 型的参数并返回一个 Int 型的值。”。下面是另一个例子，一个没有参数，也没有返回值的函数:func printHelloWorld() &#123;    print(&quot;hello, world&quot;)&#125;这个函数的类型是: ``() -&gt; Void`` ，或者叫“没有参数，并返回 Void 类型的函数”。</div><div class="line"></div><div class="line">#### 使用函数类型</div><div class="line"></div><div class="line">在 Swift 中，使用函数类型就像使用其他类型一样。例如，你可以定义一个类型为函数的常量或变量，并将适当的函数赋值给它:</div></pre></td></tr></table></figure>
 
+var mathFunction: (Int, Int)-&gt; Int = addTwoInts
+print(&quot;Result \(mathFunction(2, 3))&quot;)
+// 输出 Result 5
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">有相同匹配类型的不同函数可以被赋值给同一个变量，就像非函数类型的变量一样：</div></pre></td></tr></table></figure>
+
+mathFunction = multiplyTwoInts
+print(&quot;Result \(mathFunction(2, 3))&quot;)
+// 输出 Result 6
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">就像其他类型一样，当赋值一个函数给常量或变量时，你可以让Swift来推断其函数类型：</div></pre></td></tr></table></figure>
+
+let anotherMathFunction = addTwoInts
+// anotherMathFunction被推断为 (Int, Int)-&gt; Int 类型
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">#### 函数类型作为参数类型</div><div class="line"></div><div class="line">你可以用 ``(Int, Int)-&gt; Int`` 这样的函数类型作为另一个函数的参数类型。这样你可以将函数的一部分实现留给函数的调用者来提供。</div><div class="line">下面是另一个例子，正如上面的函数一样，同样是输出某种数学运算结果：</div></pre></td></tr></table></figure>
+
+func printMathResult(_ mathFunction: (Int, Int)-&gt; Int ,_ a: Int, _ b: Int){
+    print(&quot;Result \(mathFunction(a, b))&quot;)
+}
+
+printMathResult(addTwoInts, 3, 4)
+//输出 Result 7
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">这个例子定义了 ``printMathResult(_:_:_:)`` 函数，它有三个参数：第一个参数叫 mathFunction，类型是 ``(Int, Int) -&gt; Int``，你可以传入任何这种类型的函数；第二个和第三个参数叫 a 和 b ，它们的类型都是 Int ，这两个值作为已给出的函数的输入值。</div><div class="line">``printMathResult(_:_:_:)`` 函数的作用就是输出另一个适当类型的数学函数的调用结果。他不关心传入函数是如何实现的，只关心传入的函数是不是一个正确的类型。这使得 ``printMathResult(_:_:_:)`` 能以一种类型安全的方式将一部分功能转给调用者实现。</div><div class="line"></div><div class="line">#### 函数类型作为返回类型</div><div class="line"></div><div class="line">你可以用函数类型作为另一个函数的返回类型。你需要做的是在返回箭头后写一个完整的函数类型。</div><div class="line">下面的这个例子中定义了两个简单函数，分别是 ``stepForward(_:)`` 和 ``stepBackward(_:)`` 。 ``stepForward(_:)`` 函数返回一个比输入值大 1 的值。``stepBackward(_:)`` 函数返回一个比输入值小 1 的值。这两个函数的类型都是 ``(Int) -&gt; Int`` :</div></pre></td></tr></table></figure>
+
+func stepForward(_ input: Int) -&gt; Int {
+    return input + 1
+}
+func stepBackward(_ input: Int) -&gt; Int {
+    return input - 1
+}
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">如下名为 ``chooseStepFunction(backward:)`` 的函数，它的返回类型是 ``(Int) -&gt; Int`` 类型的函数。 ``chooseStepFunction(backward:)`` 根据布尔值 ``backwards`` 来返回 ``stepForward(_:)`` 函数或 ``stepBackward(_:)`` 函数:</div></pre></td></tr></table></figure>
+
+func chooseStepFunction(backward: Bool) -&gt; (Int) -&gt; Int {
+    return backward ? stepBackward : stepForward
+}
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">你现在可以用 ``chooseStepFunction(backward:)`` 来获得两个函数其中的一个:</div></pre></td></tr></table></figure>
+
+var currentValue = 3
+let moveNearerToZero = chooseStepFunction(backward: currentValue &gt; 0)
+// moveNearerToZero 现在指向 stepBackward() 函数。
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">上面这个例子中计算出从 ``currentValue`` 逐渐接近到0是需要向正数走还是向负数走。``currentValue`` 的初始值是 3 ，这意味着 ``currentValue &gt; 0`` 为真(true)，这将使得 ``chooseStepFunction(_:)`` 返回 ``stepBackward(_:)`` 函数。一个指向返回的函数的引用保存在了 ``moveNearerToZero`` 常量中。现在， ``moveNearerToZero`` 指向了正确的函数，它可以被用来数到零:</div></pre></td></tr></table></figure>
+
+while currentValue != 0 {
+    print(&quot;\(currentValue)...&quot;)
+    currentValue = moveNearerToZero(currentValue)
+}
+//输出
+//3...
+//2...
+//1...
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line">### 嵌套函数</div><div class="line"></div><div class="line">到目前为止本章中你所见到的所有函数都叫做全局函数，他们定义在全局域中。你也可以把函数定义在别的函数体中，称作 嵌套函数。</div><div class="line">默认情况下，嵌套函数是对外界不可见的，但是可以被它们的外围函数(enclosing function)调用。一个外围函数也可以返回它的某一个嵌套函数，使得这个函数可以在其他域中被使用。</div><div class="line">你可以用返回嵌套函数的方式重写 ``chooseStepFunction(backward:)`` 函数:</div></pre></td></tr></table></figure>
+
+func chooseStepFunction(backward: Bool) -&gt; (Int) -&gt; Int {
+    func stepForward(input: Int) -&gt; Int { return input + 1 }
+    func stepBackward(input: Int) -&gt; Int { return input - 1 }
+
+    return backward ? stepBackward : stepForward
+}
+
+var currentValue = -4
+let moveNearerToZero = chooseStepFunction(backward: currentValue &gt; 0)
+while currentValue != 0 {
+    print(&quot;\(currentValue)...&quot;)
+    currentValue = moveNearerToZero(currentValue)
+}
+print(&quot;Zero&quot;)
+// -4...
+// -3...
+// -2...
+// -1...
+// zero!
+</code></pre>
       
 
       
@@ -249,7 +354,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">UIWindow</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Swift</a>
         		</li>
       		
 		</ul>
@@ -305,7 +410,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/06/06/UIWindow/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/10/25/SwiftIntroduceEighth/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -319,18 +424,18 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2017/06/01/mailAndMessage/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/08/16/SwiftIntroduceSeventh/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          iOS开发-发送邮件及短信
+          Swift学习之路--Swift基础(七)
         
       </div>
     </a>
   
   
-    <a href="/2017/06/07/DownloadFont/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">iOS 动态下载系统提供的多种中文字体</div>
+    <a href="/2017/11/07/SwiftIntroduceNighth/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Swift学习之路--Swift基础(九)</div>
       <i class="icon-circle-right"></i>
     </a>
   

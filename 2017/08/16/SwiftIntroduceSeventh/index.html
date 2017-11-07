@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/08/16/SwiftIntroduceSeventh/index.html">
 <meta property="og:site_name" content="LWT'sBlog">
 <meta property="og:description" content="作者刘文涛转载请注明出处 控制流(Control Flow)Swift 提供了多种流程控制结构，包括可以多次执行任务的 while 循环，基于特定条件选择执行不同代码分支的 if，guard和switch语句，还有控制流程跳转到其他代码位置的break和continue语句。Swift还提供了 for-in 循环，用来更简单地遍历数组，字典，区间（range），字符串和其他序列类型。Swift 的">
-<meta property="og:updated_time" content="2017-10-20T07:25:35.000Z">
+<meta property="og:updated_time" content="2017-10-25T07:37:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift学习之路--Swift基础(七)">
 <meta name="twitter:description" content="作者刘文涛转载请注明出处 控制流(Control Flow)Swift 提供了多种流程控制结构，包括可以多次执行任务的 while 循环，基于特定条件选择执行不同代码分支的 if，guard和switch语句，还有控制流程跳转到其他代码位置的break和continue语句。Swift还提供了 for-in 循环，用来更简单地遍历数组，字典，区间（range），字符串和其他序列类型。Swift 的">
@@ -207,6 +207,15 @@ var _hmt = _hmt || [];
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">let yetAnotherPoint = (1, -1)</div><div class="line">switch yetAnotherPoint &#123;</div><div class="line">case let (x, y) where x == y:</div><div class="line">    print(&quot;(\(x), \(y)) is on the line x == y&quot;)</div><div class="line">case let (x, y) where x == -y :</div><div class="line">    print(&quot;(\(x), \(y)) is on the line x == -y&quot;)</div><div class="line">case let (x, y):</div><div class="line">    print(&quot;(\(x), \(y)) is just some arbitrary point&quot;)</div><div class="line">&#125;</div><div class="line">// 输出 &quot;(1, -1) is on the line x == -y&quot;</div></pre></td></tr></table></figure>
 <p>这三个 case 都声明了常量 x 和 y 的占位符，用于临时获取元组 yetAnotherPoint 的两个值。这两个常量被用作 where 语句的一部分，从而创建一个动态的过滤器(filter)。当且仅当 where 语句的条件为 true 时，匹配到的case 分支才会被执行。<br>就像是值绑定中的例子，由于最后一个 case 分支匹配了余下所有可能的值， switch 语句就已经完备了，因此不需要再书写默认分支。</p>
 <h3 id="控制转移语句"><a href="#控制转移语句" class="headerlink" title="控制转移语句"></a>控制转移语句</h3><p>控制转移语句改变你代码的执行顺序，通过它可以实现代码的跳转。Swift 有五种控制转移语句：<br>• continue<br>• break<br>• fallthrough<br>• return<br>• throw</p>
+<p>continue 语句告诉一个循环体立刻停止本次循环，重新开始下次循环。就好像在说“本次循环我已经执行完了”，但是不会离开整个循环体。<br>下面的例子把一个小写字符串中的元音字母和空格字符移除，生成一个含义模糊的短句：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">let puzzleInput = &quot;great minds think alike&quot;</div><div class="line">var puzzleOutput = &quot;&quot;</div><div class="line">for character in puzzleInput.characters &#123;</div><div class="line">    switch character &#123;</div><div class="line">    case &quot;a&quot;,&quot;e&quot;,&quot;i&quot;,&quot;o&quot;,&quot;u&quot;,&quot; &quot;:</div><div class="line">        continue</div><div class="line">    default:</div><div class="line">        puzzleOutput.append(character)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">print(puzzleOutput)</div><div class="line">//输出 grtmndsthnklk</div></pre></td></tr></table></figure>
+<p>在上面的代码中，只要匹配到元音字母或者空格字符，就调用continue语句，使本次循环结束，重新开始下次循环。</p>
+<p>break 语句会立刻结束整个控制流的执行。<br>当在一个循环体中使用 break 时，会立刻中断循环体的执行，然后跳到表示循环体结束的大括号后的第一行代码。不会再有本次循环的代码在执行，也不会有下次的循环产生。<br>当在一个switch代码块中使用break时，会立即中断该switch代码块的执行，并且跳到表示switch代码块结束的大括号后的第一行代码。<br>这种特性可以被用来匹配或者忽略一个或多个分支。因为 Swift 的 switch 需要包含所有的分支而且不允许有为空的分支，有时为了使你的意图更明显，需要特意匹配或者忽略某个分支。那么当你想忽略某个分支时，可以在该分支内写上 break 语句。当那个分支被匹配到时，分支内的 break 语句立即结束 switch 代码块。</p>
+<p>Swift中的switch不会从上一个case分支落入到下一个case分支中。相反，只要第一个匹配到的case分支完成了它需要执行的语句，整个switch代码块完成了它的执行。相比之下，C 语言要求你显式地插入 break 语句 到每个 case 分支的末尾来阻止自动落入到下一个 case 分支中。Swift 的这种避免默认落入到下一个分支中的特性意味着它的 switch 功能要比 C 语言的更加清晰和可预测，可以避免无意识地执行多个 case 分支从而引发的错误。<br>如果你确实需要C风格的贯穿特性，你可以再每个需要该特性的case分支中使用 fallthrough 关键字。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">let integerToDescribe = 5</div><div class="line">var description = &quot;The number \(integerToDescribe) is&quot;</div><div class="line">switch integerToDescribe &#123;</div><div class="line">case 2,3,5,7,13,19:</div><div class="line">    description += &quot; a prime number, and also&quot;</div><div class="line">    fallthrough</div><div class="line">default:</div><div class="line">    description += &quot; an integer.&quot;</div><div class="line">&#125;</div><div class="line">print(description)</div><div class="line">//输出 The number 5 is a prime number, and also an integer.</div></pre></td></tr></table></figure>
+<h3 id="提前退出"><a href="#提前退出" class="headerlink" title="提前退出"></a>提前退出</h3><p>像if语句一样，guard 的执行取决于一个表达式的布尔值。我们可以使用guard语句来要求条件必须为真时，以执行guard语句后的代码。不同于if语句，一个guard语句总是有一个else从句，如果条件不为真则执行else从句中的代码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">func greet(person:[String : String])&#123;</div><div class="line">    guard let name = person[&quot;name&quot;] else &#123;</div><div class="line">        return</div><div class="line">    &#125;</div><div class="line">    print(&quot;hello \(name)&quot;)</div><div class="line">    guard let location = person[&quot;location&quot;] else &#123;</div><div class="line">        print(&quot;I hope the weather is nice near you.&quot;)</div><div class="line">        return</div><div class="line">    &#125;</div><div class="line">    print(&quot;I hope the weather is nice in \(location).&quot;)</div><div class="line">&#125;</div><div class="line">greet(person: [&quot;name&quot;: &quot;Jhon&quot;])</div><div class="line">//输出 hello Jhon</div><div class="line">//输出 I hope the weather is nice near you.</div><div class="line">greet(person: [&quot;name&quot;: &quot;Jane&quot;,&quot;location&quot;: &quot;Cupertino&quot;])</div><div class="line">//输出 hello Jane</div><div class="line">//输出 I hope the weather is nice in Cupertino.</div></pre></td></tr></table></figure>
+<p>相比于可以实现同样功能的if语句，按需要使用guard语句会提升我们代码的可读性。它可以使你的代码连贯的被执行而不需要将它包在 else 块中，它可以使你在紧邻条件判断的地方，处理违规的情况。</p>
 
       
 
@@ -326,6 +335,11 @@ var _hmt = _hmt || [];
     </a>
   
   
+    <a href="/2017/10/25/SwiftIntroduceEighth/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Swift学习之路--Swift基础(八)</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
 </nav>
 
 
@@ -434,11 +448,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Swift</a>
+                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
+                <a href="javascript:void(0)" class="js-tag color2">NSOperation</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Swift</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -450,7 +468,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">NSOperation</a>
+                <a href="javascript:void(0)" class="js-tag color4">UIWindow</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -459,14 +477,6 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">UILabel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">UIWindow</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">MessageUI</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -479,6 +489,10 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">动态布局</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">MessageUI</a>
               </li>
              
               <li class="article-tag-list-item">
