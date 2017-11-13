@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/11/07/SwiftIntroduceNighth/index.html">
 <meta property="og:site_name" content="LWT'sBlog">
 <meta property="og:description" content="作者刘文涛转载请注明出处 闭包(Closures)闭包是自包含的函数代码块，可以在代码中被传递和使用。Swift 中的闭包与 C 和 Objective-C 中的代码块（block）以及其他一些编程语言中的匿名函数比较相似。闭包可以捕获和存储其所在上下文中任意常量和变量的引用。被称为包裹常量和变量。Swift会为你管理在捕获过程中涉及到的所有内存操作。">
-<meta property="og:updated_time" content="2017-11-07T02:53:24.000Z">
+<meta property="og:updated_time" content="2017-11-13T08:58:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift学习之路--Swift基础(九)">
 <meta name="twitter:description" content="作者刘文涛转载请注明出处 闭包(Closures)闭包是自包含的函数代码块，可以在代码中被传递和使用。Swift 中的闭包与 C 和 Objective-C 中的代码块（block）以及其他一些编程语言中的匿名函数比较相似。闭包可以捕获和存储其所在上下文中任意常量和变量的引用。被称为包裹常量和变量。Swift会为你管理在捕获过程中涉及到的所有内存操作。">
@@ -194,7 +194,47 @@ var _hmt = _hmt || [];
         <p>作者<a href="https://liuwentao1314.github.io" target="_blank" rel="external">刘文涛</a><br>转载请注明出处</p>
 <h2 id="闭包-Closures"><a href="#闭包-Closures" class="headerlink" title="闭包(Closures)"></a>闭包(Closures)</h2><p>闭包是自包含的函数代码块，可以在代码中被传递和使用。Swift 中的闭包与 C 和 Objective-C 中的代码块（block）以及其他一些编程语言中的匿名函数比较相似。<br>闭包可以捕获和存储其所在上下文中任意常量和变量的引用。被称为包裹常量和变量。Swift会为你管理在捕获过程中涉及到的所有内存操作。</p>
 <a id="more"></a>
-<p>在函数章节中介绍的全局和嵌套函数实际上也是特殊的闭包，闭包采取如下三种形式之一：<br>• 全局函数是一个有名字但不会捕获任何值的闭包<br>• 嵌套函数是一个有名字并可以捕获其封闭函数域内值的闭包<br>• 闭包表达式是一个利用轻量级语法所写的可以捕获其上下文中变量或常量值的匿名闭包</p>
+<p>在函数章节中介绍的全局和嵌套函数实际上也是特殊的闭包，闭包采取如下三种形式之一：<br>• 全局函数是一个有名字但不会捕获任何值的闭包<br>• 嵌套函数是一个有名字并可以捕获其封闭函数域内值的闭包<br>• 闭包表达式是一个利用轻量级语法所写的可以捕获其上下文中变量或常量值的匿名闭包<br>Swift 的闭包表达式拥有简洁的风格，并鼓励在常见场景中进行语法优化，主要优化如下：<br>• 利用上下文推断参数和返回值类型<br>• 隐式返回单表达式闭包，即单表达式闭包可以忽略 return 关键字<br>• 参数名称缩写<br>• 尾随闭包语法</p>
+<h3 id="闭包表达式"><a href="#闭包表达式" class="headerlink" title="闭包表达式"></a>闭包表达式</h3><p>闭包表达式是一种利用简洁语法构建内联闭包的方式。闭包表达式提供了一些语法优化，使得撰写闭包变得简单明了。下面闭包表达式的例子通过使用几次迭代展示了 <code>sorted(by:)</code> 方法定义和语法优化的方式。每一次迭代都用更简洁的方式描述了相同的功能。</p>
+<p>sorted 方法</p>
+<p>Swift 标准库提供了名为 <code>sorted(by:)</code> 的方法，它会根据你所提供的用于排序的闭包函数将已知类型数组中的值进行排序。一旦排序完成， <code>sorted(by:)</code> 方法会返回一个与原数组大小相同，包含同类型元素且元素已正确排序的新数组。原数组不会被 <code>sorted(by:)</code> 方法修改。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">let counts = [12,3,4,56,6]</div><div class="line">func backward(_ s1: Int, _ s2: Int) -&gt; Bool &#123;</div><div class="line">    return s1 &gt; s2</div><div class="line">&#125;</div><div class="line">var reversedCounts = counts.sorted(by: backward)</div><div class="line">// reversedCounts 为 [56, 12, 6, 4, 3]</div></pre></td></tr></table></figure>
+<p>然而，以这种方式来编写一个实际上很简单的表达式 （a&gt;b），确实太过繁琐了。对于这个例子来说，利用闭包表达式语法可以更好的构造一个内联排序闭包。</p>
+<h4 id="闭包表达式语法"><a href="#闭包表达式语法" class="headerlink" title="闭包表达式语法"></a>闭包表达式语法</h4><p>闭包表达式语法有如下的一般形式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;(parameters) -&gt; returnType in</div><div class="line">	statements</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>闭包表达式参数 可以是 in-out 参数，但不能设定默认值。也可以使用具名的可变参数。元组也可以作为参数和返回值。<br>下面的例子展示了之前 <code>backward(_:_:)</code> 函数对应的闭包表达式版本的代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var reversedCounts = counts.sorted(by: &#123; (s1: Int, s2: Int) -&gt; Bool in</div><div class="line">    return s1 &gt; s2</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>需要注意的是内联闭包参数和返回值类型声明与 <code>backward(_:_:)</code> 函数类型声明相同。在这两种方式中，都写成了 <code>(s1: Int, s2: Int) -&gt; Bool</code> 。然而在内联闭包表达式中，函数和返回值类型都写在大括号内，而不是大括号外。<br>闭包的函数体部分由关键字 <code>in</code> 引入。该关键字表示闭包的参数和返回值类型定义已经完成，闭包函数体即将开始。<br>由于这个闭包的函数体部分如此短，以至于可以将其改写成一行代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var reversedCounts = counts.sorted(by: &#123; (s1: Int, s2: Int) -&gt; Bool in return s1 &gt; s2 &#125;)</div></pre></td></tr></table></figure>
+<p>该例中 <code>sorted(by:)</code> 方法的整体调用保持不变，一对圆括号仍然包裹住了方法的整个参数。然而，参数现在变成了内联闭包。</p>
+<h4 id="根据上下文推断类型"><a href="#根据上下文推断类型" class="headerlink" title="根据上下文推断类型"></a>根据上下文推断类型</h4><p>因为排序闭包函数是作为 <code>sorted(by:)</code> 方法的参数传入的，Swift可推断其参数和返回值类型。 <code>sorted(by:)</code> 方法被一个Int数组调用，因此其参数必须是 <code>( Int, Int) -&gt; Bool</code> 类型的函数。这意味着 <code>( Int, Int)</code> 和 Bool 类型并不需要作为闭包表达式定义的一部分，因为所有的类型都可以被正确推断，返回箭头 和围绕在参数周围的括号也可以被省略：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">reversedCounts = counts.sorted(by: &#123; s1, s2 in return s1 &gt; s2 &#125;)</div></pre></td></tr></table></figure>
+<p>实际上，通过内联闭包表达式构造的闭包作为参数传递给函数或方法时，总是能够推断出闭包的参数和返回值类型。这意味着闭包作为函数或者方法的参数时，你几乎不需要利用完整格式构造内联闭包。<br>尽管如此，你仍然可以明确写出有着完整格式的闭包。如果完整格式的闭包能够提高代码的可读性，则我们更鼓励采用完整格式的闭包。而在 <code>sorted(by:)</code> 方法这个例子里，显然闭包的目的就是排序。由于这个闭包是为了处理字符串数组的排序，因此读者能够推测出这个闭包是用于字符串处理的。</p>
+<h4 id="单表达式闭包隐式返回"><a href="#单表达式闭包隐式返回" class="headerlink" title="单表达式闭包隐式返回"></a>单表达式闭包隐式返回</h4><p>单行表达式闭包可以通过省略 <code>return</code> 关键字来隐式返回单行表达式的结果，如上版本的例子可以改写为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">reversedCounts = counts.sorted(by: &#123; s1, s2 in s1 &gt; s2 &#125;)</div></pre></td></tr></table></figure>
+<p>在这个例子中， <code>sorted(by:)</code> 方法的参数类型明确了闭包必须返回一个 <code>Bool</code> 类型值。因为闭包函数体只包含了一个单一表达式 （s1 &gt; s2），该表达式返回 Bool 类型值，因此这里没有歧义，return 关键字可以省略。</p>
+<h4 id="参数名称缩写"><a href="#参数名称缩写" class="headerlink" title="参数名称缩写"></a>参数名称缩写</h4><p>Swift 自动为内联闭包提供了参数名称缩写功能，你可以直接通过 <code>$0</code> , <code>$1</code>, <code>$2</code> 来顺序调用闭包的参数，以此类推。<br>如果你在闭包表达式中使用参数名称缩写，你可以在闭包定义中省略参数列表，并且对应参数名称缩写的类型会通过函数类型进行推断。 <code>in</code> 关键字也同样可以被省略，因为此时闭包表达式完全由闭包函数体构成：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">reversedCounts = counts.sorted(by: &#123; $0 &gt; $1 &#125;)</div></pre></td></tr></table></figure>
+<p>在这个例子中，<code>$0</code> , <code>$1</code>表示闭包中第一个和第二个 Int 类型的参数。</p>
+<h4 id="运算符方法"><a href="#运算符方法" class="headerlink" title="运算符方法"></a>运算符方法</h4><p>实际上还有一种更简短的方式来编写上面例子中的闭包表达式。你可以简单地传递一个大于号，Swift 可以自动推断出 你想使用大于号的Int函数实现:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">reversedCounts = counts.sorted(by: &gt;)</div></pre></td></tr></table></figure>
+<h3 id="值捕获"><a href="#值捕获" class="headerlink" title="值捕获"></a>值捕获</h3><p>闭包可以在其被定义的上下文中捕获常量或变量。即使定义这些常量和变量的原作用域已经不存在，闭包仍然可以在闭包函数体内引用和修改这些值。<br>Swift中，可以捕获值的闭包的最简单形式是嵌套函数，也就是定义在其他函数的函数体内的函数。嵌套函数可以捕获其外部函数所有的参数以及定义的常量和变量。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">func makeIncrementor(forIncrement amount: Int) -&gt; () -&gt; Int &#123;</div><div class="line">    var runningTotal = 0</div><div class="line">    func incrementer() -&gt; Int &#123;</div><div class="line">        runningTotal += amount</div><div class="line">        return runningTotal</div><div class="line">    &#125;</div><div class="line">    return incrementer</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>incrementer()</code> 函数并没有任何参数，但是在函数体内访问了 <code>runningTotal</code> 和 <code>amount</code> 变量。这是因为它从外围函数捕获了 <code>runningTotal</code> 和 <code>amount</code> 变量的引用。捕获引用保证了 <code>runningTotal</code> 和 <code>amount</code> 变量在调用完<code>makeIncrementer</code> 后不会消失，并且保证了在下一次执行 <code>incrementer</code> 函数时，<code>runningTotal</code> 依旧存在。</p>
+<p><strong>注意：<br>为了优化，如果一个值不会被闭包改变，或者在闭包创建后不会改变，Swift可能会改为捕获并保存一份对值的拷贝。Swift也会负责被捕获变量的所有内存管理工作，包括释放不在需要的变量。</strong></p>
+<p>下面是一个使用 makeIncrementor 的例子:<br>该例子定义了一个叫做 <code>incrementByTen</code> 的常量，该常量指向一个每次调用会将其 <code>runningTotal</code> 变量增加 10 的 <code>incrementor</code> 函数。调用这个函数多次可以得到以下结果:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">let incrementByTen = makeIncrementor(forIncrement: 10)</div><div class="line">incrementByTen()</div><div class="line">//返回值为10</div><div class="line">incrementByTen()</div><div class="line">//返回值为20</div></pre></td></tr></table></figure>
+<p>如果你创建了另一个 <code>incrementor</code>，它会有属于自己的引用，指向一个全新、独立的 <code>runningTotal</code> 变量：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">let incrementBySeven = makeIncrementor(forIncrement: 7);</div><div class="line">incrementBySeven()</div><div class="line">//返回值为7</div></pre></td></tr></table></figure>
+<p>再次调用原来的 <code>incrementByTen</code> 会继续增加它自己的<code>runningTotal</code> 变量，该变量和 <code>incrementBySeven</code> 中捕获的变量没有任何联系:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">incrementByTen()</div><div class="line">//返回值为30</div></pre></td></tr></table></figure>
+<p><strong>注意：<br>如果你将闭包赋值给一个类实例的属性，并且该闭包通过访问该实例或其成员而捕获了该实例，你将在闭包和该实例间创建一个循环强引用。Swift使用捕获列表来打破这种循环强引用。</strong></p>
+<h3 id="闭包是引用类型"><a href="#闭包是引用类型" class="headerlink" title="闭包是引用类型"></a>闭包是引用类型</h3><p>上面的例子中， <code>incrementByTen</code> 和 <code>incrementBySeven</code> 都是常量，但是这些常量指向的闭包仍然可以增加其捕获的变量的值。这是因为函数和闭包都是引用类型。<br>无论你将函数或闭包赋值给一个常量还是变量，你实际上都是将常量或变量的值设置为对应函数或闭包的引用。上面的例子中，指向闭包的引用 <code>incrementByTen</code> 是一个常量，而并非闭包内容本身。<br>这也意味着如果你将闭包赋值给了两个不同的常量或变量，两个值都会指向同一个闭包：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">let alsoIncrementByTen = incrementByTen</div><div class="line">alsoIncrementByTen()</div><div class="line">//返回值为40</div></pre></td></tr></table></figure>
+<h3 id="自动闭包"><a href="#自动闭包" class="headerlink" title="自动闭包"></a>自动闭包</h3><p>自动闭包是一种自动创建的闭包，用于包装传递给函数作为参数的表达式。这种闭包不接受任何参数，当它被调用的时候，会返回被包装在其中的表达式的值。这种便利语法让你能够省略闭包的花括号，用一个普通的表达式来代替显式的闭包。</p>
+<p>我们经常会调用采用自动闭包的函数，但是很少去实现这样的函数。<br>自动闭包让你能够延迟求值，因为直到你调用这个闭包，代码段才会被执行。延迟求值对于那些有副作用和高计算成本的代码来说是很有益处的，因为它使得你能控制代码的执行时机。下面的代码展示了闭包如何延时求值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">var customersInLine = [&quot;Chris&quot;, &quot;Alex&quot;, &quot;Ewa&quot;, &quot;Barry&quot;, &quot;Daniella&quot;]</div><div class="line">print(customersInLine.count)</div><div class="line">//打印 5</div><div class="line"></div><div class="line">let customerProvider = &#123;customersInLine.remove(at: 0)&#125;</div><div class="line">print(customersInLine.count)</div><div class="line">//打印 5</div><div class="line"></div><div class="line">print(&quot;Now serving \(customerProvider())&quot;)</div><div class="line">//打印 Now serving Chris</div><div class="line">print(customersInLine.count)</div><div class="line">//打印 4</div></pre></td></tr></table></figure>
+<p>尽管在闭包的代码中，<code>customersInLine</code> 的第一个元素被移除了，不过在闭包被调用之前，这个元素是不会被移除的。如果这个闭包永远不被调用，那么在闭包里面的表达式将永远不会执行，那意味着列表中的元素永远不会被移除。请注意 <code>customerProvider</code> 的类型不是 <code>String</code> ，而是 <code>() -&gt; String</code> ，一个没有参数且返回值为 <code>String</code> 的函数。</p>
 
       
 
@@ -414,15 +454,23 @@ var _hmt = _hmt || [];
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">GCD</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">NSThread</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">UIFont</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">下载字体</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -434,23 +482,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">NSThread</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">GCD</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">UIWindow</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ios</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">UILabel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">UIWindow</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -466,10 +506,6 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">MessageUI</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Xcode</a>
               </li>
              
@@ -479,6 +515,10 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">WebP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">MessageUI</a>
               </li>
             
             <div class="clearfix"></div>
