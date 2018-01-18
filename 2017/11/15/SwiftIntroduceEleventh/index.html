@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/11/15/SwiftIntroduceEleventh/index.html">
 <meta property="og:site_name" content="LWT'sBlog">
 <meta property="og:description" content="作者刘文涛转载请注明出处 类和结构体类和结构体是人们构建代码所用的一种通用且灵活的构造体。我们可以使用完全相同的语法规则来为类和结构体定义属性（常量、变量）和添加方法，从而扩展类和结构体的功能。与其他编程语言不同的是，Swift并不要求你为自定义类和结构去创建独立的接口和实现文件。你所需要做的是在一个单一文件中定义一个类或者结构体，系统将会自动生成面向其它代码的外部接口。 注意：通常一个类的实例被">
-<meta property="og:updated_time" content="2018-01-18T09:57:36.000Z">
+<meta property="og:updated_time" content="2018-01-18T10:03:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift学习之路--Swift基础(十一)">
 <meta name="twitter:description" content="作者刘文涛转载请注明出处 类和结构体类和结构体是人们构建代码所用的一种通用且灵活的构造体。我们可以使用完全相同的语法规则来为类和结构体定义属性（常量、变量）和添加方法，从而扩展类和结构体的功能。与其他编程语言不同的是，Swift并不要求你为自定义类和结构去创建独立的接口和实现文件。你所需要做的是在一个单一文件中定义一个类或者结构体，系统将会自动生成面向其它代码的外部接口。 注意：通常一个类的实例被">
@@ -228,7 +228,7 @@ var _hmt = _hmt || [];
 <p>请看下面这个示例，其使用了前一个示例中的 <code>Resolution</code> 结构体:</p>
 <pre><code>let hd = Resolution(width: 1920, height: 1080)
 var cinema = hd
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line">在以上示例中，声明了一个名为hd的常量，其值为一个初始化为全高清视频分辨率(1920 像素宽，1080 像 素高)的 ``Resolution`` 实例。</div><div class="line">然后示例中又声明了一个名为 ``cinema`` 的变量，并将 ``hd`` 赋值给它。因为 ``Resolution`` 是一个结构体，所以 ``cinema`` 的值其实是 ``hd`` 的一个拷贝副本，而不是 ``hd`` 本身。尽管 ``hd`` 和 ``cinema`` 有着相同的宽 ``(width)``和高 ``(height)`` ，但是在幕后它们是两个完全不同的实例。</div><div class="line"></div><div class="line">### 类是引用类型</div><div class="line"></div><div class="line">与值类型不同，引用类型在被赋予到一个变量、常量或者被传递到一个函数时，其值不会被拷贝。因此，引用的是已存在的实例本身而不是其拷贝。</div><div class="line"></div><div class="line">请看下面这个示例，其使用了之前定义的 ``VideoMode`` 类:</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">在以上示例中，声明了一个名为hd的常量，其值为一个初始化为全高清视频分辨率(1920 像素宽，1080 像 素高)的 ``Resolution`` 实例。</div><div class="line">然后示例中又声明了一个名为 ``cinema`` 的变量，并将 ``hd`` 赋值给它。因为 ``Resolution`` 是一个结构体，所以 ``cinema`` 的值其实是 ``hd`` 的一个拷贝副本，而不是 ``hd`` 本身。尽管 ``hd`` 和 ``cinema`` 有着相同的宽 ``(width)``和高 ``(height)`` ，但是在幕后它们是两个完全不同的实例。</div><div class="line"></div><div class="line">### 类是引用类型</div><div class="line"></div><div class="line">与值类型不同，引用类型在被赋予到一个变量、常量或者被传递到一个函数时，其值不会被拷贝。因此，引用的是已存在的实例本身而不是其拷贝。</div><div class="line"></div><div class="line">请看下面这个示例，其使用了之前定义的 ``VideoMode`` 类:</div></pre></td></tr></table></figure>
 
 let tenEighty = VideoMode()
 tenEighty.resolution = hd
@@ -239,7 +239,7 @@ tenEighty.frameRate = 25.0
 
 let alsoTenEighty = tenEighty
 alsoTenEighty.frameRate = 30.0
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">因为类是引用类型，所以 ``tenEight`` 和 ``alsoTenEight`` 实际上引用的是相同的 ``VideoMode`` 实例。换句话说，它们是同一个实例的两种叫法。</div><div class="line"></div><div class="line">通过查看 ``tenEighty`` 的 ``frameRate`` 属性，我们会发现它正确的显示了所引用的 ``VideoMode`` 实例的新帧率，其值为 ``30.0`` 。</div><div class="line"></div><div class="line">需要注意的是 ``tenEight`` 和 ``alsoTenEight`` 被声明为常量而不是变量。然而你依然可以改变 `` tenEighty.frameRate`` 和 ``alsoTenEighty.frameRate``,因为 ``tenEight`` 和 ``alsoTenEight`` 这两个常量的值并未改变。它们并不 “存储”这个 ``VideoMode`` 实例，而仅仅是对 ``VideoMode`` 实例的引用。所以，改变的是被引用的 ``VideoMode`` 的 ``frameRate`` 属性，而不是引用 ``VideoMode`` 的常量的值。</div><div class="line"></div><div class="line">#### 恒等运算符</div><div class="line"></div><div class="line">因为类是引用类型，有可能有多个常量和变量在幕后同时引用同一个类实例。(对于结构体和枚举来说，这并不成立。因为它们作为值类型，在被赋予到常量、变量或者传递到函数时，其值总是会被拷贝。)</div><div class="line"></div><div class="line">如果能够判定两个常量或者变量是否引用同一个类实例将会很有帮助。为了达到这个目的，Swift内建了两个恒等运算符：</div><div class="line">• 等价于 （===）</div><div class="line">• 不等价于 （!==）</div><div class="line"></div><div class="line">运用这两个运算符检测两个常量或者变量是否引用同一个实例：</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">因为类是引用类型，所以 ``tenEight`` 和 ``alsoTenEight`` 实际上引用的是相同的 ``VideoMode`` 实例。换句话说，它们是同一个实例的两种叫法。</div><div class="line"></div><div class="line">通过查看 ``tenEighty`` 的 ``frameRate`` 属性，我们会发现它正确的显示了所引用的 ``VideoMode`` 实例的新帧率，其值为 ``30.0`` 。</div><div class="line"></div><div class="line">需要注意的是 ``tenEight`` 和 ``alsoTenEight`` 被声明为常量而不是变量。然而你依然可以改变 `` tenEighty.frameRate`` 和 ``alsoTenEighty.frameRate``,因为 ``tenEight`` 和 ``alsoTenEight`` 这两个常量的值并未改变。它们并不 “存储”这个 ``VideoMode`` 实例，而仅仅是对 ``VideoMode`` 实例的引用。所以，改变的是被引用的 ``VideoMode`` 的 ``frameRate`` 属性，而不是引用 ``VideoMode`` 的常量的值。</div><div class="line"></div><div class="line">#### 恒等运算符</div><div class="line"></div><div class="line">因为类是引用类型，有可能有多个常量和变量在幕后同时引用同一个类实例。(对于结构体和枚举来说，这并不成立。因为它们作为值类型，在被赋予到常量、变量或者传递到函数时，其值总是会被拷贝。)</div><div class="line"></div><div class="line">如果能够判定两个常量或者变量是否引用同一个类实例将会很有帮助。为了达到这个目的，Swift内建了两个恒等运算符：</div><div class="line">• 等价于 （===）</div><div class="line">• 不等价于 （!==）</div><div class="line"></div><div class="line">运用这两个运算符检测两个常量或者变量是否引用同一个实例：</div></pre></td></tr></table></figure>
 
 if tenEighty === alsoTenEighty {
     print(&quot;tenEighty and alsoTenEighty refer to the same Resolution instance.&quot;)
@@ -472,14 +472,6 @@ if tenEighty === alsoTenEighty {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">UIFont</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">下载字体</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">多线程</a>
               </li>
              
@@ -488,7 +480,19 @@ if tenEighty === alsoTenEighty {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Swift</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">NSThread</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">UIFont</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">下载字体</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -496,19 +500,11 @@ if tenEighty === alsoTenEighty {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Swift</a>
+                <a href="javascript:void(0)" class="js-tag color4">UIWindow</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">MessageUI</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ios</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">UILabel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -536,7 +532,11 @@ if tenEighty === alsoTenEighty {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">UIWindow</a>
+                <a href="javascript:void(0)" class="js-tag color4">ios</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">UILabel</a>
               </li>
             
             <div class="clearfix"></div>
