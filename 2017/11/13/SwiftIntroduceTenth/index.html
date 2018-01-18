@@ -6,17 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2017/11 | LWT&#39;sBlog</title>
+  <title>Swift学习之路--Swift基础(十) | LWT&#39;sBlog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="对生活充满向往的iOS开发工程师">
-<meta property="og:type" content="website">
-<meta property="og:title" content="LWT'sBlog">
-<meta property="og:url" content="http://yoursite.com/archives/2017/11/index.html">
+  <meta name="description" content="作者刘文涛转载请注明出处 枚举(Enumerations)枚举为一组相关的值定义了一个共同的类型，使你可以在你的代码中以类型安全的方式来使用这些值。如果你熟悉 C 语言，你会知道在 C 语言中，枚举会为一组整型值分配相关联的名称。Swift 中的枚举更加灵活，不必给每一个枚举成员提供一个值。如果给枚举成员提供一个值(称为“原始”值)，则该值的类型可以是字符串，字符，或是一个整型值或浮点数。此外，枚">
+<meta name="keywords" content="Swift">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Swift学习之路--Swift基础(十)">
+<meta property="og:url" content="http://yoursite.com/2017/11/13/SwiftIntroduceTenth/index.html">
 <meta property="og:site_name" content="LWT'sBlog">
-<meta property="og:description" content="对生活充满向往的iOS开发工程师">
+<meta property="og:description" content="作者刘文涛转载请注明出处 枚举(Enumerations)枚举为一组相关的值定义了一个共同的类型，使你可以在你的代码中以类型安全的方式来使用这些值。如果你熟悉 C 语言，你会知道在 C 语言中，枚举会为一组整型值分配相关联的名称。Swift 中的枚举更加灵活，不必给每一个枚举成员提供一个值。如果给枚举成员提供一个值(称为“原始”值)，则该值的类型可以是字符串，字符，或是一个整型值或浮点数。此外，枚">
+<meta property="og:updated_time" content="2018-01-18T06:03:25.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LWT'sBlog">
-<meta name="twitter:description" content="对生活充满向往的iOS开发工程师">
+<meta name="twitter:title" content="Swift学习之路--Swift基础(十)">
+<meta name="twitter:description" content="作者刘文涛转载请注明出处 枚举(Enumerations)枚举为一组相关的值定义了一个共同的类型，使你可以在你的代码中以类型安全的方式来使用这些值。如果你熟悉 C 语言，你会知道在 C 语言中，枚举会为一组整型值分配相关联的名称。Swift 中的枚举更加灵活，不必给每一个枚举成员提供一个值。如果给枚举成员提供一个值(称为“原始”值)，则该值的类型可以是字符串，字符，或是一个整型值或浮点数。此外，枚">
   
     <link rel="alternative" href="/atom.xml" title="LWT&#39;sBlog" type="application/atom+xml">
   
@@ -169,36 +171,100 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-SwiftIntroduceTenth" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      Swift学习之路--Swift基础(十)
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/11/13/SwiftIntroduceTenth/" class="archive-article-date">
+
+        
+        <a href="/2017/11/13/SwiftIntroduceTenth/" class="archive-article-date">
   	<time datetime="2017-11-13T09:05:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-13</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/11/13/SwiftIntroduceTenth/">Swift学习之路--Swift基础(十)</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>作者<a href="https://liuwentao1314.github.io" target="_blank" rel="external">刘文涛</a><br>转载请注明出处</p>
+<h2 id="枚举-Enumerations"><a href="#枚举-Enumerations" class="headerlink" title="枚举(Enumerations)"></a>枚举(Enumerations)</h2><p>枚举为一组相关的值定义了一个共同的类型，使你可以在你的代码中以类型安全的方式来使用这些值。<br>如果你熟悉 C 语言，你会知道在 C 语言中，枚举会为一组整型值分配相关联的名称。Swift 中的枚举更加灵活，不必给每一个枚举成员提供一个值。如果给枚举成员提供一个值(称为“原始”值)，则该值的类型可以是字符串，字符，或是一个整型值或浮点数。<br>此外，枚举成员可以指定任意类型的关联值存储到枚举成员中，就像其他语言中的联合体(unions)和变体(variants)。你可以在一个枚举中定义一组相关的枚举成员，每一个枚举成员都可以有适当类型的关联值。<br>在 Swift 中，枚举类型是一等(first-class)类型。它们采用了很多在传统上只被类(class)所支持的特性，例如计算属性(computed properties)，用于提供枚举值的附加信息，实例方法(instance methods)，用于提供和枚举值相关联的功能。枚举也可以定义构造函数(initializers)来提供一个初始值;可以在原始实现的基础上扩展它们的功能;还可以遵循协议(protocols)来提供标准的功能。</p>
+<a id="more"></a>
+<h3 id="枚举语法"><a href="#枚举语法" class="headerlink" title="枚举语法"></a>枚举语法</h3><p>使用 <code>enum</code> 关键字来创建枚举并且把它们的整个定义放在一对大括号内：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">enum SomeEnumeration &#123;</div><div class="line">    //枚举定义放在这里</div><div class="line">&#125;</div><div class="line">enum CompassPoint &#123;</div><div class="line">    case north</div><div class="line">    case south</div><div class="line">    case east</div><div class="line">    case west</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>枚举中定义的值是这个枚举的成员值（或成员）。你可以使用 <code>case</code> 关键字来定义一个新的枚举成员值。<br><strong>注意：<br>与 C 和 OC 不同，Swift的枚举成员在被创建时不会被赋予一个默认的整型值。在上面的 CompassPoint 例子中，north，south，east 不会被隐式的赋值为0，1，2.相反，这些枚举成员本身就是完备的值，这些值的类型是已经明确定义好的 CompassPoint 类型。</strong><br>多个成员值可以出现在同一行上，用逗号隔开：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">enum Planet &#123;</div><div class="line">    case mercury,venus,earth,mars</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>每个枚举都定义了一个全新的类型 。像 Swift 中其他类型一样，它们的名字(例如 CompassPoint 和 Planet )应该以一个大写字母开头。给枚举类型起一个单数名字而不是复数名字，以便于读起来更加容易理解:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var directionToHead = CompassPoint.west</div></pre></td></tr></table></figure>
+<p><code>directionToHead</code> 的类型可以在它被 <code>CompassPoint</code> 的某个值初始化时推断出来。一旦 <code>directionToHead</code> 被声明为<code>CompassPoint</code> 类型，你可以使用更简短的点语法将其设置为另一个 <code>CompassPoint</code> 的值:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">directionToHead = .east</div></pre></td></tr></table></figure>
+<p>当 <code>directionToHead</code> 的类型已知时，再次为其赋值可以省略枚举类型名。在使用具有显式类型的枚举值时，这种写法让代码具有更好的可读性。</p>
+<h3 id="使用-Swift-语句匹配枚举值"><a href="#使用-Swift-语句匹配枚举值" class="headerlink" title="使用 Swift 语句匹配枚举值"></a>使用 Swift 语句匹配枚举值</h3><p>你可以使用 switch 语句匹配单个枚举值:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">directionToHead = .southswitch directionToHead &#123;    case .north:        print(&quot;Lots of planets have a north&quot;)    case .south:        print(&quot;Watch out for penguins&quot;)    case .east:        print(&quot;Where the sun rises&quot;)    case .west:        print(&quot;Where the skies are blue&quot;)&#125;// 打印 &quot;Watch out for penguins”</div></pre></td></tr></table></figure>
+<p>正如在控制流中介绍的那样，在判断一个枚举类型的值时，switch 语句必须穷举所有情况。如果忽略了.west这种情况，上面那段代码将无法通过编译，因为它没有考虑到<code>CompassPoint</code>的全部成员。强制穷举确保了枚举不会被意外遗漏。<br>当不需要匹配每个枚举成员的时候，你可以提供一个<code>default</code>分支来涵盖所有未明确处理的枚举成员：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">let somePlanet = Planet.earthswitch somePlanet &#123;case .earth:    print(&quot;Mostly harmless&quot;)default:    print(&quot;Not a safe place for humans&quot;)&#125;// 打印 &quot;Mostly harmless”</div></pre></td></tr></table></figure>
+<h3 id="关联值"><a href="#关联值" class="headerlink" title="关联值"></a>关联值</h3><p>上一小节的例子演示了如何定义和分类枚举的成员。你可以为<code>Planet.earth</code>设置一个常量或者变量，并在赋值之后查看这个值。然而，有时候能够把其他类型的关联值和成员值一起存储起来会很有用。这能让你连同成员值一起存储额外的自定义信息，并且你每次在代码中使用该枚举成员时，还可以修改这个关联值。<br>你可以定义Swift枚举来存储任意类型的关联值，如果需要的话，每个枚举成员的关联值类型可以各不相同。</p>
+<h3 id="原始值"><a href="#原始值" class="headerlink" title="原始值"></a>原始值</h3><p>作为关联值的替代选择，枚举成员可以被默认值（称为原始值）预填充，这些原始值的类型必须相同。<br>这是一个使用 ASCII 码作为原始值的枚举：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">enum ASCIIControlCharacter: Character &#123;</div><div class="line">    case tab = &quot;\t&quot;</div><div class="line">    case lineFeed = &quot;\n&quot;</div><div class="line">    case carriageReturn = &quot;\r&quot;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>枚举类型 <code>ASCIIControlCharacter</code> 的原始值类型被定义为 <code>Character</code>，并设置了一些比较常见的 ASCII 控制字符。<br>原始值可以是字符串，字符，或者任意整型值或浮点型值。每个原始值在枚举声明中必须是唯一的。</p>
+<p>注意<br>原始值和关联值是不同的。原始值是在定义枚举时被预先填充的值，像上述三个 ASCII 码。对于一个特定的枚举成员，它的原始值始终不变。关联值是创建一个基于枚举成员的常量或者变量时才设置的值，枚举成员的关联值可以变化。</p>
+<h4 id="原始值的隐式赋值"><a href="#原始值的隐式赋值" class="headerlink" title="原始值的隐式赋值"></a>原始值的隐式赋值</h4><p>在使用原始值为整数或者字符串类型的枚举时，不需要显示地为每一个枚举成员设置原始值，Swift将会自动为你赋值。<br>例如，当使用整数作为原始值时，隐式赋值的值依次递增 1 。如果第一个枚举成员没有设置原始值，其原始值将为 0。<br>下面的枚举是对之前 PLanet 这个枚举的一个细化，利用整型的原始值来表示每个行星在太阳系中的顺序：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">enum Planet: Int &#123;</div><div class="line">    case mercury = 1, venus, earth, mars, jupiter,saturn, uranus, neptune</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在上面的例子中，Planet.mercury的显式原始值为1，Planet.venus 的隐式原始值为 2，依次类推。</p>
+<p>当使用字符串作为枚举类型的原始值时，每个枚举成员的隐式原始值为该枚举成员的名称。<br>下面的例子是 CompassPoint 枚举的细化，使用字符串类型的原始值来表示各个方向的名称:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">enum CompassPoint: String &#123;</div><div class="line">    case north, south, east, west</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面例子中，CompassPoint,south 拥有隐式原始值 south，一次类推。<br>使用枚举成员的 rawValue 属性可以访问该枚举成员的原始值：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">let earthsOrder = Planet.earth.rawValue </div><div class="line">// earthsOrder 值为 3</div><div class="line">let sunsetDirection = CompassPoint.west.rawValue </div><div class="line">// sunsetDirection 值为 &quot;west&quot;</div></pre></td></tr></table></figure>
+<h4 id="使用原始值初始化枚举实例"><a href="#使用原始值初始化枚举实例" class="headerlink" title="使用原始值初始化枚举实例"></a>使用原始值初始化枚举实例</h4><p>如果在定义枚举类型的时候使用了原始值，那么将会自动获得一个初始化方法，这个方法接收一个叫做 <code>rawValue</code> 的参数，参数类型即为原始值类型，返回值则是枚举成员或nil。你可以使用这个初始化方法来创建一个新的枚举实例。<br>这个例子利用原始值 7 创建枚举成员 uranus ：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">let possiblePlanet = Planet(rawValue: 7)</div><div class="line">// possiblePlanet 类型为 Planet? 值为 Planet.uranus</div></pre></td></tr></table></figure></p>
+<p>然而，并非所有的Int值都可以找到一个匹配的行星。因此，原始值构造器总是返回一个可选的枚举成员。在上面的例子中，<code>possiblePlanet</code> 是 <code>Planet?</code> 类型，或者说“可选的 Planet ”。</p>
+<p>注意：原始值构造器是一个可失败构造器，因为并不是每一个原始值都有与之对应的枚举成员。</p>
+<h3 id="递归枚举"><a href="#递归枚举" class="headerlink" title="递归枚举"></a>递归枚举</h3><p>递归枚举是一种枚举类型，它有一个或多个枚举成员使用该枚举类型的实例作为关联值。使用递归枚举时，编译器会插入一个间接层。你可以再枚举成员前加上 <code>indirect</code> 来表示该成员可递归。</p>
+<p>例如下面的例子中，枚举类型存储了简单的算术表达式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">enum ArithmeticExpression &#123;</div><div class="line">    case number(Int)</div><div class="line">    indirect case addition(ArithmeticExpression, ArithmeticExpression)</div><div class="line">    indirect case muitiplication(ArithmeticExpression, ArithmeticExpression)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>你也可以在枚举类型开头加上 <code>indirect</code>关键字来表面它的所有成员都是可递归的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">indirect enum ArithmeticExpression &#123;</div><div class="line">    case number(Int)</div><div class="line">    case addition(ArithmeticExpression, ArithmeticExpression)</div><div class="line">    case muitiplication(ArithmeticExpression, ArithmeticExpression)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面定义的枚举类型可以存储三种算术表达式：纯数字、两个表达式相加、两个表达式相乘。枚举成员 <code>addition</code> 和 <code>multiplication</code> 的关联值也是算术表达式——这些关联值使得嵌套表达式成为可能。例如，表达式 <code>(5 + 4) * 2</code> ，乘号右边是一个数字，左边则是另一个表达式。因为数据是嵌套的，因而用来存储数据的枚举类型也需要支持这种嵌套——这意味着枚举类型需要支持递归。下面的代码展示了使用 <code>ArithmeticExpression</code> 这个递归枚举创建表达式 <code>(5 + 4) * 2</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">let five = ArithmeticExpression.number(5)</div><div class="line">let four = ArithmeticExpression.number(4)</div><div class="line">let sum = ArithmeticExpression.addition(five, four)</div><div class="line">let product = ArithmeticExpression.muitiplication(sum, ArithmeticExpression.number(2))</div></pre></td></tr></table></figure>
+<p>要操作具有递归性质的数据结构，使用递归函数是一种直截了当的方式。例如，下面是一个对算术表达式求值的函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">func evaluate(_ expression: ArithmeticExpression) -&gt; Int &#123;</div><div class="line">    switch expression &#123;</div><div class="line">    case let .number(value):</div><div class="line">        return value</div><div class="line">    case let .addition (left, right):</div><div class="line">        return evaluate(left) + evaluate(right)</div><div class="line">    case let .muitiplication(left, right):</div><div class="line">        return evaluate(left) * evaluate(right)</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">print(evaluate(product))</div><div class="line">//打印 18</div></pre></td></tr></table></figure>
+<p>该函数如果遇到纯数字，就直接返回该数字的值。如果遇到的是加法或乘法运算，则分别计算左边表达式和右边表达式的值，然后相加或相乘。</p>
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢打赏<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="http://ooneqy20s.bkt.clouddn.com/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -210,57 +276,92 @@ var _hmt = _hmt || [];
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/11/13/SwiftIntroduceTenth/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/11/07/SwiftIntroduceNighth/" class="archive-article-date">
-  	<time datetime="2017-11-07T02:39:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-07</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/11/07/SwiftIntroduceNighth/">Swift学习之路--Swift基础(九)</a>
-    </h1>
+    <a href="/2017/11/07/SwiftIntroduceNighth/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Swift学习之路--Swift基础(九)
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+
+
+
+
+
+  
+    <div class="duoshuo"></div>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Swift</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -283,8 +384,8 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
