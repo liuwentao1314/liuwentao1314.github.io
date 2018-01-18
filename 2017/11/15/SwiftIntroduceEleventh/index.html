@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/11/15/SwiftIntroduceEleventh/index.html">
 <meta property="og:site_name" content="LWT'sBlog">
 <meta property="og:description" content="作者刘文涛转载请注明出处 类和结构体类和结构体是人们构建代码所用的一种通用且灵活的构造体。我们可以使用完全相同的语法规则来为类和结构体定义属性（常量、变量）和添加方法，从而扩展类和结构体的功能。与其他编程语言不同的是，Swift并不要求你为自定义类和结构去创建独立的接口和实现文件。你所需要做的是在一个单一文件中定义一个类或者结构体，系统将会自动生成面向其它代码的外部接口。 注意：通常一个类的实例被">
-<meta property="og:updated_time" content="2018-01-18T09:31:49.000Z">
+<meta property="og:updated_time" content="2018-01-18T09:44:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift学习之路--Swift基础(十一)">
 <meta name="twitter:description" content="作者刘文涛转载请注明出处 类和结构体类和结构体是人们构建代码所用的一种通用且灵活的构造体。我们可以使用完全相同的语法规则来为类和结构体定义属性（常量、变量）和添加方法，从而扩展类和结构体的功能。与其他编程语言不同的是，Swift并不要求你为自定义类和结构去创建独立的接口和实现文件。你所需要做的是在一个单一文件中定义一个类或者结构体，系统将会自动生成面向其它代码的外部接口。 注意：通常一个类的实例被">
@@ -216,19 +216,19 @@ var _hmt = _hmt || [];
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">print(&quot;The width of someVideoMode is \(someVideoMode.resolution.width)&quot;)</div><div class="line">//打印 The width of someVideoMode is 0</div></pre></td></tr></table></figure>
 <p>你也可以使用点语法为变量属性赋值：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">someVideoMode.resolution.width = 1280</div><div class="line">print(&quot;The width of someVideoMode is now \(someVideoMode.resolution.width)&quot;)</div><div class="line">//打印 The width of someVideoMode is now 1280</div></pre></td></tr></table></figure>
-<p><strong><br>注意：<br> 与OC 语言不同的是，Swift 允许直接设置结构体属性的子属性。上面的最后一个例子，就是直接设置了 <code>someVideoMode</code> 中 <code>resolution</code> 属性的 <code>width</code> 这个子属性，以上操作并不需要重新为整个 <code>resolution</code> 属性设置新值。
+<p><strong>注意：<br>与OC 语言不同的是，Swift 允许直接设置结构体属性的子属性。上面的最后一个例子，就是直接设置了 <code>someVideoMode</code> 中 <code>resolution</code> 属性的 <code>width</code> 这个子属性，以上操作并不需要重新为整个 <code>resolution</code> 属性设置新值。
 </strong></p>
 <p>结构体类型的成员逐一构造器</p>
 <p>所有结构体都有一个自动生成的成员逐一构造器，用于初始化新结构体实例中成员的属性。新实例中各个属性的初始值可以通过属性的名称传递到成员逐一构造器之中:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">let vga = Resolution(width:640, height: 480)</div></pre></td></tr></table></figure>
-<p> 与结构体不同，类实例没有默认的成员逐一构造器。</p>
+<p>与结构体不同，类实例没有默认的成员逐一构造器。</p>
 <h3 id="结构体和枚举是值类型"><a href="#结构体和枚举是值类型" class="headerlink" title="结构体和枚举是值类型"></a>结构体和枚举是值类型</h3><p>值类型被赋予给一个变量、常量或者被传递给一个函数的时候，其值会被拷贝。</p>
 <p>在之前的章节中，我们已经大量使用了值类型。实际上，在 Swift 中，所有的基本类型:整数(Integer)、浮 点数(floating-point)、布尔值(Boolean)、字符串(string)、数组(array)和字典(dictionary)，都是 值类型，并且在底层都是以结构体的形式所实现。</p>
 <p>在 Swift 中，所有的结构体和枚举类型都是值类型。这意味着它们的实例，以及实例中所包含的任何值类型属 性，在代码中传递的时候都会被复制。</p>
 <p>请看下面这个示例，其使用了前一个示例中的 <code>Resolution</code> 结构体:</p>
 <pre><code>let hd = Resolution(width: 1920, height: 1080)
 var cinema = hd
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">在以上示例中，声明了一个名为hd的常量，其值为一个初始化为全高清视频分辨率(1920 像素宽，1080 像 素高)的 ``Resolution`` 实例。</div><div class="line">然后示例中又声明了一个名为 ``cinema`` 的变量，并将 ``hd`` 赋值给它。因为 ``Resolution`` 是一个结构体，所以 ``cinema`` 的值其实是 ``hd`` 的一个拷贝副本，而不是 ``hd`` 本身。尽管 ``hd`` 和 ``cinema`` 有着相同的宽(width)和高(height)，但是在幕后它们是两个完全不同的实例。</div><div class="line"></div><div class="line"></div><div class="line">### 类是引用类型</div><div class="line"></div><div class="line">与值类型不同，引用类型在被赋予到一个变量、常量或者被传递到一个函数时，其值不会被拷贝。因此，引用的是已存在的实例本身而不是其拷贝。</div><div class="line"></div><div class="line"></div><div class="line">请看下面这个示例，其使用了之前定义的 ``VideoMode`` 类:</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">在以上示例中，声明了一个名为hd的常量，其值为一个初始化为全高清视频分辨率(1920 像素宽，1080 像 素高)的 ``Resolution`` 实例。</div><div class="line">然后示例中又声明了一个名为 ``cinema`` 的变量，并将 ``hd`` 赋值给它。因为 ``Resolution`` 是一个结构体，所以 ``cinema`` 的值其实是 ``hd`` 的一个拷贝副本，而不是 ``hd`` 本身。尽管 ``hd`` 和 ``cinema`` 有着相同的宽(width)和高(height)，但是在幕后它们是两个完全不同的实例。</div><div class="line"></div><div class="line">### 类是引用类型</div><div class="line"></div><div class="line">与值类型不同，引用类型在被赋予到一个变量、常量或者被传递到一个函数时，其值不会被拷贝。因此，引用的是已存在的实例本身而不是其拷贝。</div><div class="line"></div><div class="line">请看下面这个示例，其使用了之前定义的 ``VideoMode`` 类:</div></pre></td></tr></table></figure>
 
 let tenEighty = VideoMode()
 tenEighty.resolution = hd
@@ -472,19 +472,19 @@ if tenEighty === alsoTenEighty {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">NSOperation</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">UIFont</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">下载字体</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">GCD</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -496,7 +496,7 @@ if tenEighty === alsoTenEighty {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">GCD</a>
+                <a href="javascript:void(0)" class="js-tag color2">NSOperation</a>
               </li>
              
               <li class="article-tag-list-item">
